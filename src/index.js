@@ -1,15 +1,18 @@
 const fastify = require('fastify')();
 const fs = require('fs');
-const dtf = require('@eartharoid/dtf');
-const log = require('leekslazylogger');
 const config = require('./config.json');
+const dtf = require('@eartharoid/dtf');
+const Logger = require('leekslazylogger');
+const log = new Logger({
+    name: config.logname
+});
+
 
 fastify.register(require('fastify-cors'));
 fastify.register(require('fastify-rate-limit'), {
     max: 100,
     timeWindow: '1 minute'
 });
-log.init(config.logname);
 
 fastify.get('/item/:category/:name', async (req) => {
     log.info(`Request made to /item/${req.params.category}/${req.params.name}`);
