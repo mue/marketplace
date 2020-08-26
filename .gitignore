@@ -1,0 +1,7 @@
+# Folders
+logs/
+.vscode/
+node_modules/
+
+# Files
+config.json

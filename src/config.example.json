@@ -1,0 +1,10 @@
+{
+    "port": 8080,
+    "supported_types": {
+        "settings": [],
+        "photo_packs": [],
+        "quote_packs": [],
+        "themes": []
+    },
+    "logname": "Marketplace"
+}
