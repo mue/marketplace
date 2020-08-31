@@ -7,11 +7,16 @@ const log = new Logger({
     name: config.logname
 });
 
-
 fastify.register(require('fastify-cors'));
 fastify.register(require('fastify-rate-limit'), {
-    max: 100,
-    timeWindow: '1 minute'
+    max: config.ratelimit.max,
+    timeWindow: config.ratelimit.timewin
+});
+
+fastify.get('/', async () => {
+    return {
+        message: 'Hello World'
+    }
 });
 
 fastify.get('/item/:category/:name', async (req) => {

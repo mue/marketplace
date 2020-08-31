@@ -6,5 +6,9 @@
         "quote_packs": [],
         "themes": []
     },
-    "logname": "Marketplace"
+    "logname": "Marketplace",
+    "ratelimit": {
+        "max": 100,
+        "timewin": "1 minute"
+    }
 }
