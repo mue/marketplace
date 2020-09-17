@@ -1,4 +1,4 @@
-import { fastify, FastifyInstance } from 'fastify'
+import { fastify, FastifyInstance } from 'fastify';
 import fs from 'fs';
 import config from './config.json';
 import dtf from '@eartharoid/dtf';
@@ -59,7 +59,6 @@ server.get('/all', async () => {
                 name: item.replace('.json', ''),
                 display_name: file.name,
                 icon_url: file.icon_url,
-                description: file.description,
                 author: file.author
             });
         });
