@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@eartharoid/dtf": "1.0.7",
+    "fastify": "3.3.0",
+    "fastify-cors": "4.1.0",
+    "fastify-rate-limit": "4.0.2",
+    "leekslazylogger": "2.0.1"
+  },
+  "devDependencies": {
+    "@types/fastify-cors": "2.1.0",
+    "@types/fastify-rate-limit": "2.0.0"
+  }
+}
