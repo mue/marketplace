@@ -2,12 +2,14 @@ import { fastify, FastifyInstance } from 'fastify';
 import fs from 'fs';
 import config from './config.json';
 import dtf from '@eartharoid/dtf';
-import Logger from 'leekslazylogger';
+import Logger from 'leekslazylogger-fastify';
 
 const log = new Logger({
     name: config.logname
 });
 const server: FastifyInstance = fastify();
+
+server.register(log.fastify); // logger
 server.register(require('fastify-cors'));
 server.register(require('fastify-rate-limit'), {
     max: config.ratelimit.max,
@@ -27,7 +29,6 @@ interface ItemParams {
 
 server.get<{Params: ItemParams}>('/item/:category/:name', async (req) => {
     const { category, name } = req.params;
-    log.info(`Request made to /item/${category}/${name}`);
 
     try {
         return {
@@ -42,7 +43,6 @@ server.get<{Params: ItemParams}>('/item/:category/:name', async (req) => {
 });
 
 server.get('/all', async () => {
-    log.info('Request made to /all');
 
     let data = {
         'settings': [],
@@ -52,7 +52,7 @@ server.get('/all', async () => {
     };
 
     Object.keys(data).forEach((folder) => {
-        if (!fs.existsSync(`../data/${folder}`)) fs.mkdirSync(`./data/${folder}`);
+        if (!fs.existsSync(`../data/${folder}`)) fs.mkdirSync(`../data/${folder}`);
         fs.readdirSync(`../data/${folder}`).forEach((item: string) => {
             let file = JSON.parse(fs.readFileSync(`../data/${folder}/${item}`, 'utf8'));
             data[folder].push({
@@ -70,10 +70,9 @@ server.get('/all', async () => {
 });
 
 server.get('/featured', async () => {
-    log.info('Request made to /featured');
     return {
         data: JSON.parse(fs.readFileSync('../data/featured.json', 'utf8'))
     }
 });
 
-server.listen(config.port, () => log.info('Server started'));
+server.listen(config.port, () => log.info(`Server started on port ${config.port}`));
