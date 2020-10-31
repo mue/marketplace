@@ -43,7 +43,6 @@ server.get<{Params: ItemParams}>('/item/:category/:name', async (req) => {
 });
 
 server.get('/all', async () => {
-
     let data = {
         'settings': [],
         'photo_packs': [],
