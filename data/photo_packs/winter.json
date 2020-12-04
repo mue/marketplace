@@ -1,0 +1,26 @@
+{
+    "name": "Winter",
+    "description": "Some beautiful photos to enjoy during winter.",
+    "icon_url": "....................",
+    "screenshot_url": "..............",
+    "type": "photos",
+    "verified": false,
+    "version": "1.0.0",
+    "author": "eartharoid",
+    "photos": [
+        {
+            "photographer": ".......",
+            "location": "....",
+            "url": {
+                "default": ""
+            }
+        },
+        {
+            "photographer": ".......",
+            "location": "........",
+            "url": {
+                "default": ""
+            }
+        }
+    ]
+}
