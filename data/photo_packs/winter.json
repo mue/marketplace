@@ -7,7 +7,15 @@
 	"verified": false,
 	"version": "1.0.0",
 	"author": "eartharoid",
-	"photos": [{
+	"photos": [
+		{
+			"photographer": "eartharoid",
+			"location": "???",
+			"url": {
+				"default": "https://i.imgur.com/W4g5Wuz.jpg"
+			}
+		},
+		{
 			"photographer": "Public Domain Pictures (Pexels)",
 			"location": "???",
 			"url": {
@@ -214,7 +222,8 @@
 			}
 		}
 	],
-	"videos": [{
+	"videos": [
+		{
 			"photographer": "John-Mark Smith (Pexels)",
 			"location": "???",
 			"url": {
