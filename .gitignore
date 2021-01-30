@@ -1,6 +1,7 @@
 # Folders
 logs/
 .vscode/
+.vercel/
 node_modules/
 
 # Files
