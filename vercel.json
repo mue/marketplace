@@ -1,0 +1,19 @@
+{
+    "rewrites": [{
+            "source": "/",
+            "destination": "/api/index"
+        },
+        {
+            "source": "/all",
+            "destination": "/api/all"
+        },
+        {
+            "source": "/featured",
+            "destination": "/api/featured"
+        },
+        {
+            "source": "/item/:category*/:name*",
+            "destination": "/api/item/:category*/:name*"
+        }
+    ]
+}
