@@ -12,8 +12,8 @@
             "destination": "/api/featured"
         },
         {
-            "source": "/item/:category*/:name*",
-            "destination": "/api/item/:category*/:name*"
+            "source": "/item/:category/:item*",
+            "destination": "/api/item?category=:category&item=:item*"
         }
     ]
 }

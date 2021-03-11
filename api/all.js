@@ -4,10 +4,10 @@ module.exports = (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     let data = {
-        'settings': [],
+      //  'settings': [],
         'photo_packs': [],
-        'quote_packs': [],
-        'themes': []
+      //  'quote_packs': [],
+      //  'themes': []
     };
 
     Object.keys(data).forEach((folder) => {
