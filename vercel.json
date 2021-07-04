@@ -14,6 +14,10 @@
         {
             "source": "/item/:category/:item*",
             "destination": "/api/item?category=:category&item=:item*"
+        },
+        {
+            "source": "/items/:category",
+            "destination": "/api/items?category=:category"
         }
     ]
 }
