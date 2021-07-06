@@ -1,5 +1,17 @@
 {
+  "name": "mue-marketplace",
+  "private": true,
+  "description": "Marketplace server and content for Mue",
+  "repository": {
+    "url": "github:mue/marketplace"
+  },
+  "homepage": "https://marketplace.muetab.com",
+  "author": "The Mue Authors (https://github.com/mue/marketplace/graphs/contributors)",
+  "license": "MIT",
+  "main": "api/",
+  "version": "1.0.0",
   "dependencies": {
-    "@eartharoid/dtf": "^1.0.8"
+    "@eartharoid/dtf": "^1.0.8",
+    "lambda-rate-limiter": "^3.0.0"
   }
 }

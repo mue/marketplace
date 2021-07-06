@@ -1,23 +1,22 @@
 {
-    "rewrites": [{
-            "source": "/",
-            "destination": "/api/index"
-        },
-        {
-            "source": "/all",
-            "destination": "/api/all"
-        },
-        {
-            "source": "/featured",
-            "destination": "/api/featured"
-        },
-        {
-            "source": "/item/:category/:item*",
-            "destination": "/api/item?category=:category&item=:item*"
-        },
-        {
-            "source": "/items/:category",
-            "destination": "/api/items?category=:category"
-        }
-    ]
+  "rewrites": [{
+    "source": "/",
+    "destination": "/api/index"
+  },
+  {
+    "source": "/all",
+    "destination": "/api/all"
+  },
+  {
+    "source": "/featured",
+    "destination": "/api/featured"
+  },
+  {
+    "source": "/item/:category/:item*",
+    "destination": "/api/item?category=:category&item=:item*"
+  },
+  {
+    "source": "/items/:category",
+    "destination": "/api/items?category=:category"
+  }]
 }
