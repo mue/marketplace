@@ -1,0 +1,82 @@
+{
+    "name": "Summer",
+    "description": "A selection of summer photos!\n Source: https://www.unsplash.com",
+    "icon_url": "https://image.flaticon.com/icons/png/512/119/119596.png",
+    "screenshot_url": "https://i.imgur.com/4kYfGvI.png",
+    "type": "photos",
+    "verified": false,
+    "version": "1.0.0",
+    "author": "davidjcralph",
+    "photos": [
+        {
+            "photographer": "Raphaël Biscaldi",
+            "location": "Le Beausset, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1498747946579-bde604cb8f44?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Nattu Adnan",
+            "location": "Saafu Point Rd, Fuvahmulah, Maldives",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1541417904950-b855846fe074?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Arno Smit",
+            "location": "Muizenberg, Cape Town, South Africa",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1474874055390-459bc92357f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Aleksandr Eremin",
+            "location": "Donetsk, Ukraine",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1491929007750-dce8ba76e610?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Muhammad Saushan",
+            "location": "Innamaadhoo, Maldives",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1591179963766-42825c30803a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Lee Jeffs",
+            "location": "???",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1500673587002-1d2548cfba1b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Content Pixie",
+            "location": "Uluwatu, Bali",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1559294170-f7e6a2f1f0fd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Harry Cunningham",
+            "location": "Fremantle WA, Australia",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1576070175736-d1c6f0acd3a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Jamie Street",
+            "location": "???",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1517093728432-a0440f8d45af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        },
+        {
+            "photographer": "Luke Dean-Weymark",
+            "location": "South Coast, Australia",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1521170813716-0b3f42fcfb65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            }
+        }
+    ]
+}
