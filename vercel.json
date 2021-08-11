@@ -18,5 +18,9 @@
   {
     "source": "/items/:category",
     "destination": "/api/items?category=:category"
+  },
+  { 
+    "source": "/(.*)", 
+    "destination": "/api/404" 
   }]
 }
