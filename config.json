@@ -6,7 +6,7 @@
   "ratelimit": {
     "enabled": true,
     "time": 60,
-    "max_requests": {
+    "limits": {
       "hello": 30,
       "not_found": 60,
       "featured": 60,
