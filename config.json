@@ -1,0 +1,17 @@
+{
+  "helloworld": {
+    "message": "Hello World! Docs: https://docs.muetab.com/marketplace/introduction"
+  },
+  "umami": true,
+  "ratelimit": {
+    "enabled": true,
+    "time": 60,
+    "max_requests": {
+      "hello": 30,
+      "not_found": 60,
+      "featured": 60,
+      "item": 60,
+      "items": 60
+    }
+  }
+}
