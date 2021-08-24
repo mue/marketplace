@@ -22,9 +22,16 @@ module.exports = async (req, res) => {
     }
   }
 
+  const data = require('../data/all.json')[req.query.category];
+  if (data === undefined) {
+    return res.status(404).send({
+      message: 'Category not found'
+    });
+  }
+
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   return res.status(200).send({
-    data: require('../data/all.json')[req.query.category]
+    data: data
   });
 };

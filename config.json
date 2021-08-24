@@ -10,6 +10,7 @@
       "hello": 30,
       "not_found": 60,
       "featured": 60,
+      "all": 60,
       "item": 60,
       "items": 60
     }
