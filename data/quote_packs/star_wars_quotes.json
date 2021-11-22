@@ -1,0 +1,46 @@
+{
+    "name": "Star Wars Quotes",
+    "description": "Famous Star Wars Quotes from the films and TV Shows\n Please note that the author and Mue are not affiliated with Star Wars.",
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "Mello",
+    "icon_url": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0011/3731/brand.gif?itok=nKgvNWOo",
+    "screenshot_url": "https://cdn.discordapp.com/attachments/701854785946517558/912456907292278876/unknown.png",
+    "quotes": [{
+            "quote": "Try not. Do or do not. There is no try.",
+            "author": "Yoda"
+        },
+        {
+            "quote": "Your eyes can deceive you; don’t trust them.",
+            "author": "Obi-Wan Kenobi"
+        },
+        {
+            "quote": "The ability to speak does not make you intelligent.",
+            "author": "Qui-Gon Jinn"
+        },
+        {
+            "quote": "Train yourself to let go of everything you fear to lose.",
+            "author": "Yoda"
+        },
+        {
+            "quote": "Great, kid, don’t get cocky",
+            "author": "Han Solo"
+        },
+        {
+            "quote": "Once you start down the dark path, forever will it dominate your destiny",
+            "author": "Yoda"
+        },
+        {
+            "quote": "Don’t call me a mindless philosopher, you overweight glob of grease.",
+            "author": "C-3PO"
+        },
+        {
+            "quote": "I find your lack of faith disturbing",
+            "author": "Darth Vader"
+        },
+        {
+            "quote": "You really have it bad for the Falcon, don’t you?",
+            "author": "Lando Calrissian"
+        }
+    ]
+}

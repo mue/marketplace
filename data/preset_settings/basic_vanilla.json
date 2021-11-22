@@ -2,7 +2,7 @@
     "name": "BasicVanilla",
     "description": "A basic configuration for your new tab.",
     "type": "settings",
-    "version": "1.0",
+    "version": "1.0.0",
     "author": "Princess Mortix",
     "icon_url": "https://cdn.discordapp.com/attachments/645230059476484128/883355106421129226/vanilladefault.png",
     "screenshot_url": "https://i.imgur.com/JmltDY8.png",
