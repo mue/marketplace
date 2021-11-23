@@ -11,8 +11,8 @@
   "main": "api/",
   "version": "1.0.0",
   "dependencies": {
-    "@eartharoid/dtf": "^1.0.8",
-    "lambda-rate-limiter": "^3.0.0",
-    "node-fetch": "^2.6.1"
+    "lambda-rate-limiter": "^3.0.1",
+    "node-fetch": "^2.6.2",
+    "ua-parser-js": "^1.0.2"
   }
 }
