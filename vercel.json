@@ -4,10 +4,6 @@
     "destination": "/api/index"
   },
   {
-    "source": "/all",
-    "destination": "/api/all"
-  },
-  {
     "source": "/featured",
     "destination": "/api/featured"
   },

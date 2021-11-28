@@ -22,6 +22,14 @@ module.exports = async (req, res) => {
     }
   }
 
+  if (req.query.category === 'all') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    return res.status(200).send({
+      data: require('../data/all.json')
+    });
+  }
+
   const data = require('../data/all.json')[req.query.category];
   if (data === undefined) {
     return res.status(404).send({
