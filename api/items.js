@@ -25,9 +25,15 @@ module.exports = async (req, res) => {
   if (req.query.category === 'all') {
     res.setHeader('Access-Control-Allow-Origin', '*');
     const data = require('../data/all.json');
+    const array = [];
+    Object.keys(data).forEach((key) => {
+      Object.keys(data[key]).forEach((item) => {
+        array.push(data[key][item]);
+      });
+    });
 
     return res.status(200).send({
-      data: [data.preset_settings, data.photo_packs, data.quote_packs]
+      data: array
     });
   }
 
