@@ -28,7 +28,9 @@ module.exports = async (req, res) => {
     const array = [];
     Object.keys(data).forEach((key) => {
       Object.keys(data[key]).forEach((item) => {
-        array.push(data[key][item]);
+        const marketplaceItem = data[key][item];
+        marketplaceItem.type = key;
+        array.push(marketplaceItem);
       });
     });
 
