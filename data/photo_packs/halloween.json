@@ -10,28 +10,28 @@
     "photos": [
         {
             "photographer": "Karolina Grabowska",
-            "location": "???",
+            "location": "N/A",
             "url": {
                 "default": "https://images.pexels.com/photos/5422609/pexels-photo-5422609.jpeg?crop=entropy&cs=srgb&dl=pexels-karolina-grabowska-5422609.jpg&fit=crop&fm=jpg&h=1280&w=1920"
             }
         },
         {
             "photographer": "Toni Cuenca",
-            "location": "???",
+            "location": "N/A",
             "url": {
                 "default": "https://images.pexels.com/photos/619418/pexels-photo-619418.jpeg?crop=entropy&cs=srgb&dl=pexels-toni-cuenca-619418.jpg&fit=crop&fm=jpg&h=1280&w=1920"
             }
         },
         {
             "photographer": "Joonas Kääriäinen",
-            "location": "???",
+            "location": "N/A",
             "url": {
                 "default": "https://images.pexels.com/photos/239107/pexels-photo-239107.jpeg?crop=entropy&cs=srgb&dl=pexels-joonas-k%C3%A4%C3%A4ri%C3%A4inen-239107.jpg&fit=crop&fm=jpg&h=1281&w=1920"
             }
         },
         {
             "photographer": "Francesco Ungaro",
-            "location": "???",
+            "location": "N/A",
             "url": {
                 "default": "https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?crop=entropy&cs=srgb&dl=pexels-francesco-ungaro-1671325.jpg&fit=crop&fm=jpg&h=2560&w=1920"
             }
