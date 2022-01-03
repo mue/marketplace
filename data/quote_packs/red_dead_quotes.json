@@ -1,0 +1,58 @@
+{
+    "name": "Red Dead Quotes",
+    "description": "Quotes from the Red Dead video game franchise.",
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "Mello",
+    "icon_url": "https://styles.redditmedia.com/t5_2rn7o/styles/communityIcon_2083me9o3ia21.png",
+    "screenshot_url": ".",
+    "quotes": [{
+            "quote": "If we have to fight, we fight. If we have to run, We’ll run. If we must die, we’ll die. But...we’ll stay free.",
+            "author": "Javier Escuella"
+        },
+        {
+            "quote": "We're more ghosts than people now.",
+            "author": "Arthur Morgan"
+        },
+        {
+            "quote": "I ain't got too much to say no more.",
+            "author": "Dutch Van Der Linde"
+        },
+        {
+            "quote": "We're thieves in a world that don't want us no more",
+            "author": "Arthur Morgan"
+        },
+        {
+            "quote": "I believe there's winners and losers, and nothing else besides.",
+            "author": "Micah Bell"
+        },
+        {
+            "quote": "You sir are a fish.",
+            "author": "Arthur Morgan"
+        },
+        {
+            "quote": "I wish I had acquired wisdom at less of a price.",
+            "author": "Hosea"
+        },
+        {
+            "quote": "I guess...I'm afraid.",
+            "author": "Arthur Morgan"
+        },
+        {
+            "quote": "Be loyal to what matters.",
+            "author": "Arthur Morgan"
+        },
+        {
+            "quote": "I have a plan.",
+            "author": "Dutch Van Der Linde"
+        },
+        {
+            "quote": "I gave you all I had. I did.",
+            "author": "Arthur Morgan"
+        },
+        {
+            "quote": "I have a plan, this is a good one.",
+            "author": "Dutch Van Der Linde"
+        }
+    ]
+}
