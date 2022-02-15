@@ -1,8 +1,8 @@
 ---
 name: Item Report
 about: Report an issue with a marketplace item
-title: "[Item Report]"
-labels: item-report
+title: "[Item Report] Insert marketplace item name here"
+labels: item report
 assignees: ''
 
 ---
