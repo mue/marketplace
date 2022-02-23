@@ -15,6 +15,18 @@
     "source": "/items/:category",
     "destination": "/api/items?category=:category"
   },
+  {
+    "source": "/collections",
+    "destination": "/api/collections"
+  },
+  {
+    "source": "/collection/:collection",
+    "destination": "/api/collection?collection=:collection"
+  },
+  {
+    "source": "/share/:item",
+    "destination": "/api/share?item=:item"
+  },
   { 
     "source": "/(.*)", 
     "destination": "/api/404" 

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= it.name %> | Mue Marketplace</title>
+  <link rel='stylesheet' href='/share.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css'>
+</head>
+
+<body>
+  <div class='banner'>
+    <div class='button'>
+      <a class='addMue' id='addMue'>
+        Download for BROWSER
+      </a>
+    </div>
+    <div class='icon'>
+      <svg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <circle cx='28' cy='28' r='28' fill='black' />
+        <path d='M31.4741 17.3648V20.3504H38.0687V26.7563H41.145V17.3648H31.4741Z' fill='#FBBEBE' />
+        <path
+          d='M33.6695 27.333H30.9374V29.988H28.4165V27.333H25.6825V24.8849H28.4165V22.2317H30.9374V24.8849H33.6695V27.333ZM37.3559 21.0087H30.7613V18.7828H19.702V33.437H39.6499V27.4147H37.3559V21.0087Z'
+          fill='#FBBEBE' />
+        <path d='M19.0133 21.5675H16.8953V36.2217H36.8432V34.1591H19.0133V21.5675Z' fill='#FBBEBE' />
+        <path d='M16.4435 24.1158H14.3254V38.77H34.2734V36.7075H16.4435V24.1158Z' fill='#FBBEBE' />
+      </svg>
+    </div>
+    <div class='something'>
+      <span>As seen in Miami</span>
+    </div>
+  </div>
+  <div class='content'>
+    <div class='itemLeft'>
+      <span class='title'>
+        <%= it.name %>
+      </span>
+      <span class='subtitle'>
+        <%= it.type %>
+      </span>
+      <img src='https://external-content.duckduckgo.com/iu/?u=<%= it.screenshot_url %>' draggable='false' />
+      <span class='description'>
+        Description
+      </span>
+      <span class='subtitle'>
+        <%= it.description %>
+      </span>
+    </div>
+    <div class='itemSide'>
+      <img class='itemImg' src='https://external-content.duckduckgo.com/iu/?u=<%= it.icon_url %>' draggable='false' />
+      <a class='itemButton' id='itemButton'>Get Mue</a>
+      <span>This is a Mue Marketplace Item.</span>
+      <div class='itemInfo'>
+        <div class='item'>
+          <div class='icon'>
+            <i class='material-icons'>bug_report</i>
+          </div>
+          <div>
+            <span class='type'>Version</span>
+            <span class='value'><%= it.version %></span>
+          </div>
+        </div>
+        <div class='item'>
+          <div class='icon'>
+            <i class='material-icons'>translate</i>
+          </div>
+          <div>
+            <span class='type'>Language</span>
+            <span class='value'>English</span>
+          </div>
+        </div>
+        <div class='item'>
+          <div class='icon'>
+            <i class='material-icons'>account_circle</i>
+          </div>
+          <div>
+            <span class='type'>Author</span>
+            <span class='value'><%= it.author %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class='footerContent'>
+      <div>
+        <div class='top'>
+          <img src='https://res.cloudinary.com/mue/website/logo_footer.svg' alt='Mue Logo' height='50' width='58.16'
+            draggable='false' class='invert' />
+          <span>Mue</span>
+        </div>
+        <span class='sub'>For the modern web.</span>
+        <span class='min'>
+          © 2022 The Mue Authors
+        </span>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <h2>Product</h2>
+          </li>
+          <li>
+            <a href='https://muetab.com/download'>Download</a>
+          </li>
+          <li>
+            <a href='https://muetab.com/features'>Features</a>
+          </li>
+          <li>
+            <a href='https://muetab.com/privacy'>Privacy</a>
+          </li>
+          <li>
+            <Link href='https://docs.muetab.com'>
+            <a>Documentation</a>
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li>
+            <h2>Company</h2>
+          </li>
+          <li>
+            <a href='https://muetab.com/about'>About</a>
+          </li>
+          <li>
+            <a href='https://muetab.com/contact'>Contact</a>
+          </li>
+          <li>
+            <a href='https://muetab.com/branding'>Branding</a>
+          </li>
+          <li>
+            <a href='https://blog.muetab.com'>Blog</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li>
+            <h2>Links</h2>
+          </li>
+          <li>
+            <a href='https://github.com/mue'>Source</a>
+          </li>
+          <li>
+            <a href='https://muetab.com/privacy'>Privacy</a>
+          </li>
+          <li>
+            <a href='https://github.com/sponsors/davidcralph'>Support</a>
+          </li>
+          <li>
+            <a href='https://github.com/mue/mue/issues'>Issues</a>
+          </li>
+          <li>
+            <a href='https://status.muetab.com'>Status</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <ul class='social'>
+          <li>
+            <h2>Social</h2>
+          </li>
+          <li>
+            <a title='Mue on Discord' href='https://discord.gg/zv8C9F8'>
+              <div class='circle'>
+                <i class='fa-brands fa-discord'></i>
+              </div>
+            </a>
+            <a title='Mue on Twitter' href='https://twitter.com/getmue'>
+              <div class='circle'>
+                <i class='fa-brands fa-twitter'></i>
+              </div>
+            </a>
+            <a title='Mue on Facebook' href='https://facebook.com/muetab'>
+              <div class='circle'>
+                <i class='fa-brands fa-facebook'></i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.2/ua-parser.min.js'></script>
+  <script src='/share.js'></script>
+</body>
+
+</html>

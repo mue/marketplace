@@ -25,3 +25,16 @@ Object.keys(data).forEach((folder) => {
 });
 
 fs.writeFileSync('../data/all.json', JSON.stringify(data));
+
+const collections = [];
+fs.readdirSync(path.join(__dirname, '../data/collections')).forEach((item) => { 
+  const file = JSON.parse(fs.readFileSync(`../data/collections/${item}`, 'utf8'));
+  collections.push({
+    name: item.replace('.json', ''),
+    display_name: file.name,
+    img: file.img,
+    description: file.description
+  });
+});
+
+fs.writeFileSync('../data/collections.json', JSON.stringify(collections));
