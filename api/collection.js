@@ -5,7 +5,7 @@ const umami = require('../struct/umami');
 
 module.exports = async (req, res) => {
   if (config.umami === true) {
-    await umami.request(`/${req.query.category}/${req.query.item}`, req);
+    await umami.request(`/collection/${req.query.collection}`, req);
   }
 
   if (config.ratelimit.enabled) { 
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
       await rateLimit(config.ratelimit.limits.item, req.headers['x-real-ip']);
     } catch (error) {
       if (config.umami === true) {
-        await umami.error(`/${req.query.category}/${req.query.item}`, req, 'ratelimit');
+        await umami.error(`/collection/${req.query.collection}`, req, 'ratelimit');
       }
 
       return res.status(429).send({ 
