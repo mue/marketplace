@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
 
   return res.status(200).send({
     data: {
-      title: data.title,
+      name: data.name,
       img: data.img,
       description: data.description,
       items: items
