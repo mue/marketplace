@@ -13,9 +13,9 @@ body {
         --secondary-bg: #2f3542;
         --footer: #131111;
     }
-  }
-  
-  @media (prefers-color-scheme: light) {
+}
+
+@media (prefers-color-scheme: light) {
     :root {
         --bg: #ECECEC;
         --text: #000;
@@ -27,7 +27,7 @@ body {
     .invert {
         filter: invert(1);
     }
-  }
+}
 
 
 button {
