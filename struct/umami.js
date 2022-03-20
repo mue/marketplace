@@ -46,7 +46,7 @@ module.exports = class Umami {
         payload: {
           website: process.env.UMAMI_ID,
           url: url,
-          language: req.headers['accept-language'].split(',')[0],
+          language: req.headers['accept-language'] ? req.headers['accept-language'].split(',')[0] : '',
           screen: '',
           referrer: this.getReferrer(req)
         }
