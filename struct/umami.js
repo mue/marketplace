@@ -47,7 +47,7 @@ module.exports = class Umami {
           website: process.env.UMAMI_ID,
           url: url,
           language: req.headers['accept-language'] ? req.headers['accept-language'].split(',')[0] : '',
-          screen: '',
+          screen: '1920x1080',
           referrer: this.getReferrer(req)
         }
       })
