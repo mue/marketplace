@@ -43,6 +43,22 @@
         {
             "quote": "You really have it bad for the Falcon, don’t you?",
             "author": "Lando Calrissian"
+        },
+        {
+            "quote": "It's a trap!",
+            "author": "Admiral Ackbar"
+        },
+        {
+            "quote": "May the force be with you, always",
+            "author": "Obi-Wan Kenobi"
+        },
+        {
+            "quote": "I got a bad feeling about this."
+            "author": "Han Solo"
+        },
+        {
+            "quote": "There's always a bigger fish."
+            "author": "Qui-Gon Jinn"
         }
     ]
 }
