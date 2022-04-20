@@ -1,0 +1,43 @@
+{
+  "name": "Iconic Football Quotes",
+  "description": "Football quotes which are iconic, which hopefully, brighten your day!",
+  "type": "quotes",
+  "version": "1.0",
+  "author": "Apollo-Brownlee",
+  "icon_url": "https://i2-prod.chroniclelive.co.uk/incoming/article23444504.ece/ALTERNATES/s1200c/0_chriskJPG.jpg",
+  "screenshot_url": "https://i2-prod.chroniclelive.co.uk/incoming/article23444504.ece/ALTERNATES/s1200c/0_chriskJPG.jpg",
+  "quotes": [
+    {
+      "quote": "When people succeed, it is because of hard work.",
+      "author": "Diego Maradona"
+    },
+    {
+      "quote": "Talent without working hard is nothing.",
+      "author": "Cristiano Ronaldo"
+    },
+    {
+      "quote": "Life is like soccer; You need goals.",
+      "author": "Unknown"
+    },
+    {
+      "quote": "You can't score a goal if you don't take a shot.",
+      "author": "Johan Cruijff"
+    },
+    {
+      "quote": "It's hard to beat someone who never quits.",
+      "author": "Unknown"
+    },
+    {
+      "quote": "If I have to make a tackle then I have already made a mistake.",
+      "author": "Paolo Maldini"
+    },
+    {
+      "quote": "Pele called me the greatest footballer in the world. That is my ultimate salute to my life.",
+      "author": "George Best"
+    },
+    {
+      "quote": "It's no shame to fall down. But it is a shame to stay down.",
+      "author": "Miroslav Klose"
+    }
+  ]
+}
