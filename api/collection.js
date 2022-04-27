@@ -35,7 +35,14 @@ module.exports = async (req, res) => {
   const all = require('../data/all.json');
   try {
     data.items.forEach((item) => { 
-      items.push(all[item.split('/')[0]].find(i => i.name === item.split('/')[1]));
+      const data = all[item.split('/')[0]].find(i => i.name === item.split('/')[1]);
+      items.push({
+        name: data.name,
+        display_name: data.display_name,
+        icon_url: data.icon_url,
+        author: data.author,
+        type: item.split('/')[0]
+      });
     });
   } catch (e) {
     return res.status(404).send({
