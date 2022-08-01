@@ -5,5 +5,7 @@ logs/
 node_modules/
 
 # Files
-package-lock.json
+*-lock.*
 .vercel
+data/all.json
+data/collections.json

@@ -15,5 +15,8 @@
     "lambda-rate-limiter": "3.0.1",
     "node-fetch": "2.6.7",
     "ua-parser-js": "1.0.2"
+  },
+  "scripts": {
+	  "build": "node scripts/updatejson"
   }
 }

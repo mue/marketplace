@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 
 const data = {   
   preset_settings: [],
@@ -8,13 +7,13 @@ const data = {
 };
 
 Object.keys(data).forEach((folder) => {
-  const categories = path.join(__dirname, '../data', folder);
+  const categories = `./data/${folder}`;
   if (!fs.existsSync(categories)) {
     return;
   }
 
   fs.readdirSync(categories).forEach((item) => {
-    const file = JSON.parse(fs.readFileSync(`../data/${folder}/${item}`, 'utf8'));
+    const file = JSON.parse(fs.readFileSync(`./data/${folder}/${item}`, 'utf8'));
     data[folder].push({
       name: item.replace('.json', ''),
       display_name: file.name,
@@ -24,11 +23,11 @@ Object.keys(data).forEach((folder) => {
   });
 });
 
-fs.writeFileSync('../data/all.json', JSON.stringify(data));
+fs.writeFileSync('./data/all.json', JSON.stringify(data));
 
 const collections = [];
-fs.readdirSync(path.join(__dirname, '../data/collections')).forEach((item) => { 
-  const file = JSON.parse(fs.readFileSync(`../data/collections/${item}`, 'utf8'));
+fs.readdirSync('./data/collections').forEach((item) => { 
+  const file = JSON.parse(fs.readFileSync(`./data/collections/${item}`, 'utf8'));
   collections.push({
     name: item.replace('.json', ''),
     display_name: file.name,
@@ -37,4 +36,4 @@ fs.readdirSync(path.join(__dirname, '../data/collections')).forEach((item) => {
   });
 });
 
-fs.writeFileSync('../data/collections.json', JSON.stringify(collections));
+fs.writeFileSync('./data/collections.json', JSON.stringify(collections));
