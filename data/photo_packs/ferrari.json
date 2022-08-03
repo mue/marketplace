@@ -1,0 +1,145 @@
+{
+	"name": "Ferrari",
+	"description": "A collection of the Italian supercar giant, Ferrari.",
+	"icon_url": "https://cdn.iconscout.com/icon/free/png-256/ferrari-3-202769.png",
+	"screenshot_url": "",
+	"type": "photos",
+	"verified": false,
+	"version": "1.0.0",
+	"author": "Mello",
+	"photos": [
+		{
+			"photographer": "Brandon Atchison",
+			"location": "New York, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1592198084033-aade902d1aae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+		{
+			"photographer": "Håkon Sataøen",
+			"location": "Oslo, Norway",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1554223090-7e482851df45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1606&q=80"
+			}
+		},
+		{
+			"photographer": "Alec Jones",
+			"location": "London, UK",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1632441730372-d8509de481d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+		{
+			"photographer": "Adrian N",
+			"location": "Texas, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1617654112329-c446806d40e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1590&q=80"
+			}
+		},
+		{
+			"photographer": "Håkon Sataøen",
+			"location": "Winkel, Zürich, Schweiz",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1617434108848-6a1e827124ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+			}
+		},
+		{
+			"photographer": "Adrian N",
+			"location": "Texas, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1618265397716-9e124a1b75a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1696&q=80"
+			}
+		},
+		{
+			"photographer": "Lance Asper",
+			"location": "Jacksonville, FL, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1614200190600-f581ce3ca87c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80"
+			}
+		},
+		{
+			"photographer": "Yannis Zaugg",
+			"location": "Dolder, Zürich, Schweiz",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1596449560029-25e1bac915d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+		{
+			"photographer": "Raphael Makisan",
+			"location": "Stonecutters Island, Hong Kong",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1580446623001-3abf670c5c55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80"
+			}
+		},
+		{
+			"photographer": "Joey Banks",
+			"location": "Richmond, United States",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1517703806608-15ec22b3e83b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+			}
+		},
+		{
+			"photographer": "Yannis Zaugg",
+			"location": "Obergoms VS, Schweiz",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1597776141064-f265f7a4b4b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Yannis Zaugg",
+			"location": "Ticino, Schweiz",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1596809429234-e577f0c8e1c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Yannis Zaugg",
+			"location": "Obergoms VS, Schweiz",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1596809274575-0b926b5e5162?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Sid Ramirez",
+			"location": "Orlando, United States",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1531682607150-08b2476a545a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1722&q=80"
+			}
+		},
+        {
+			"photographer": "Sid Ramirez",
+			"location": "Orlando, United States",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1531436062681-6e2a24161410?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Mostafa Jamei",
+			"location": "Khuzestan Province, Iran",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1593432598769-0e3bf676de25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Lance Asper",
+			"location": "Jacksonville, FL, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1614200202465-edf2c6127983?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80"
+			}
+		},
+        {
+			"photographer": "Goh Rhy Yan",
+			"location": "Singapore",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+			}
+		},
+        {
+			"photographer": "Yannis Zaugg",
+			"location": "Obergoms VS, Schweiz",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1596809365174-54c14c04b508?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		}
+	]
+}

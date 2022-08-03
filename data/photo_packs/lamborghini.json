@@ -1,0 +1,145 @@
+{
+	"name": "Lamborghini",
+	"description": "A collection of the Italian supercar giant, Lamborghini.",
+	"icon_url": "https://cdn.iconscout.com/icon/free/png-256/lamborghini-282390.png",
+	"screenshot_url": "",
+	"type": "photos",
+	"verified": false,
+	"version": "1.0.0",
+	"author": "Mello",
+	"photos": [
+		{
+			"photographer": "Felipe Simo",
+			"location": "Dubai, United Arab Emirates",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1590&q=80"
+			}
+		},
+		{
+			"photographer": "Thomas Haas",
+			"location": "Hoover Dam, Nevada, United States",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1543854589-fdd815f176e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1408&q=80"
+			}
+		},
+		{
+			"photographer": "Kevin Fitzgerald",
+			"location": "Sun Valley, Idaho, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1600712244180-7ef5e5c82cb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+			}
+		},
+		{
+			"photographer": "Damian Ochrymowicz",
+			"location": "Poznań, Polska",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1610880709844-b97111a986f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2040&q=80"
+			}
+		},
+		{
+			"photographer": "Håkon Sataøen",
+			"location": "Gol, Norway",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1573950940509-d924ee3fd345?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1846&q=80"
+			}
+		},
+		{
+			"photographer": "Mihail Dobrev",
+			"location": "Pomorie, Bulgaria",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1622064933668-ab079f0f2854?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2580&q=80"
+			}
+		},
+		{
+			"photographer": "Shubham Sharan",
+			"location": "Toronto, ON, Canada",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1635831954505-496056c4787f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1452&q=80"
+			}
+		},
+		{
+			"photographer": "Toni Zaat",
+			"location": "Lamborghini Museum, Bologna, Italië",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1570829174962-38c53efc5e5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1726&q=80"
+			}
+		},
+		{
+			"photographer": "Selwyn van Haaren",
+			"location": "Nürburgring Nordschleife, Herschbroich, Germany",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1586430660697-61769a59e739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+		{
+			"photographer": "Wes Tindel",
+			"location": "Austin, TX, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1621687260322-14c785a4e9a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1720&q=80"
+			}
+		},
+		{
+			"photographer": "Wes Tindel",
+			"location": "Austin, TX, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1621688061039-e7f8a7c57f10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Gilly",
+			"location": "Tokyo, Japan",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1529862778304-494a6fa14f8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1574&q=80"
+			}
+		},
+        {
+			"photographer": "David von Diemar",
+			"location": "IAA Frankfurt, Germany",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1570294645676-04daf630cfdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2699&q=80"
+			}
+		},
+        {
+			"photographer": "Wes Tindel",
+			"location": "Austin, TX, USA",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1621687825627-ba3d8011906c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Eugene Tkachenko",
+			"location": "Wrocław, Poland",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1634458723330-519d8a626cd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+			}
+		},
+        {
+			"photographer": "Matt Antonioli",
+			"location": "Chicago, United States",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1522037576655-7a93ce0f4d10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Felix Fuchs",
+			"location": "MOTORWORLD, Cologne, Germany",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1561240776-d9c35e3f7202?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+			}
+		},
+        {
+			"photographer": "Yannis Zaugg",
+			"location": "Switzerland",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1596711865150-8f73a511d548?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		},
+        {
+			"photographer": "Alexandr Bormotin",
+			"location": "Hong Kong",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1512827618699-c1906f7e688b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+			}
+		}
+	]
+}

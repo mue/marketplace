@@ -1,0 +1,411 @@
+{
+    "name": "100 Movie Quotes",
+    "description": "AFI's 100 Years... 100 Movie Quotes is a list of the top 100 quotations in American cinema.",
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "Mello",
+    "icon_url": "https://media.discordapp.net/attachments/252071498397777921/997466696073875466/100_movie_quotes.png",
+    "screenshot_url": "",
+    "quotes": [
+        {
+            "quote": "Frankly, my dear, I don't give a damn.",
+            "author": "Gone with the Wind"
+        },
+        {
+            "quote": "I'm gonna make him an offer he can't refuse.",
+            "author": "The Godfather"
+        },
+        {
+            "quote": "You don't understand! I coulda had class. I coulda been a contender. I could've been somebody, instead of a bum, which is what I am.",
+            "author": "On the Waterfront"
+        },
+        {
+            "quote": "Toto, I've a feeling we're not in Kansas anymore.",
+            "author": "The Wizard of Oz"
+        },
+        {
+            "quote": "Here's looking at you, kid.",
+            "author": "Casablanca"
+        },
+        {
+            "quote": "Go ahead, make my day.",
+            "author": "Sudden Impact"
+        },
+        {
+            "quote": "All right, Mr. DeMille, I'm ready for my close-up.",
+            "author": "Sunset Boulevard\t"
+        },
+        {
+            "quote": "May the Force be with you.",
+            "author": "Star Wars"
+        },
+        {
+            "quote": "Fasten your seatbelts. It's going to be a bumpy night.",
+            "author": "All About Eve"
+        },
+        {
+            "quote": "You talkin' to me?",
+            "author": "Taxi Driver"
+        },
+        {
+            "quote": "What we've got here is failure to communicate.",
+            "author": "Cool Hand Luke"
+        },
+        {
+            "quote": "I love the smell of napalm in the morning.\t",
+            "author": "Apocalypse Now"
+        },
+        {
+            "quote": "Love means never having to say you're sorry.",
+            "author": "Love Story"
+        },
+        {
+            "quote": "The stuff that dreams are made of.\t",
+            "author": "The Maltese Falcon"
+        },
+        {
+            "quote": "E.T. phone home.",
+            "author": "E.T. the Extra-Terrestrial\t"
+        },
+        {
+            "quote": "They call me Mister Tibbs!",
+            "author": "In the Heat of the Night"
+        },
+        {
+            "quote": "Rosebud.",
+            "author": "Citizen Kane"
+        },
+        {
+            "quote": "Made it, Ma! Top of the world!",
+            "author": "White Heat"
+        },
+        {
+            "quote": "I'm as mad as hell, and I'm not going to take this anymore!\t",
+            "author": "Network"
+        },
+        {
+            "quote": "Louis, I think this is the beginning of a beautiful friendship.",
+            "author": "Casablanca"
+        },
+        {
+            "quote": "A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti.\t",
+            "author": "The Silence of the Lambs"
+        },
+        {
+            "quote": "Bond. James Bond.",
+            "author": "Dr. No"
+        },
+        {
+            "quote": "There's no place like home.\t",
+            "author": "The Wizard of Oz"
+        },
+        {
+            "quote": "I am big! It's the pictures that got small.\t",
+            "author": "Sunset Boulevard"
+        },
+        {
+            "quote": "Show me the money!",
+            "author": "Jerry Maguire"
+        },
+        {
+            "quote": "Why don't you come up sometime and see me?",
+            "author": "She Done Him Wrong"
+        },
+        {
+            "quote": "I'm walkin' here! I'm walkin' here!",
+            "author": "Midnight Cowboy"
+        },
+        {
+            "quote": "Play it, Sam. Play 'As Time Goes By.\t",
+            "author": "Casablanca"
+        },
+        {
+            "quote": "You can't handle the truth!\t",
+            "author": "A Few Good Men"
+        },
+        {
+            "quote": "I want to be alone.\t",
+            "author": "Grand Hotel"
+        },
+        {
+            "quote": "After all, tomorrow is another day!\t",
+            "author": "Gone with the Wind"
+        },
+        {
+            "quote": "Round up the usual suspects.",
+            "author": "Casablanca"
+        },
+        {
+            "quote": "I'll have what she's having.",
+            "author": "When Harry Met Sally..."
+        },
+        {
+            "quote": "You know how to whistle, don't you, Steve? You just put your lips together and blow.\t",
+            "author": "To Have and Have Not"
+        },
+        {
+            "quote": "You're gonna need a bigger boat.\t",
+            "author": "Jaws"
+        },
+        {
+            "quote": "Badges? We ain't got no badges! We don't need no badges! I don't have to show you any stinking badges!\t",
+            "author": "The Treasure of the Sierra Madre"
+        },
+        {
+            "quote": "I'll be back",
+            "author": "The Terminator"
+        },
+        {
+            "quote": "Today, I consider myself the luckiest man on the face of the Earth.\t",
+            "author": "The Pride of the Yankees"
+        },
+        {
+            "quote": "If you build it, he will come.\t",
+            "author": "Field of Dreams"
+        },
+        {
+            "quote": "Mama always said life was like a box of chocolates. You never know what you're gonna get.\t",
+            "author": "Forrest Gump"
+        },
+        {
+            "quote": "We rob banks.\t",
+            "author": "Bonnie and Clyde"
+        },
+        {
+            "quote": "Plastics.\t",
+            "author": "The Graduate"
+        },
+        {
+            "quote": "We'll always have Paris.\t",
+            "author": "Casablanca"
+        },
+        {
+            "quote": "I see dead people.\t",
+            "author": "The Sixth Sense"
+        },
+        {
+            "quote": "Stella! Hey, Stella!",
+            "author": "A Streetcar Named Desire"
+        },
+        {
+            "quote": "Oh, Jerry, don't let's ask for the moon. We have the stars.\t",
+            "author": "Now, Voyager"
+        },
+        {
+            "quote": "Shane. Shane. Come back!\t",
+            "author": "Shane"
+        },
+        {
+            "quote": "Well, nobody's perfect.",
+            "author": "Some Like It Hot"
+        },
+        {
+            "quote": "It's alive! It's alive!",
+            "author": "Frankenstein"
+        },
+        {
+            "quote": "Houston, we have a problem.",
+            "author": "Apollo 13"
+        },
+        {
+            "quote": "You've got to ask yourself one question: 'Do I feel lucky?' Well, do ya, punk?",
+            "author": "Dirty Harry"
+        },
+        {
+            "quote": "You had me at 'hello.'",
+            "author": "Jerry Maguire"
+        },
+        {
+            "quote": "One morning I shot an elephant in my pajamas. How he got in my pajamas, I don't know.\t",
+            "author": "Animal Crackers"
+        },
+        {
+            "quote": "There's no crying in baseball!",
+            "author": "A League of Their Own"
+        },
+        {
+            "quote": "La-dee-da, la-dee-da.\t",
+            "author": "Annie Hall"
+        },
+        {
+            "quote": "A boy's best friend is his mother.",
+            "author": "Psycho"
+        },
+        {
+            "quote": "Greed, for lack of a better word, is good.\t",
+            "author": "Wall Street"
+        },
+        {
+            "quote": "Keep your friends close, but your enemies closer.",
+            "author": "The Godfather Part II"
+        },
+        {
+            "quote": "As God is my witness, I'll never be hungry again.",
+            "author": "Gone with the Wind"
+        },
+        {
+            "quote": "Well, here's another nice mess you've gotten me into!",
+            "author": "Sons of the Desert"
+        },
+        {
+            "quote": "Say 'hello' to my little friend!\t",
+            "author": "Scarface"
+        },
+        {
+            "quote": "What a dump.\t",
+            "author": "Beyond the Forest"
+        },
+        {
+            "quote": "Mrs. Robinson, you're trying to seduce me. Aren't you?\t",
+            "author": "The Graduate"
+        },
+        {
+            "quote": "Gentlemen, you can't fight in here! This is the War Room!",
+            "author": "Dr. Strangelove"
+        },
+        {
+            "quote": "Elementary, my dear Watson.",
+            "author": "The Adventures of Sherlock Holmes"
+        },
+        {
+            "quote": "Take your stinking paws off me, you damned dirty ape.",
+            "author": "Planet of the Apes"
+        },
+        {
+            "quote": "\"Of all the gin joints in all the towns in all the world, she walks into mine.\t",
+            "author": "Casablanca"
+        },
+        {
+            "quote": "Here's Johnny!",
+            "author": "The Shining"
+        },
+        {
+            "quote": "They're here!",
+            "author": "Poltergeist"
+        },
+        {
+            "quote": "Is it safe?",
+            "author": "Marathon Man"
+        },
+        {
+            "quote": "Wait a minute, wait a minute. You ain't heard nothin' yet!",
+            "author": "The Jazz Singer"
+        },
+        {
+            "quote": "No wire hangers, ever!",
+            "author": "Mommie Dearest"
+        },
+        {
+            "quote": "Mother of mercy, is this the end of Rico?\t",
+            "author": "Little Caesar\t"
+        },
+        {
+            "quote": "Forget it, Jake, it's Chinatown.\t",
+            "author": "Chinatown\t"
+        },
+        {
+            "quote": "I have always depended on the kindness of strangers.",
+            "author": "A Streetcar Named Desire\t"
+        },
+        {
+            "quote": "Hasta la vista, baby.",
+            "author": "Terminator 2: Judgment Day\t"
+        },
+        {
+            "quote": "Soylent Green is people!",
+            "author": "Soylent Green\t"
+        },
+        {
+            "quote": "Open the pod bay doors, HAL.",
+            "author": "2001: A Space Odyssey\t"
+        },
+        {
+            "quote": "Striker: Surely you can't be serious.\nRumack: I am serious … and don't call me Shirley.",
+            "author": "Airplane!\t"
+        },
+        {
+            "quote": "Yo, Adrian!",
+            "author": "Rocky\t"
+        },
+        {
+            "quote": "Hello, gorgeous.",
+            "author": "Funny Girl\t"
+        },
+        {
+            "quote": "Toga! Toga!",
+            "author": "National Lampoon's Animal House\t"
+        },
+        {
+            "quote": "Listen to them. Children of the night. What music they make.",
+            "author": "Dracula\t"
+        },
+        {
+            "quote": "Oh, no, it wasn't the airplanes. It was Beauty killed the Beast.",
+            "author": "King Kong\t"
+        },
+        {
+            "quote": "My precious.",
+            "author": "The Lord of the Rings: The Two Towers\t"
+        },
+        {
+            "quote": "Attica! Attica!",
+            "author": "Dog Day Afternoon\t"
+        },
+        {
+            "quote": "Sawyer, you're going out a youngster, but you've got to come back a star!\t",
+            "author": "42nd Street\t"
+        },
+        {
+            "quote": "Listen to me, mister. You're my knight in shining armor. Don't you forget it. You're going to get back on that horse, and I'm going to be right behind you, holding on tight, and away we're gonna go, go, go!",
+            "author": "On Golden Pond\t"
+        },
+        {
+            "quote": "Tell 'em to go out there with all they got and win just one for the Gipper.",
+            "author": "Knute Rockne, All American\t"
+        },
+        {
+            "quote": "A martini. Shaken, not stirred.",
+            "author": "Goldfinger"
+        },
+        {
+            "quote": "Who's on first.",
+            "author": "The Naughty Nineties\t"
+        },
+        {
+            "quote": "Cinderella story. Outta nowhere. A former greenskeeper, now, about to become the Masters champion. It looks like a mirac...It's in the hole! It's in the hole! It's in the hole!",
+            "author": "Caddyshack\t"
+        },
+        {
+            "quote": "Life is a banquet, and most poor suckers are starving to death!",
+            "author": "Auntie Mame\t"
+        },
+        {
+            "quote": "I feel the need—the need for speed!",
+            "author": "Top Gun\t"
+        },
+        {
+            "quote": "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
+            "author": "Dead Poets Society\t"
+        },
+        {
+            "quote": "Snap out of it!",
+            "author": "Moonstruck\t"
+        },
+        {
+            "quote": "My mother thanks you. My father thanks you. My sister thanks you. And I thank you.\t",
+            "author": "Yankee Doodle Dandy\t"
+        },
+        {
+            "quote": "Nobody puts Baby in a corner.",
+            "author": "Dirty Dancing\t"
+        },
+        {
+            "quote": "I'll get you, my pretty, and your little dog too!\t",
+            "author": "The Wizard of Oz\t"
+        },
+        {
+            "quote": "I'm the king of the world!",
+            "author": "Titanic\t"
+        }
+    ]
+}
