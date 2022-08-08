@@ -3,5 +3,5 @@
     "news": true,
     "description": "Following 7.0's massive overhaul, marketplace has received a new visual design and a bunch of new features.",
     "news_link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "background_colour": "linear-gradient(to right, #373b44, #4286f4)"
+    "background_colour": "#373b44"
 }
