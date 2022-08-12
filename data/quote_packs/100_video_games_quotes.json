@@ -1,0 +1,412 @@
+{
+    "name": "100 Video Game Quotes",
+    "description": "Inspired by Gamesradar's 100 quotes video game quotes.",
+    "draft": true,
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "Mello",
+    "icon_url": "",
+    "screenshot_url": "",
+    "quotes": [
+        {
+            "quote": "Get over here!" ,
+            "author": "Scorpion, Mortal Kombat"
+        },
+        {
+            "quote": "What is better? To be born good or to overcome your evil nature through great effort?",
+            "author": "Paarthurnax, The Elder Scrolls 5"
+        },
+        {
+            "quote": "The right man in the wrong place can make all the difference in the world.",
+            "author": "G-Man, Half-Life 2"
+        },
+        {
+            "quote": "Stand in the ashes of a trillion dead souls, and asks the ghosts if honor matters. The silence is your answer.",
+            "author": "Javik, Mass Effect 3"
+        },
+        {
+            "quote": "Bring me a bucket, and I'll show you a bucket!" ,
+            "author": "Psycho, Borderlands 2"
+        },
+        {
+            "quote": "Wanting something does not give you the right to have it.",
+            "author": "Ezio Auditore, Assassin's Creed 2"
+        },
+        {
+            "quote": "Even in dark times, we cannot relinquish the things that make us human.",
+            "author": "Khan, Metro 2033"
+        },
+        {
+            "quote": "How many are there in you? Whose hopes and dreams do you encompass? Could you but see the eyes in your own, the minds in your mind, you would see how much we share.",
+            "author": "Vortigaunt, Half-Life 2"
+        },
+        {
+            "quote": "The healthy human mind doesn't wake up in the morning thinking this is its last day on Earth. But I think that's a luxury, not a curse. To know you're close to the end is a kind of freedom. Good time to take...inventory.",
+            "author": "Captain Price, Call of Duty: Modern Warfare 2"
+        },
+        {
+            "quote": "It's a funny thing, ambition. It can take one to sublime heights or harrowing depths. And sometimes they are one and the same.",
+            "author": "Emily Kaldwin, Dishonored"
+        },
+        {
+            "quote": "A hero need not speak. When he is gone, the world will speak for him.",
+            "author": "Halo"
+        },
+        {
+            "quote": "No gods or kings. Only man.",
+            "author": "Andrew Ryan, BioShock"
+        },
+        {
+            "quote": "Some trees flourish, others die. Some cattle grow strong, others are taken by wolves. Some men are born rich enough and dumb enough to enjoy their lives. Ain't nothing fair.",
+            "author": "John Marston, Red Dead Redemption"
+        },
+        {
+            "quote": "You can’t break a man the way you break a dog, or a horse. The harder you beat a man, the taller he stands." ,
+            "author": "The Jackal, Far Cry 2"
+        },
+        {
+            "quote": "It's time to kick ass and chew bubblegum... and I'm all outta gum.",
+            "author": "Duke Nukem, Duke Nukem 3D"
+        },
+        {
+            "quote": "Life is cruel. Of this I have no doubt. One can only hope that one leaves behind a lasting legacy. But so often, the legacies we leave behind... are not the ones we intended.",
+            "author": "Queen Myrrah, Gears of War 2"
+        },
+        {
+            "quote": "...",
+            "author": " Link, The Legend of Zelda"
+        },
+        {
+            "quote": "If our lives are already written, it would take a courageous man to change the script.",
+            "author": "Alan Wake, Alan Wake"
+        },
+        {
+            "quote": "It's easy to forget what a sin is in the middle of a battlefield.",
+            "author": "Solid Snake, Metal Gear Solid"
+        },
+        {
+            "quote": "You know, being Caroline taught me a valuable lesson. I thought you were my greatest enemy, when all along you were my best friend. The surge of emotion that shot through me when I saved your life taught me an even more valuable lesson – where Caroline lives in my brain.",
+            "author": "GLaDOS, Portal 2"
+        },
+        {
+            "quote": "",
+            "author": ""
+        },
+        {
+            "quote": "",
+            "author": ""
+        },
+        {
+            "quote": "The courage to walk into the Darkness, but strength to return to the Light.",
+            "author": "Parables of the Allspring, Destiny"
+        },
+        {
+            "quote": "Who are you, that do not know your history?",
+            "author": "Ulysses, Fallout New Vegas"
+        },
+        {
+            "quote": "Don't wish it were easier, wish you were better.",
+            "author": "Chief, Animal Crossing"
+        },
+        {
+            "quote": "The world fears the inevitable plummet into the abyss. Watch for that moment and when it comes, do not hesitate to leap. It is only when you fall that you learn whether you can fly.",
+            "author": "Flemeth, Dragon Age Origins"
+        },
+        {
+            "quote": "Most test subjects do experience some cognitive deterioration after a few months in suspension. Now you've been under for... quite a lot longer, and it's not out of the question that you might have a very minor case of serious brain damage. But don't be alarmed, alright? Although, if you do feel alarm, try to hold onto that feeling because that is the proper reaction to being told you have brain damage.",
+            "author": "Wheatley, Portal 2."
+        },
+        {
+            "quote": "Trust me.",
+            "author": "BT-7274, Titanfall 2"
+        },
+        {
+            "quote": "If history only remembers one in a thousands of us, then the future will be filled with stories of who we were and what we did.",
+            "author": "Battlefield 1"
+        },
+        {
+            "quote": "We're made up of thousands of parts with thousands of functions all working in tandem to keep us alive. Yet if only one part of our imperfect machine fails, life fails. It makes one realize how fragile, how flawed we are.",
+            "author": "Ingun Black-Briar, The Elder Scrolls 5: Skyrim"
+        },
+        {
+            "quote": "Nothing is true, everything is permitted.",
+            "author": "Ezio Auditore, Assassin’s Creed 2"
+        },
+        {
+            "quote": "Nothing is more badass than treating a woman with respect!",
+            "author": "Mr. Torgue, Borderlands 2"
+        },
+        {
+            "quote": "Good men mean well. We just don't always end up doing well.",
+            "author": "Isaac Clarke, Dead Space 3"
+        },
+        {
+            "quote": "It’s dangerous to go alone, take this!",
+            "author": "Old Man, The Legend of Zelda"
+        },
+        {
+            "quote": "War. War never changes.",
+            "author": "Narrator, Fallout 3"
+        },
+        {
+            "quote": "AAAAAAAAAAAAHHHRHGHHHGH thump",
+            "author": "Tarhiel, Elder Scrolls 3: Morrowind"
+        },
+        {
+            "quote": "The best solution to a problem is usually the easiest one. And I'll be honest - killing you is hard. You know what my days used to be like? I just tested. Nobody murdered me, or put me in a potato, or fed me to birds. I had a pretty good life. And then you showed up. You dangerous, mute lunatic. So you know what? You win. Just go. [chuckles] It's been fun. Don't come back.",
+            "author": "GLaDOS, Portal 2"
+        },
+        {
+            "quote": "Boss... you were right. It's not about changing the world. It's about doing our best to leave the world... the way it is. It's about respecting the will of others, and believing in your own.",
+            "author": "Big Boss, Metal Gear Solid 4"
+        },
+        {
+            "quote": "Often when we guess at others' motives, we reveal only our own.",
+            "author": "Mara Sov, Destiny"
+        },
+        {
+            "quote": "Endure and survive.",
+            "author": "Ellie, The Last of Us"
+        },
+        {
+            "quote": "Death is inevitable. Our fear of it makes us play safe, blocks out emotion. It's a losing game. Without passion, you are already dead.",
+            "author": "Max Payne, Max Payne 2: The Fall of Max Payne"
+        },
+        {
+            "quote": "...",
+            "author": "Gordon Freeman, Half-Life"
+        },
+        {
+            "quote": "You gave them the one thing that was stolen from them. A chance. A chance to learn. To find love. To live. And in the end what was your reward? You never said. But I think I know: a family.",
+            "author": "Brigid Tenenbaum, BioShock"
+        },
+        {
+            "quote": "Protocol one: link to Pilot. Protocol two: uphold the mission. Protocol three: protect the Pilot.",
+            "author": "BT-7274, Titanfall 2"
+        },
+        {
+            "quote": "You are here, and it’s beautiful, and escaping isn’t always something bad.",
+            "author": "Delilah, Firewatch"
+        },
+        {
+            "quote": "You can’t undo what you’ve already done, but you can face up to it.",
+            "author": "Frank Coleridge, Silent Hill: Downpour"
+        },
+        {
+            "quote": "I miss the internet",
+            "author": "Graffiti, Left 4 Dead"
+        },
+        {
+            "quote": "Life is all about resolve. Outcome is secondary.",
+            "author": "Waka, Okami"
+        },
+        {
+            "quote": "Stay awhile, and listen!",
+            "author": "Deckard Cain, Diablo 2"
+        },
+        {
+            "quote": "Thank you Mario! But our Princess is in another castle!",
+            "author": "Toad, Super Mario Bros."
+        },
+        {
+            "quote": "It's a-me, Mario!",
+            "author": "Mario Auditore, Assassin’s Creed 2"
+        },
+        {
+            "quote": "CENSOR",
+            "author": "Trishka Novak, Bulletstorm"
+        },
+        {
+            "quote": "What is a man? A miserable little pile of secrets.",
+            "author": "Dracula, Castlevania: Symphony of the Night"
+        },
+        {
+            "quote": "My brothers and sisters... I will see you again. Someday. You've given them back to me.",
+            "author": "Lord Saladin Forge, Destiny"
+        },
+        {
+            "quote": "…*cocks shotgun*",
+            "author": "Doomguy, DOOM"
+        },
+        {
+            "quote": "Finish him!",
+            "author": "Mortal Kombat announcer, Mortal Kombat"
+        },
+        {
+            "quote": "A man chooses; a slave obeys.",
+            "author": "Andrew Ryan, BioShock"
+        },
+        {
+            "quote": "We both said a lot of things that you're going to regret. But I think we can put our differences behind us. For science. You monster.",
+            "author": "GLaDOS, Portal 2"
+        },
+        {
+            "quote": "Snake? Snake? SNAAAAAAAAKE!!!",
+            "author": "The Colonel, Metal Gear Solid 2"
+        },
+        {
+            "quote": "Wake me when you need me.",
+            "author": "John-117, Halo 3"
+        },
+        {
+            "quote": "Grass grows, birds fly, sun shines, and brother, I hurt people.",
+            "author": "The Scout, Team Fortress 2"
+        },
+        {
+            "quote": "Requiescat in pace.",
+            "author": "Ezio Auditore, Assassin’s Creed 2"
+        },
+        {
+            "quote": "Every puzzle has an answer.",
+            "author": "Professor Layton, Professor Layton and the Curious Villagee"
+        },
+        {
+            "quote": "Hey! Listen!",
+            "author": "Na'vi, The Legend of Zelda: Ocarina of Time"
+        },
+        {
+            "quote": "I used to be an adventurer like you, until I took an arrow to the knee.",
+            "author": "Town Guard, Elder Scrolls 5: Skyrim."
+        },
+        {
+            "quote": "It's super effective!",
+            "author": "Pokemon series"
+        },
+        {
+            "quote": "Space. Space. I'm in space. SPAAAAAAACE!",
+            "author": "Space Core, Portal 2"
+        },
+        {
+            "quote": "The ending isn’t any more important than any of the moments leading to it.",
+            "author": "Dr Rosalene, To The Moon"
+        },
+        {
+            "quote": "Do a barrel roll!",
+            "author": "Star Fox 64"
+        },
+        {
+            "quote": "I'm rackin' my brain trying to think of a name for that diamond pony I bought. I was gonna call it 'piss-for-brains' in honor of you, but that just feels immature. Maybe... 'Butt Stallion'?",
+            "author": "Handsome Jack, Borderlands 2"
+        },
+        {
+            "quote": "No matter how dark the night, morning always comes, and our journey begins anew.",
+            "author": "Lulu, Final Fantasy 10"
+        },
+        {
+            "quote": "Hope is what makes us strong. It is why we are here. It is what we fight with when all else is lost.",
+            "author": "Pandora, God of War 3"
+        },
+        {
+            "quote": "A sword wields no strength unless the hands that holds it has courage.",
+            "author": "The Hero's Shade, Legend of Zelda: Twilight Princess"
+        },
+        {
+            "quote": "Steel wins battles. Gold wins wars.",
+            "author": "Davion the Dragon Knight, DOTA 2"
+        },
+        {
+            "quote": "War. War never changes. But men do, through the roads they walk.",
+            "author": "The narrator, Fallout: New Vegas"
+        },
+        {
+            "quote": "Science isn't about why! It’s about why not!",
+            "author": "Cave Johnson, Portal 2"
+        },
+        {
+            "quote": "Stop right there, criminal scum!",
+            "author": "Town Guard, Elder Scrolls 4: Oblivion"
+        },
+        {
+            "quote": "Open the pod bay doors, HAL.",
+            "author": "2001: A Space Odyssey\t"
+        },
+        {
+            "quote": "There was a HOLE here. It's gone now.",
+            "author": "In-game text, Silent Hill 2"
+        },
+        {
+            "quote": "I don’t want to set the world on fire…",
+            "author": "Song, Fallout 3"
+        },
+        {
+            "quote": "Hard to see big picture behind pile of corpses.",
+            "author": "Mordin Solus, Mass Effect 3"
+        },
+        {
+            "quote": "Tell me Bats. What are you really scared of? Failing to save this cesspool of a city? Not finding the Commissioner in time? Me, in a thong?",
+            "author": "The Joker, Batman: Arkham Asylum"
+        },
+        {
+            "quote": "Does this unit have a soul?",
+            "author": "Legion, Mass Effect 3"
+        },
+        {
+            "quote": "You are not a good person. You know that, right? Good people don't end up here.",
+            "author": "GLaDOS, Portal 2"
+        },
+        {
+            "quote": "Federico: It is a good life we lead, brother. Ezio: The best. May it never change. Federico: And may it never change us.",
+            "author": "Federico and Ezio Auditore, Assassin's Creed 2"
+        },
+        {
+            "quote": "I raised you, and loved you, I've given you weapons, taught you techniques, endowed you with knowledge. There's nothing more for me to give you. All that's left for you to take is my life.",
+            "author": "The Boss, Metal Gear Solid 3"
+        },
+        {
+            "quote": "It's more important to master the cards you're holding than to complain about the ones your opponents were dealt.",
+            "author": "Grimsley, Pokemon Black and White"
+        },
+        {
+            "quote": "The price of freedom is eternal vigilance.",
+            "author": "Admiral Tolwyn, Wing Commander 4"
+        },
+        {
+            "quote": "Are you a boy or a girl?",
+            "author": "Pokemon"
+        },
+        {
+            "quote": "CENSORED",
+            "author": "Mr Torgue, Borderlands 2"
+        },
+        {
+            "quote": "War is where the young and stupid are tricked by the old and bitter into killing each other.",
+            "author": "Niko Bellic, GTA 4"
+        },
+        {
+            "quote": "What is a man but the sum of his memories? We are the stories we live! The tales we tell ourselves!",
+            "author": "Clay Kaczmarek, Assassin's Creed Brotherhood"
+        },
+        {
+            "quote": "When life gives you lemons, don't make lemonade. Make life take the lemons back! Get mad! I don't want your damn lemons! What am I supposed to do with these?! Demand to see life's manager! Make life rue the day it thought it could give Cave Johnson lemons! Do you know who I am?! I'm the man who's gonna burn your house down! With the lemons! I'm gonna get my engineers to invent a combustible lemon that burns your house down!",
+            "author": "Cave Johnson, Portal 2"
+        },
+        {
+            "quote": "Praise the sun!",
+            "author": "Solaire of Astora, Dark Souls"
+        },
+        {
+            "quote": "Send me out...with a bang.",
+            "author": "Sgt. Avery Johnson, Halo 3"
+        },
+        {
+            "quote": "You have died of dysentery." ,
+            "author": "The Oregon Trail"
+        },
+        {
+            "quote": "Batman: You want to know something funny? Even after everything you've done, I would have saved you. The Joker: [laughs, coughs] Actually, that is pretty funny.",
+            "author": "Batman: Arkham Asylum, Batman and Joker"
+        },
+        {
+            "quote": "YOU DIED",
+            "author": "Dark Souls"
+        },
+        {
+            "quote": "Ghost: This path should lead us straight to the grave. [pause] Ghost: The World's Grave. Not ours.",
+            "author": "Ghost, Destiny"
+        },
+        {
+            "quote": "I've struggled a long time with survivin', but no matter what you have to find something to fight for.",
+            "author": "Joel, The Last of Us"
+        }
+    ]
+}
