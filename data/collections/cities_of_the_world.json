@@ -1,0 +1,6 @@
+{
+    "name": "Cities of the world",
+    "img": "https://media.cntraveller.com/photos/615ee85b4c2ae7f03412f97e/16:9/w_2580,c_limit/Best%20Cities%20in%20the%20World%20-%20Grid.jpg",
+    "description": "A Collection of photo packs of cities across the world.",
+    "items": ["photo_packs/london", "photo_packs/tokyo", "photo_packs/new_york_city"]
+}

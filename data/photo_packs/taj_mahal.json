@@ -1,0 +1,80 @@
+{
+    "name": "Taj Mahal",
+    "description": "A selection of photos of the Taj Mahal.\n Source: https://www.unsplash.com",
+    "icon_url": "https://images.unsplash.com/photo-1544183667-998ca20dd24a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "Mello",
+    "photos": [
+        {
+            "photographer": "Jovyn Chamb",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+            }
+        },
+        {
+            "photographer": "Rowan Heuvel",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1587135941948-670b381f08ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Sylwia Bartyzel",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80"
+            }
+        },
+        {
+            "photographer": "Julian Yu",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+            }
+        },
+        {
+            "photographer": "Peter Burdon",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1618916125495-478c5d168e29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2811&q=80"
+            }
+        },
+        {
+            "photographer": "Bharath Reddy",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1567255097545-018d2b9c414c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Koushik Chowdavarapu",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1506462945848-ac8ea6f609cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80"
+            }
+        },
+        {
+            "photographer": "Navdeep Panwar",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1599476160130-3af44b69ec6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1260&q=80"
+            }
+        },
+        {
+            "photographer": "Shan Elahi",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1406&q=80"
+            }
+        },
+        {
+            "photographer": "Praveen Thirumurugan",
+            "location": "Taj Mahal, Agra, India",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1624902525150-cbb93356b93f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1849&q=80"
+            }
+        }
+    ]
+}
