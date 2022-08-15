@@ -1,0 +1,80 @@
+{
+    "name": "Istanbul",
+    "description": "A selection of photos of Istanbul.\n Source: https://www.unsplash.com",
+    "icon_url": "https://images.unsplash.com/photo-1612293509840-afb0f18d417b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1100&q=80",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "Mello",
+    "photos": [
+        {
+            "photographer": "Anna Berdnik",
+            "location": "Istanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+            }
+        },
+        {
+            "photographer": "Osman Köycü",
+            "location": "15 Temmuz Şehitler Köprüsü, Istanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1518084823714-2f59a7315a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Engin Yapici",
+            "location": "Istanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1589561454226-796a8aa89b05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1467&q=80"
+            }
+        },
+        {
+            "photographer": "Adli Wahid",
+            "location": "The Blue Mosque, Istanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1434&q=80"
+            }
+        },
+        {
+            "photographer": "Ibrahim Uzun",
+            "location": "Kız Kulesi, Salacak, Üsküdar/İstanbul, Türkiye",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1636537511494-c3e558e0702b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Ibrahim Uzun",
+            "location": "İstanbul, Türkiye",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1623439844752-524658b16ce6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+            }
+        },
+        {
+            "photographer": "Celal Erdogdu",
+            "location": "Yavuz Sultan Selim Bridge, Istanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1544804529-2909bc52578f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Osman Köycü",
+            "location": "Bereketzade, Galata Kulesi, Beyoğlu/İstanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1582631608254-f75fdf938e19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Lewis J Goetz",
+            "location": "Hagia Sophia, İstanbul,",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1623621534850-d325a1980c7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            }
+        },
+        {
+            "photographer": "Osman Köycü",
+            "location": "İstanbul",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1582631313764-62141d98b4bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        }
+    ]
+}

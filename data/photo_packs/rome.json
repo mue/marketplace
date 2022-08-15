@@ -1,0 +1,80 @@
+{
+    "name": "Rome",
+    "description": "A selection of photos of Rome.\n Source: https://www.unsplash.com",
+    "icon_url": "https://images.unsplash.com/photo-1583422095309-55daabc9cc78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "Mello",
+    "photos": [
+        {
+            "photographer": "David Köhler",
+            "location": "Rome",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80"
+            }
+        },
+        {
+            "photographer": "Christopher Czermak",
+            "location": "Vatican City, Rome",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1529260830199-42c24126f198?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80"
+            }
+        },
+        {
+            "photographer": "Cristina Gottardi",
+            "location": "Trevi Fountain, Roma",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1525874684015-58379d421a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Mathew Schwartz",
+            "location": "Colosseum, Roma, Italy",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Raymond Octavian",
+            "location": "Rome",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1590057713285-81265fcb3388?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80"
+            }
+        },
+        {
+            "photographer": "Massimo Virgilio",
+            "location": "Fori Imperiali, Roma",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1612021148925-466704654aeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+            }
+        },
+        {
+            "photographer": "Mauricio Artieda",
+            "location": "Castel Sant'Angelo, Roma, Italy",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1512064444180-54b51a475aa7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1754&q=80"
+            }
+        },
+        {
+            "photographer": "Tomasz Rynkiewicz",
+            "location": "Rome, Italy",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1462887333300-5fe5403fd2f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Michele Bitetto",
+            "location": "Altare della Patria, Piazza Venezia, Roma",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1596627116762-bb01a46c233b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1726&q=80"
+            }
+        },
+        {
+            "photographer": "Gabriella Clare Marino",
+            "location": "Piazza della Rotonda, Rome",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1614354987493-a010f414d0d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        }
+    ]
+}

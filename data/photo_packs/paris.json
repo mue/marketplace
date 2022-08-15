@@ -1,0 +1,80 @@
+{
+    "name": "Paris",
+    "description": "A selection of photos of Paris.\n Source: https://www.unsplash.com",
+    "icon_url": "https://images.unsplash.com/photo-1558260675-24a11c9cd919?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "Mello",
+    "photos": [
+        {
+            "photographer": "Chris Karidis",
+            "location": "Eiffel Tower, Paris",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80"
+            }
+        },
+        {
+            "photographer": "Alexander Kagan",
+            "location": "Paris, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Léonard Cotte",
+            "location": "Paris, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1640&q=80"
+            }
+        },
+        {
+            "photographer": "Stephen Leonardi",
+            "location": "Eiffel Tower, Paris",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1508050919630-b135583b29ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+            }
+        },
+        {
+            "photographer": "John Towner",
+            "location": "Montmartre, Paris, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1471623432079-b009d30b6729?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Rodrigo Kugnharski",
+            "location": "Arc de Triomphe, Paris, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2046&q=80"
+            }
+        },
+        {
+            "photographer": "Anthony Delanoix",
+            "location": "Seine, Paris, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1477089922324-c1deaf4a2242?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Marloes Hilckmann",
+            "location": "Montmartre, Paris",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1585944285854-d06c019aaca3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+            }
+        },
+        {
+            "photographer": "Joe deSousa",
+            "location": "Saint-Germain-l'Auxerrois, Paris, Île-de-France, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1504896287989-ff1fbde00199?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2066&q=80"
+            }
+        },
+        {
+            "photographer": "Pedro Lastra",
+            "location": "Cathédrale Notre-Dame de Paris, Paris, France",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        }
+    ]
+}

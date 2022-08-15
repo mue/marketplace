@@ -1,0 +1,80 @@
+{
+    "name": "San Francisco",
+    "description": "A selection of photos of San Francisco.\n Source: https://www.unsplash.com",
+    "icon_url": "https://images.unsplash.com/photo-1506145953600-ed38ef5a186d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "Mello",
+    "photos": [
+        {
+            "photographer": "Maarten van den Heuvel",
+            "location": "Golden Gate Bridge, San Francisco, United States",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+            }
+        },
+        {
+            "photographer": "Jared Erondu",
+            "location": "San Francisco, United States",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1423347673683-ccdb7f6a948f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            }
+        },
+        {
+            "photographer": "Natalie Chaney",
+            "location": "Marshall's Beach, San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1541464522988-31b420f688b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            }
+        },
+        {
+            "photographer": "Aaron Kato",
+            "location": "San Francisco, United States",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1522735555435-a8fe18da2089?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Braden Collum",
+            "location": "Lombard Street, San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1547190994-0dfe4ab1bdae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Varun Yadav",
+            "location": "Golden Gate Bridge, San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1610312278520-bcc893a3ff1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1447&q=80"
+            }
+        },
+        {
+            "photographer": "Joshua Sortino",
+            "location": "Painted Ladies, San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1554107136-57b138ea99df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Romain Briaux",
+            "location": "San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1475947175089-3a98ee67944b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            }
+        },
+        {
+            "photographer": "Jesse Collins",
+            "location": "San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1531187986792-24e33d699c08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            }
+        },
+        {
+            "photographer": "Kellen Riggin",
+            "location": "San Francisco",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1625508200971-f63b282addb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+            }
+        }
+    ]
+}

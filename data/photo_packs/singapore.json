@@ -1,0 +1,80 @@
+{
+    "name": "Singapore",
+    "description": "A selection of photos of Singapore.\n Source: https://www.unsplash.com",
+    "icon_url": "https://images.unsplash.com/photo-1600468636011-c75ae69b7fcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "Mello",
+    "photos": [
+        {
+            "photographer": "Mike Enerio",
+            "location": "Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1496939376851-89342e90adcd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Swapnil Bapat",
+            "location": "Marina Bay Sands, Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/flagged/photo-1562503542-2a1e6f03b16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+            }
+        },
+        {
+            "photographer": "Zhu Hongzhi",
+            "location": "Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1542114740389-9b46fb1e5be7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80"
+            }
+        },
+        {
+            "photographer": "Jisun Han",
+            "location": "Orchard Spring Lane, Merlion, Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1600664356348-10686526af4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1750&q=80"
+            }
+        },
+        {
+            "photographer": "Sergio Sala",
+            "location": "Gardens by the Bay, Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1552415274-73ad7198cb93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2068&q=80"
+            }
+        },
+        {
+            "photographer": "Mike Enerio",
+            "location": "Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1446726393226-86e252d674c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            }
+        },
+        {
+            "photographer": "Joe Green",
+            "location": "Jewel Changi Airport, Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1555912881-1ecd82307e0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+            }
+        },
+        {
+            "photographer": "Bna Ignacio",
+            "location": "Haji Lane, Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1555947970-15e7a8a0bb73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80"
+            }
+        },
+        {
+            "photographer": "Jay Ang",
+            "location": "Singapore Iconic Merlion, Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1552790920-0ba96dc99d01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80"
+            }
+        },
+        {
+            "photographer": "Polina Rytova",
+            "location": "Singapore",
+            "url": {
+                "default": "https://images.unsplash.com/photo-1586511706715-3fed3b632d02?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+            }
+        }
+    ]
+}
