@@ -75,7 +75,7 @@ i {
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .itemSide {
