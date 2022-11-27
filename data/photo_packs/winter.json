@@ -220,6 +220,22 @@
 			"url": {
 				"default": "https://i.imgur.com/mgffSy3.jpg"
 			}
+		},
+		{
+			"photographer": "Simon Berger (Unsplash)",
+			"location": "N/A",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1516179993453-2fa0b77c8d69?fit=crop&w=1920",
+				"webp": "https://images.unsplash.com/photo-1516179993453-2fa0b77c8d69?auto=format&fit=crop&w=1920"
+			}
+		},
+		{
+			"photographer": "Sergey Pesterev (Unsplash)",
+			"location": "N/A",
+			"url": {
+				"default": "https://images.unsplash.com/photo-1552575358-c91311522b16?fit=crop&w=1920",
+				"webp": "https://images.unsplash.com/photo-1552575358-c91311522b16?auto=format&fit=crop&w=1920"
+			}
 		}
 	],
 	"videos": [
