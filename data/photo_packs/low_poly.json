@@ -10,111 +10,111 @@
     "photos": [
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/bLDs9mj/Yellow.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/WvTgKX2/Yellow-Cyan-Yellow.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/wC56Qjk/Red-Purple-Red.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/bRydXfB/Red-Orange-Yellow.png"
             }
         },{
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/QM4HcHt/Red-Black.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/4f73P1n/Purple-Cyan-Purple.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://ibb.co/QDGXxJG"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/5KV2J1V/Purple-Blue-Red-Orange.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/NrqZZmv/Olive-Orange-Olive.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/NrqZZmv/Olive-Orange-Olive.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/X574GrY/Dark-Blue.png"
             }
         },
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/dDHhvMx/Green-Blue-Red-Cyan.png"
             }
 	},
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/ZVsTFQZ/Cyan-Blue-Black.png"
             }
 	},
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/stgLxjc/Brown-Green-Brown.png"
             }
 	},
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/jbD8NGM/Blue-Cyan-Green-Yelllow.png"
             }
 	},
         {
             "photographer": "Jack Shanks",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://i.ibb.co/84xg9bG/Blue-Cyan-Green.png"
             }

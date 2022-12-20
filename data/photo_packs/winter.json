@@ -10,84 +10,84 @@
 	"photos": [
 		{
 			"photographer": "eartharoid",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://i.imgur.com/W4g5Wuz.jpg"
 			}
 		},
 		{
 			"photographer": "Public Domain Pictures (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/87769/animal-brown-cold-creature-87769.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Man Dy (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/1082179/pexels-photo-1082179.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/258112/pexels-photo-258112.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/221415/pexels-photo-221415.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/86405/penguin-funny-blue-water-86405.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/41004/alaska-wilderness-sky-aurora-borealis-41004.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/434090/pexels-photo-434090.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Pixabay (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/45212/jay-bird-konar-winter-45212.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Katie Salerno (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/33273/pexels-photo.jpg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Anthony (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/139639/pexels-photo-139639.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
@@ -101,70 +101,70 @@
 		},
 		{
 			"photographer": "Ruvim Miksanskiy (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/1438761/pexels-photo-1438761.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Jayden Burdick (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/3397935/pexels-photo-3397935.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Dave Haas (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/953626/pexels-photo-953626.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Krivec Ales (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/552791/pexels-photo-552791.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Tomáš Malík (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/3509968/pexels-photo-3509968.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Dan Hamill (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/436792/pexels-photo-436792.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Arvind shakya (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/668282/pexels-photo-668282.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Aleksandr Slobodianyk (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/989946/pexels-photo-989946.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "ilaria88 (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/122588/pexels-photo-122588.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
 		},
 		{
 			"photographer": "Mareefe (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.pexels.com/photos/753728/pexels-photo-753728.jpeg?auto=compress&fit=crop&fm=jpg&h=1280&w=1920"
 			}
@@ -185,7 +185,7 @@
 		},
 		{
 			"photographer": "Pierre Bamin (Unsplash)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.unsplash.com/photo-1585778037214-17832ef06aff?fit=crop&w=1920",
 				"webp": "https://images.unsplash.com/photo-1585778037214-17832ef06aff?auto=format&fit=crop&w=1920"
@@ -216,14 +216,14 @@
 		},
 		{
 			"photographer": "Elijah O'Donnell (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://i.imgur.com/mgffSy3.jpg"
 			}
 		},
 		{
 			"photographer": "Simon Berger (Unsplash)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.unsplash.com/photo-1516179993453-2fa0b77c8d69?fit=crop&w=1920",
 				"webp": "https://images.unsplash.com/photo-1516179993453-2fa0b77c8d69?auto=format&fit=crop&w=1920"
@@ -231,7 +231,7 @@
 		},
 		{
 			"photographer": "Sergey Pesterev (Unsplash)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://images.unsplash.com/photo-1552575358-c91311522b16?fit=crop&w=1920",
 				"webp": "https://images.unsplash.com/photo-1552575358-c91311522b16?auto=format&fit=crop&w=1920"
@@ -241,21 +241,21 @@
 	"videos": [
 		{
 			"photographer": "John-Mark Smith (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://i.imgur.com/DYmajUI.mp4"
 			}
 		},
 		{
 			"photographer": "Ruvim Miksanskiy (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://i.imgur.com/PM6yhrz.mp4"
 			}
 		},
 		{
 			"photographer": "Stefano Rinaldo (Pexels)",
-			"location": "N/A",
+			"location": null,
 			"url": {
 				"default": "https://i.imgur.com/MMUDazA.mp4"
 			}

@@ -10,21 +10,21 @@
     "photos": [
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://cdn.shopify.com/s/files/1/0014/2648/9388/files/Zoom_InfoHime_532a2eb6-1320-49a0-8520-730388c9143f.png"
             }
         },
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://img1.ak.crunchyroll.com/i/spire3/b22476b0a1c4b17aeff8e80ad123878e1588710651_main.png"
             }
         },
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://cdn.shopify.com/s/files/1/0014/2648/9388/files/Zoom_Chibi_Hime_bubbles_4028f4eb-1fac-45b6-bdb2-44653565af08.png"
             }
@@ -44,7 +44,7 @@
         },
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://cdn.shopify.com/s/files/1/0014/2648/9388/files/Graffiti_HimeTravelsForUs_b5fba901-9911-4b74-ad41-b9172b4d2e42.png"
             }
@@ -65,7 +65,7 @@
         },
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://cdn.shopify.com/s/files/1/0014/2648/9388/files/WFH_HimeTravelsForUs_665f755e-8864-400d-aa4b-bb64457c058e.png"
             }
@@ -79,14 +79,14 @@
         },
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://cdn.shopify.com/s/files/1/0014/2648/9388/files/Zoom_Hime_Backpack_Bike_830b86db-40b3-4b7d-809a-4fa72a209253.png"
             }
         },
         {
             "photographer": "Crunchyroll",
-            "location": "N/A",
+            "location": null,
             "url": {
                 "default": "https://cdn.shopify.com/s/files/1/0014/2648/9388/files/Sunflower_HimeTravelsForUs_6718aadd-52f3-488e-85e9-da526a5643c3.png"
             }
