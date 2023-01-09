@@ -1,6 +1,6 @@
 {
     "name": "Seasons",
-    "img": "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3JlZGVmaW5lZm91cnNlYXNvbnMtMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgyOH0sInRvRm9ybWF0IjoiYXZpZiJ9fQ==",
+    "img": "https://i.imgur.com/bAMbRag.jpg",
     "description": "A Collection of photo packs for each season.",
     "items": ["photo_packs/summer", "photo_packs/winter"]
 }
