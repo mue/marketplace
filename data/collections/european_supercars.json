@@ -1,6 +1,6 @@
 {
     "name": "European Supercars",
     "img": "https://www.motorsportjobs.com/sites/default/files/styles/company_profile_cover_crop/public/xx_mj_banner_s.jpg?itok=8sAJ6jMs",
-    "description": "A Collection of hand picked european supercar photos.",
+    "description": "A Collection of hand picked European supercar photos.",
     "items": ["photo_packs/lamborghini", "photo_packs/porsche", "photo_packs/ferrari"]
 }

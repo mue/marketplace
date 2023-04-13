@@ -11,10 +11,10 @@
   "main": "api/",
   "version": "1.0.0",
   "dependencies": {
-    "eta": "1.12.3",
+    "eta": "2.0.0",
     "lambda-rate-limiter": "3.0.1",
     "node-fetch": "2.6.7",
-    "ua-parser-js": "1.0.2"
+    "ua-parser-js": "1.0.35"
   },
   "scripts": {
 	  "build": "node scripts/updatejson"
