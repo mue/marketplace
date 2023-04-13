@@ -1,0 +1,18 @@
+{
+    "name": "N-SFW.COM Konosuba",
+    "description": "Das N-SFW.COM Plugin ist eine innovative Erweiterung für dein Mue, welche automatisch Hintergrundbilder von dem Anime: Kono Subarashii Sekai ni Shukufuku o! der von der Plattform N-SFW.COM stammt. Mit einer beeindruckenden Sammlung an hochwertigen Bildern verwandelt dieses Plugin dein Mue in ein visuelles Erlebnis und sorgt für ständig wechselnde, ansprechende Hintergründe.",
+    "type": "photos",
+    "version": "1.0",
+    "author": "MaximilianGT500",
+    "icon_url": "https://mue.n-sfw.com/icons/konosuba.png",
+    "screenshot_url": "https://mue.n-sfw.com/screenshots/konosuba.jpg",
+    "photos": [
+        {
+            "photographer": "N-SFW.COM",
+            "location": "???",
+            "url": {
+                "default": "https://api-random.n-sfw.com/sfw/konosuba"
+            }
+        }
+    ]
+}
