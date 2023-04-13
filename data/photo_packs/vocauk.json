@@ -1,0 +1,87 @@
+{
+    "name": "VOCA-UK",
+    "description": "Officially curated photos from fan VOCALOID concert VOCA-UK. \nExclusively licensed to Mue for use only in the new tab or as a screensaver. Reproduction or redistribution of these photos is strictly prohibited. \n\nThis photo pack depicts the characters Hatsune Miku, Kagamine Rin, Megurine Luka, MEIKO and KAITO of Crypton Future Media, INC. based on the piapro Character License. https://piapro.jp/license/pcl/summary",
+    "icon_url": "https://cdn.discordapp.com/icons/893126670310076456/87249a5cc36addd4124094b2470db946.webp",
+    "type": "photos",
+    "version": "1.0.0",
+    "author": "VOCA-UK TEAM",
+    "photos": [
+        {
+            "photographer": "VOCA-UK, Models by: YYB, Maydayfireball",
+            "location": "VOCA-UK 2022 ONLINE",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/highlights/2022highlight5.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB",
+            "location": "VOCA-UK 2022 ONLINE",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/highlights/2022highlight1.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB, ROKI-P",
+            "location": "VOCA-UK 2022 ONLINE",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/highlights/2022highlight4.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB",
+            "location": "VOCA-UK 2023 RAKU READY",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/rakuready.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB",
+            "location": "VOCA-UK 2023 RAKU READY",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/rakuready.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB, Maydayfireball, Roki-P",
+            "location": "VOCA-UK",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/vocaukbanner.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB, Roki-P",
+            "location": "VOCA-UK 2022 ONLINE",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/megurineluka2.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB, ??",
+            "location": "VOCA-UK 2022 SEASONS PROJECT #3",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/mikusnow.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: YYB, ??",
+            "location": "VOCA-UK 2022 SEASONS PROJECT #2",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/mikuhalloween.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: kuuwanko&Rennya",
+            "location": "VOCA-UK SEASONS PROJECT #1",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/otomachiuna.jpg"
+            }
+        },
+        {
+            "photographer": "VOCA-UK, Models by: kuuwanko&Rennya",
+            "location": "VOCA-UK SEASONS PROJECT #1",
+            "url": {
+                "default": "https://ik.imagekit.io/david/vocauk/mue/otomachiuna2.jpg"
+            }
+        }
+    ]
+}
