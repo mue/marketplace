@@ -2,5 +2,5 @@
     "name": "Seven wonders of the world",
     "img": "https://www.thetravelmagazine.net/wp-content/uploads/World-Wonders-Tour-Image.jpg",
     "description": "A collection of facts and photos of the seven wonders of the world.",
-    "items": [""]
+    "items": ["photo_packs/taj_mahal"]
 }
