@@ -2,5 +2,5 @@
     "name": "miHoYo",
     "img": "https://ik.imagekit.io/david/mue/genshin/genshin.jpg",
     "description": "A collection of photo packs featuring games from the Hoyoverse.",
-    "items": ["photo_packs/genshin", "photo_packs/tearsofthemis"]
+    "items": ["photo_packs/genshin", "photo_packs/tears_of_themis"]
 }
