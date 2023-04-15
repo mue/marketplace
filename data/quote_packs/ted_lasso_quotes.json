@@ -1,0 +1,64 @@
+{
+    "name": "Ted Lasso Quotes",
+    "description": "Hilarious, yet motivating quotes from the hit Apple TV show Ted Lasso.",
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "Mello",
+    "icon_url": "https://b.thumbs.redditmedia.com/m8pZNMw0CHxUlyQ2sHu7SM0TQecnlNQT2J0InKYKzkk.png",
+    "screenshot_url": "https://media.discordapp.net/attachments/252071498397777921/1096397731892838430/image.png",
+    "language": "en",
+    "quotes": [
+        {
+            "quote": "Taking on a challenge is a lot like riding a horse, isn't it? If you're comfortable while you're doing it, you're probably doing it wrong.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "I do love a locker room. It smells like potential.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "You know what the happiest animal on Earth is? It's a goldfish. You know why? It's got a 10-second memory.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "If the Internet has taught us anything, it's that sometimes it's easier to speak our minds anonymously.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "I think that you might be so sure that you're one in a million, that sometimes you forget that out there you're just one in 11.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "If you care about someone, and you got a little love in your heart, there ain't nothing you can't get through together.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "Your body is like day-old rice. If it ain't warmed up properly, something real bad could happen.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "I promise you there is something worse out there than being sad, and that's being alone and being sad.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "I believe in Communism. Rom-communism, that is. If Tom Hanks and Meg Ryan can go through some heartfelt struggles and still end up happy, then so can we.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "There's two buttons I never like to hit: that's panic and snooze.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "If God would have wanted games to end in a tie, she wouldn't have invented numbers.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "You beating yourself up is like Woody Allen playing the clarinet. I don't want to hear it.",
+            "author": "Ted Lasso"
+        },
+        {
+            "quote": "Believe.",
+            "author": "Ted Lasso"
+        }
+    ]
+}
