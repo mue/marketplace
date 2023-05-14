@@ -1,0 +1,15 @@
+{
+    "name": "Koala Facts",
+    "description": "Random facts about koalas, powered by Some Random API.",
+    "draft": true,
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "David",
+    "icon_url": "",
+    "screenshot_url": "",
+    "quote_api": {
+        "url": "https://some-random-api.com/facts/koala",
+        "quote": "fact",
+        "author": "Koala Facts"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "name": "Animal Facts",
+    "img": "",
+    "description": "A collection of animal facts from Some Random API. Thank you, Telk.",
+    "items": ["quote_packs/bird_facts", "quote_packs/cat_facts", "quote_packs/dog_facts", "quote_packs/fox_facts", "quote_packs/koala_facts", "quote_packs/panda_facts"]
+}

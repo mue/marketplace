@@ -1,0 +1,15 @@
+{
+    "name": "Fox Facts",
+    "description": "Random facts about foxes, powered by Some Random API.",
+    "draft": true,
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "David",
+    "icon_url": "https://img.pyrocdn.com/dbKUgahg.png",
+    "screenshot_url": "",
+    "quote_api": {
+        "url": "https://some-random-api.com/facts/fox",
+        "quote": "fact",
+        "author": "Fox Facts"
+    }
+}
