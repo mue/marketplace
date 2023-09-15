@@ -1,0 +1,18 @@
+{
+    "name": "N-SFW.COM Toradora!",
+    "description": "The N-SFW.COM plugin is an innovative extension for your Mue that automatically creates background images from the anime: Toradora! which comes from the N-SFW.COM platform. With an impressive collection of high-quality images, this plugin transforms your Mue into a visual experience and provides constantly changing, appealing backgrounds.\n\n---\n\nNotice:\nThis photo pack uses a third-party API (https://n-sfw.com) to dynamically serve a different image on every page load.\nAs thousands of images from N-SFW.COM appear to Mue as a single image, some features (such as favourite background) will not work as expected.\nThe Mue Team does not control and is not responsible for the content served remotely.\nWhile only \"safe\" images are supposed to be served, the Mue Team cannot guarantee every image will be appropriate for all users.\nPlease direct any suggestions, complaints, or other queries to N-SFW.COM support, support@max.srl.\nN-SFW.COM Privacy Policy: https://max.srl/impressum-datenschutz.html",
+    "type": "photos",
+    "version": "1.0",
+    "author": "MaximilianGT500",
+    "icon_url": "https://mue.n-sfw.com/icons/toradora.png",
+    "screenshot_url": "https://mue.n-sfw.com/screenshots/toradora.jpg",
+    "photos": [
+        {
+            "photographer": "N-SFW.COM",
+            "location": null,
+            "url": {
+                "default": "https://api-random.n-sfw.com/sfw/toradora"
+            }
+        }
+    ]
+}
