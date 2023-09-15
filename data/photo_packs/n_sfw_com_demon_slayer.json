@@ -1,6 +1,6 @@
 {
     "name": "N-SFW.COM Demon Slayer",
-    "description": "Das N-SFW.COM Plugin ist eine innovative Erweiterung für dein Mue, welche automatisch Hintergrundbilder von dem Anime: Demon Slayer der von der Plattform N-SFW.COM stammt. Mit einer beeindruckenden Sammlung an hochwertigen Bildern verwandelt dieses Plugin dein Mue in ein visuelles Erlebnis und sorgt für ständig wechselnde, ansprechende Hintergründe.",
+    "description": "The N-SFW.COM plugin is an innovative extension for your Mue that automatically creates background images from the anime: Demon Slayer from the N-SFW.COM platform. With an impressive collection of high-quality images, this plugin transforms your Mue into a visual experience and provides constantly changing, appealing backgrounds.\n\n---\n\nNotice:\nThis photo pack uses a third-party API (https://n-sfw.com) to dynamically serve a different image on every page load.\nAs thousands of images from N-SFW.COM appear to Mue as a single image, some features (such as favourite background) will not work as expected.\nThe Mue Team does not control and is not responsible for the content served remotely.\nWhile only \"safe\" images are supposed to be served, the Mue Team cannot guarantee every image will be appropriate for all users.\nPlease direct any suggestions, complaints, or other queries to N-SFW.COM support, support@max.srl.\nN-SFW.COM Privacy Policy: https://max.srl/impressum-datenschutz.html",
     "type": "photos",
     "version": "1.0",
     "author": "MaximilianGT500",
