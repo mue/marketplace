@@ -9,7 +9,7 @@
     "photos": [
         {
             "photographer": "N-SFW.COM",
-            "location": "???",
+            "location": null,
             "url": {
                 "default": "https://api-random.n-sfw.com/sfw/charlotte"
             }
