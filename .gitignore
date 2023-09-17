@@ -1,11 +1,2 @@
-# Folders
-logs/
-.vscode/
-.vercel/
 node_modules/
-
-# Files
-*-lock.*
-.vercel
-data/all.json
-data/collections.json
+data/manifest.json

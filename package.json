@@ -1,21 +1,15 @@
 {
   "name": "mue-marketplace",
   "private": true,
-  "description": "Marketplace server and content for Mue",
+  "description": "Mue Marketplace content",
   "repository": {
     "url": "github:mue/marketplace"
   },
   "homepage": "https://marketplace.muetab.com",
   "author": "The Mue Authors (https://github.com/mue/marketplace/graphs/contributors)",
   "license": "MIT",
-  "main": "api/",
   "version": "1.0.0",
-  "dependencies": {
-    "eta": "2.0.0",
-    "lambda-rate-limiter": "3.0.1",
-    "node-fetch": "2.6.7",
-    "ua-parser-js": "1.0.35"
-  },
+  "dependencies": {},
   "scripts": {
 	  "build": "node scripts/bundle"
   }
