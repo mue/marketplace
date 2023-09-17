@@ -43,6 +43,7 @@ fs.readdirSync('./data/collections').forEach((item) => {
     img: file.img,
     description: file.description,
     news: file.news || false,
+    items: file.items,
   }
 
   if (file.news) {
