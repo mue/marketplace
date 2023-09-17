@@ -28,7 +28,6 @@ Object.keys(data).forEach((folder) => {
   });
 });
 
-fs.writeFileSync('./data/all.json', JSON.stringify(data));
 
 const collections = [];
 fs.readdirSync('./data/collections').forEach((item) => { 
@@ -53,4 +52,19 @@ fs.readdirSync('./data/collections').forEach((item) => {
   collections.push(collectionObject);
 });
 
-fs.writeFileSync('./data/collections.json', JSON.stringify(collections));
+if (!fs.existsSync('./build')) {
+  fs.mkdirSync('./build');
+}
+
+const index = {
+  collections: collections.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
+  preset_settings: data.preset_settings.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
+  photo_packs: data.photo_packs.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
+  quote_packs: data.quote_packs.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
+};
+
+fs.writeFileSync('./build/manifest.json', JSON.stringify({
+  index,
+  collections,
+  ...data,
+}));

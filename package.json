@@ -17,6 +17,6 @@
     "ua-parser-js": "1.0.35"
   },
   "scripts": {
-	  "build": "node scripts/updatejson"
+	  "build": "node scripts/bundle"
   }
 }
