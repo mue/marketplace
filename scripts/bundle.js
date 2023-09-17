@@ -43,8 +43,18 @@ fs.readdirSync('./data/collections').forEach((item) => {
     img: file.img,
     description: file.description,
     news: file.news || false,
-    items: file.items,
+    items: file.items || null,
   }
+
+  // news "collections" have no items
+  collectionObject.items?.forEach((item) => {
+    const [type, name] = item.split('/');
+    const resolved = data[type].find(i => i.name === name);
+    if (!resolved) {
+      console.error('Item "%s" in the "%s" collection does not exist', item, collectionObject.name);
+      process.exit(1);
+    }
+  });
 
   if (file.news) {
     collectionObject.news_link = file.news_link;
