@@ -20,9 +20,11 @@ Object.keys(data).forEach((folder) => {
     }
 
     data[folder].push({
-      display_name: file.name,
-      ...file,
       name: item.replace('.json', ''),
+      display_name: file.name,
+      icon_url: file.icon_url,
+      author: file.author,
+      language: file.language,
     });
   });
 });
@@ -62,10 +64,6 @@ fs.readdirSync('./data/collections').forEach((item) => {
   collections.push(collectionObject);
 });
 
-if (!fs.existsSync('./build')) {
-  fs.mkdirSync('./build');
-}
-
 const index = {
   collections: collections.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
   preset_settings: data.preset_settings.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
@@ -73,7 +71,7 @@ const index = {
   quote_packs: data.quote_packs.reduce((acc, itm, ix) => (acc[itm.name] = ix, acc), {}),
 };
 
-fs.writeFileSync('./build/manifest.json', JSON.stringify({
+fs.writeFileSync('./data/manifest.json', JSON.stringify({
   index,
   collections,
   ...data,
