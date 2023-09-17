@@ -20,10 +20,9 @@ Object.keys(data).forEach((folder) => {
     }
 
     data[folder].push({
-      name: item.replace('.json', ''),
       display_name: file.name,
-      icon_url: file.icon_url,
-      author: file.author
+      ...file,
+      name: item.replace('.json', ''),
     });
   });
 });
