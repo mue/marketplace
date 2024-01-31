@@ -1,0 +1,96 @@
+{
+  "name": "Philosophy Quotes",
+  "description": "A diverse compilation of profound quotes from various philosophers, spanning different eras and schools of thought.",
+  "type": "quotes",
+  "version": "1.0.0",
+  "author": "Nikhil Kadam",
+  "icon_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Greek_letter_uppercase_Phi.svg/150px-Greek_letter_uppercase_Phi.svg.png",
+  "screenshot_url": "",
+  "language": "en",
+  "quotes": [
+    {
+      "quote": "The only true wisdom is in knowing you know nothing.",
+      "author": "Socrates"
+    },
+    {
+      "quote": "I think, therefore I am.",
+      "author": "René Descartes"
+    },
+    {
+      "quote": "The unexamined life is not worth living.",
+      "author": "Socrates"
+    },
+    {
+      "quote": "God is dead. God remains dead. And we have killed him.",
+      "author": "Friedrich Nietzsche"
+    },
+    {
+      "quote": "To live is to suffer, to survive is to find some meaning in the suffering.",
+      "author": "Friedrich Nietzsche"
+    },
+    {
+      "quote": "The only thing I know is that I know nothing.",
+      "author": "Socrates"
+    },
+    {
+      "quote": "Man is condemned to be free; because once thrown into the world, he is responsible for everything he does.",
+      "author": "Jean-Paul Sartre"
+    },
+    {
+      "quote": "I think; therefore I am.",
+      "author": "René Descartes"
+    },
+    {
+      "quote": "He who is not a good servant will not be a good master.",
+      "author": "Plato"
+    },
+    {
+      "quote": "The greatest happiness you can have is knowing that you do not necessarily require happiness.",
+      "author": "William Saroyan"
+    },
+    {
+      "quote": "In three words I can sum up everything I've learned about life: it goes on.",
+      "author": "Robert Frost"
+    },
+    {
+      "quote": "To do is to be.",
+      "author": "Immanuel Kant"
+    },
+    {
+      "quote": "To be is to do.",
+      "author": "Socrates"
+    },
+    {
+      "quote": "The unexamined life is not worth living.",
+      "author": "Socrates"
+    },
+    {
+      "quote": "Man is the measure of all things.",
+      "author": "Protagoras"
+    },
+    {
+      "quote": "The only constant in life is change.",
+      "author": "Heraclitus"
+    },
+    {
+      "quote": "Cogito, ergo sum. (I think, therefore I am.)",
+      "author": "René Descartes"
+    },
+    {
+      "quote": "Wisdom begins in wonder.",
+      "author": "Socrates"
+    },
+    {
+      "quote": "The more you know, the more you realize you don't know.",
+      "author": "Aristotle"
+    },
+    {
+      "quote": "In the end, we will remember not the words of our enemies, but the silence of our friends.",
+      "author": "Martin Luther King Jr."
+    },
+    {
+      "quote": "The only limit to our realization of tomorrow will be our doubts of today.",
+      "author": "Franklin D. Roosevelt"
+    }
+  ]
+}
