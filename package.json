@@ -2,6 +2,7 @@
   "name": "mue-marketplace",
   "private": true,
   "description": "Mue Marketplace content",
+  "type": "module",
   "repository": {
     "url": "github:mue/marketplace"
   },
@@ -9,8 +10,10 @@
   "author": "The Mue Authors (https://github.com/mue/marketplace/graphs/contributors)",
   "license": "MIT",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "simple-git": "^3.24.0"
+  },
   "scripts": {
-	  "build": "node scripts/bundle"
+    "build": "node scripts/bundle"
   }
 }

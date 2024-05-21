@@ -1,4 +1,7 @@
-const fs = require('fs');
+import fs from 'fs';
+import simpleGit from 'simple-git';
+
+const git = simpleGit();
 
 const curators = {};
 
@@ -8,18 +11,29 @@ const data = {
   quote_packs: {}
 };
 
-Object.keys(data).forEach((folder) => {
+for (const folder of Object.keys(data)) {
   const categories = `./data/${folder}`;
   if (!fs.existsSync(categories)) {
-    return;
+    continue;
   }
-
-  fs.readdirSync(categories).forEach((item) => {
-    const file = JSON.parse(fs.readFileSync(`./data/${folder}/${item}`, 'utf8'));
+  const items = fs.readdirSync(categories);
+  for await (const item of items) {
+    const path = `./data/${folder}/${item}`;
+    const file = JSON.parse(fs.readFileSync(path, 'utf8'));
 
     if (file.draft === true) {
-      return;
+      continue;
     }
+
+    const history = await git.log({
+      file: path,
+      maxCount: 1,
+      strictDate: true,
+    });
+
+    const lastMod = new Date(history.latest.date).toISOString();
+    file.updated_at = lastMod;
+    fs.writeFileSync(path, JSON.stringify(file));
 
     const name = item.replace('.json', '');
     data[folder][name] = {
@@ -33,16 +47,16 @@ Object.keys(data).forEach((folder) => {
 
     if (!curators[file.author]) curators[file.author] = [];
     curators[file.author].push(folder + '/' + name);
-  });
-});
+  }
+}
 
 
 const collections = {};
-fs.readdirSync('./data/collections').forEach((item) => { 
+for (const item of fs.readdirSync('./data/collections')) {
   const file = JSON.parse(fs.readFileSync(`./data/collections/${item}`, 'utf8'));
 
   if (file.draft === true) {
-    return;
+    continue;
   }
 
   const collection = {
@@ -52,7 +66,7 @@ fs.readdirSync('./data/collections').forEach((item) => {
     description: file.description,
     news: file.news || false,
     items: file.items || null,
-  }
+  };
 
   // news "collections" have no items
   collection.items?.forEach((item) => {
@@ -69,7 +83,7 @@ fs.readdirSync('./data/collections').forEach((item) => {
   }
 
   collections[collection.name] = collection;
-});
+}
 
 
 fs.writeFileSync('./data/manifest.json', JSON.stringify({
