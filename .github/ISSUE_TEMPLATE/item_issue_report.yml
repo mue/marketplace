@@ -1,4 +1,4 @@
-name: Item Report
+name: Report an item
 description: Report an issue with a marketplace item.
 title: "[Item Report] Insert marketplace item name here"
 labels: ["item", "report"]
