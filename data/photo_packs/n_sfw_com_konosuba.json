@@ -6,6 +6,7 @@
     "author": "MaximilianGT500",
     "icon_url": "https://mue.n-sfw.com/icons/konosuba.png",
     "screenshot_url": "https://mue.n-sfw.com/screenshots/konosuba.jpg",
+    "image_api": true,
     "photos": [
         {
             "photographer": "N-SFW.COM",

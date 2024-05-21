@@ -6,6 +6,7 @@
     "author": "MaximilianGT500",
     "icon_url": "https://mue.n-sfw.com/icons/death-note.png",
     "screenshot_url": "https://mue.n-sfw.com/screenshots/death-note.jpg",
+    "image_api": true,
     "photos": [
         {
             "photographer": "N-SFW.COM",

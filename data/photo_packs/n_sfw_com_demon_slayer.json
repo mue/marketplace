@@ -6,6 +6,7 @@
     "author": "MaximilianGT500",
     "icon_url": "https://mue.n-sfw.com/icons/demon-slayer.png",
     "screenshot_url": "https://mue.n-sfw.com/screenshots/demon-slayer.jpg",
+    "image_api": true,
     "photos": [
         {
             "photographer": "N-SFW.COM",
