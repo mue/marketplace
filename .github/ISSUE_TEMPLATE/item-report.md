@@ -1,5 +1,5 @@
 ---
-name: Item Report
+name: Item Report (pre-7.1)
 about: Report an issue with a marketplace item
 title: "[Item Report] Insert marketplace item name here"
 labels: item report
