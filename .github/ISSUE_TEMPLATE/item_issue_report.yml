@@ -2,7 +2,6 @@ name: Item Report
 description: Report an issue with a marketplace item.
 title: "[Item Report] Insert marketplace item name here"
 labels: ["item", "report"]
-assignees:
 body:
   - type: markdown
     attributes:
