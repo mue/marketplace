@@ -10,10 +10,11 @@
   "author": "The Mue Authors (https://github.com/mue/marketplace/graphs/contributors)",
   "license": "MIT",
   "version": "1.0.0",
-  "dependencies": {
-    "simple-git": "^3.24.0"
-  },
   "scripts": {
     "build": "node scripts/bundle"
+  },
+  "devDependencies": {
+    "fs-extra": "^11.2.0",
+    "simple-git": "^3.24.0"
   }
 }

@@ -1,7 +1,14 @@
-import fs from 'fs';
+import fse from 'fs-extra';
 import simpleGit from 'simple-git';
 
+await fse.ensureDir('dist');
+await fse.copy('data', 'dist');
+
 const git = simpleGit();
+
+if (process.env.CF_PAGES === '1') {
+  await git.pull(['--unshallow']);
+}
 
 const curators = {};
 
@@ -13,13 +20,13 @@ const data = {
 
 for (const folder of Object.keys(data)) {
   const categories = `./data/${folder}`;
-  if (!fs.existsSync(categories)) {
+  if (!fse.existsSync(categories)) {
     continue;
   }
-  const items = fs.readdirSync(categories);
+  const items = fse.readdirSync(categories);
   for await (const item of items) {
     const path = `./data/${folder}/${item}`;
-    const file = JSON.parse(fs.readFileSync(path, 'utf8'));
+    const file = await fse.readJSON(path);
 
     if (file.draft === true) {
       continue;
@@ -33,7 +40,7 @@ for (const folder of Object.keys(data)) {
 
     const lastMod = new Date(history.latest.date).toISOString();
     file.updated_at = lastMod;
-    fs.writeFileSync(path, JSON.stringify(file));
+    await fse.writeJSON(`./dist/${folder}/${item}`, file);
 
     const name = item.replace('.json', '');
     data[folder][name] = {
@@ -52,8 +59,8 @@ for (const folder of Object.keys(data)) {
 
 
 const collections = {};
-for (const item of fs.readdirSync('./data/collections')) {
-  const file = JSON.parse(fs.readFileSync(`./data/collections/${item}`, 'utf8'));
+for (const item of fse.readdirSync('./dist/collections')) {
+  const file = await fse.readJSON(`./dist/collections/${item}`, 'utf8');
 
   if (file.draft === true) {
     continue;
@@ -86,8 +93,8 @@ for (const item of fs.readdirSync('./data/collections')) {
 }
 
 
-fs.writeFileSync('./data/manifest.json', JSON.stringify({
+await fse.writeJSON('./dist/manifest.json', {
   collections,
   curators,
   ...data,
-}));
+});
