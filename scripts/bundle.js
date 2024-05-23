@@ -4,14 +4,14 @@ import simpleGit from 'simple-git';
 await fse.ensureDir('dist');
 await fse.copy('data', 'dist');
 
-const git = simpleGit();
-
+let baseDir = '.';
 if (process.env.CF_PAGES === '1') {
-  await git.pull(['--unshallow']);
+  await simpleGit().clone('https://github.com/mue/marketplace', 'build', { '--filter': 'tree:0' });
+  baseDir = './build';
 }
+const git = simpleGit({ baseDir });
 
 const curators = {};
-
 const data = {   
   preset_settings: {},
   photo_packs: {},
