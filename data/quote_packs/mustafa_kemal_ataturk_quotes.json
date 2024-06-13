@@ -1,0 +1,144 @@
+{
+    "name": "Mustafa Kemal Atatürk Quotes",
+    "description": "Inspiring and thought-provoking quotes from the founder of the Turkish Republic, Mustafa Kemal Atatürk.",
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "Kağan Can Şit",
+    "icon_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Ataturk1930s.jpg/220px-Ataturk1930s.jpg",
+    "screenshot_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Ataturk1930s.jpg/220px-Ataturk1930s.jpg",
+    "language": "tr",
+    "quotes": [
+        {
+            "quote": "Yurtta sulh, cihanda sulh.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Hayatta en hakiki mürşit ilimdir, fendir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Egemenlik kayıtsız şartsız milletindir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Medeniyetin emrettiğini ve talep ettiğini yapmak, insan olmak için kâfidir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Bir millet, savaş meydanlarında ne kadar parlak zaferler elde ederse etsin, o zaferlerin kalıcı sonuçlar vermesi ancak irfan ordusuyla mümkündür.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Cumhuriyeti biz kurduk, onu yükseltecek ve yaşatacak olan sizlersiniz.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Gerçeği konuşmaktan korkmayınız.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Özgürlük ve bağımsızlık benim karakterimdir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Bütün ümidim gençliktedir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Sanatsız kalan bir milletin hayat damarlarından biri kopmuş demektir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Sağlam kafa sağlam vücutta bulunur.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Çocukken fakirdim. İki kuruş elime geçince bunun bir kuruşunu kitaba verirdim. Eğer böyle olmasaydı bu yaptıklarımın hiçbirini yapamazdım.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Benim naçiz vücudum elbet bir gün toprak olacaktır ancak Türkiye Cumhuriyeti ilelebet payidar kalacaktır.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Cumhuriyet sizden fikri hür, vicdanı hür, irfanı hür nesiller ister.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Savaş zarurî ve hayatî olmalıdır. Milletin hayatı tehlikeye maruz kalmadıkça savaş bir cinayettir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Milletin bağımsızlığını, yine milletin azim ve kararı kurtaracaktır.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Manevi bakımdan güçlü olmayan milletler, er geç fiziki yıkıma uğramaya mahkûmdur.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Ben, savaşlarda dahi düşmanın üzerinde bir kin duymam; yalnız askerlik kurallarının uygulanmasını düşünürüm.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Bir toplum aynı hedefe bütün kadınları ve erkekleriyle beraber yürümezse, ilerlemesine ve medenileşmesine teknik olarak imkân ve bilimsel olarak ihtimal yoktur.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Geldikleri gibi giderler!",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Tam bağımsızlık, ancak ekonomik bağımsızlıkla mümkündür.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Ya istiklal ya ölüm!",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Hürriyet ve istiklâl benim karakterimdir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Bir millet sanattan ve sanatkârdan mahrumsa tam bir hayata malik olamaz.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Uygarlık yolunda başarı yenileşmeye bağlıdır.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Beni görmek demek mutlaka yüzümü görmek değildir. Benim fikirlerimi, benim duygularımı anlıyorsanız ve hissediyorsanız bu kafidir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Dünya yüzünde gördüğümüz her şey kadının eseridir.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Milletleri kurtaranlar yalnız ve ancak öğretmenlerdir. Öğretmenden, eğiticiden mahrum bir millet, henüz bir millet adını alma yeteneğini kazanamamıştır.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Egemenlik verilmez, alınır.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "istikbal göklerdedir. Göklerini koruyamayan uluslar, yarınlardan asla emin olamazlar.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "En büyük savaş cehalete karşı verilen savaştır.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Eğer bir gün, benim sözlerim bilimle ters düşerse, bilimi seçin.",
+            "author": "Mustafa Kemal Atatürk"
+        },
+        {
+            "quote": "Dinlenmemek üzere yola çıkanlar asla yorulmazlar.",
+            "author": "Mustafa Kemal Atatürk"
+        }
+    ]
+}
