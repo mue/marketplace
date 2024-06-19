@@ -14,6 +14,9 @@ importers:
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0
+      sharp:
+        specifier: ^0.33.4
+        version: 0.33.4
       simple-git:
         specifier: ^3.24.0
         version: 3.24.0

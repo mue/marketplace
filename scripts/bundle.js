@@ -1,5 +1,6 @@
 import fse from 'fs-extra';
 import simpleGit from 'simple-git';
+import sharp from 'sharp';
 import { getAverageColor } from 'fast-average-color-node';
 
 await fse.ensureDir('dist');
@@ -43,10 +44,14 @@ for (const folder of Object.keys(data)) {
     file.updated_at = lastMod;
 
     try {
-      const buf = await (await fetch(file.icon_url))?.arrayBuffer();
-      //  file.colour = await getAverageColor(file.icon_url, { // doesn't work with imgur links
+      const original = await (await fetch(file.icon_url))?.arrayBuffer();
+      const saturated = await sharp(original)
+        .modulate({
+          saturation: 1.75
+        }).
+        toBuffer();
       // value, rgb, rgba, hex, hexa, isDark, isLight
-      const colour = await getAverageColor(buf, {
+      const colour = await getAverageColor(saturated, {
         ignoredColor: [0, 0, 0]
       });
       file.colour = colour.hex;
