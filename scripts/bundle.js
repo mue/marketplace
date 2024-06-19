@@ -1,5 +1,6 @@
 import fse from 'fs-extra';
 import simpleGit from 'simple-git';
+import { getAverageColor } from 'fast-average-color-node';
 
 await fse.ensureDir('dist');
 await fse.copy('data', 'dist');
@@ -12,7 +13,7 @@ if (process.env.CF_PAGES === '1') {
 const git = simpleGit({ baseDir });
 
 const curators = {};
-const data = {   
+const data = {
   preset_settings: {},
   photo_packs: {},
   quote_packs: {}
@@ -40,6 +41,20 @@ for (const folder of Object.keys(data)) {
 
     const lastMod = new Date(history.latest.date).toISOString();
     file.updated_at = lastMod;
+
+    try {
+      const buf = await (await fetch(file.icon_url))?.arrayBuffer();
+      //  file.colour = await getAverageColor(file.icon_url, { // doesn't work with imgur links
+      // value, rgb, rgba, hex, hexa, isDark, isLight
+      const colour = await getAverageColor(buf, {
+        ignoredColor: [0, 0, 0]
+      });
+      file.colour = colour.hex;
+    } catch (e) {
+      console.error('error reading %s', file.icon_url);
+      console.error(e);
+    }
+
     await fse.writeJSON(`./dist/${folder}/${item}`, file);
 
     const name = item.replace('.json', '');
@@ -47,6 +62,7 @@ for (const folder of Object.keys(data)) {
       name,
       display_name: file.name,
       icon_url: file.icon_url,
+      colour: file.colour,
       author: file.author,
       language: file.language,
       in_collections: [],
