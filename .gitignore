@@ -1,2 +1,4 @@
+# Directories
 dist/
+.vscode/
 node_modules/

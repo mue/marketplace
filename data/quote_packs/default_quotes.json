@@ -1,0 +1,554 @@
+{
+    "name": "Default Quotes",
+    "description": "Motivational and inspirational quotes included in Mue.",
+    "type": "quotes",
+    "version": "1.0.0",
+    "author": "The Mue Authors",
+    "quotes": [
+        {
+            "quote": "If you look at what you have in life, you'll always have more.",
+            "author": "Oprah Winfrey",
+            "occupation": "American talk show host"
+        },
+        {
+            "quote": "The key responsibility of leadership is to think about the future.",
+            "author": "Brian Tracy",
+            "occupation": "Canadian motivational speaker"
+        },
+        {
+            "quote": "The bad news is time flies. The good news, is you're the pilot.",
+            "author": "Michael Altshuler",
+            "occupation": null
+        },
+        {
+            "quote": "Hard times don't create heroes. It is during the hard times when the 'hero' within us is revealed.",
+            "author": "Bob Riley",
+            "occupation": "Former Governor of Alabama"
+        },
+        {
+            "quote": "Step by step the thing is done.",
+            "author": "Charles Atlas",
+            "occupation": "Italian-American bodybuilder"
+        },
+        {
+            "quote": "Nothing is impossible, the word itself says 'I'm possible'!",
+            "author": "Audrey Hepburn",
+            "occupation": "British actress"
+        },
+        {
+            "quote": "If opportunity doesn't knock, build a door.",
+            "author": "Kurt Cobain",
+            "occupation": "American singer-songwriter"
+        },
+        {
+            "quote": "The hard days are what make you stronger.",
+            "author": "Aly Raisman",
+            "occupation": "American gymnast"
+        },
+        {
+            "quote": "Focus on being productive instead of busy.",
+            "author": "Tim Ferriss",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "Be kind whenever possible. It is always possible",
+            "author": "Dalai Lama",
+            "occupation": null
+        },
+        {
+            "quote": "Don't let yesterday take up too much of today.",
+            "author": "Will Rogers",
+            "occupation": "American actor"
+        },
+        {
+            "quote": "Success is walking from failure to failure with no loss of enthusiasm.",
+            "author": "Winston Churchill",
+            "occupation": "Former Prime Minister of the United Kingdom"
+        },
+        {
+            "quote": "Don't wish it were easier. Wish you were better.",
+            "author": "Jim Rohn",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "However difficult life may seem, there is always something you can do and succeed at.",
+            "author": "Stephen Hawking",
+            "occupation": "English theoretical physicist"
+        },
+        {
+            "quote": "Success doesn't come to you; you go to it.",
+            "author": "T. Scott McLeod",
+            "occupation": "Rugby union player"
+        },
+        {
+            "quote": "If it scares you, it might be a good thing to try.",
+            "author": "Seth Godin",
+            "occupation": "American author"
+        },
+        {
+            "quote": "What's on the other side of fear? Nothing.",
+            "author": "Jamie Foxx",
+            "occupation": "American actor"
+        },
+        {
+            "quote": "Whatever the mind can conceive and believe, it can achieve.",
+            "author": "Napoleon Hill",
+            "occupation": "American author"
+        },
+        {
+            "quote": "With the right kind of coaching and determination you can accomplish anything.",
+            "author": "Reese Witherspoon",
+            "occupation": "American actress"
+        },
+        {
+            "quote": "Those who can't change their minds, can't change anything.",
+            "author": "George Shaw",
+            "occupation": "English artist"
+        },
+        {
+            "quote": "Set your goals high, and don't stop till you get there.",
+            "author": "Bo Jackson",
+            "occupation": "American former American football player"
+        },
+        {
+            "quote": "Life's like a movie, write your own ending. Keep believing, keep pretending.",
+            "author": "Jim Hensen",
+            "occupation": "American puppeteer"
+        },
+        {
+            "quote": "Be the change that you wish to see in the world.",
+            "author": "Mahatma Gandhi",
+            "occupation": "Indian lawyer"
+        },
+        {
+            "quote": "Only do what your heart tells you.",
+            "author": "Princess Diana",
+            "occupation": "Princess of Wales"
+        },
+        {
+            "quote": "Opportunities don't happen. You create them.",
+            "author": "Chris Grosser",
+            "occupation": "Entrepreneur"
+        },
+        {
+            "quote": "The best project you'll ever work on is you.",
+            "author": "Sonny Franco",
+            "occupation": null
+        },
+        {
+            "quote": "It seems impossible until it's done.",
+            "author": "Nelson Mandela",
+            "occupation": "Former President of South Africa"
+        },
+        {
+            "quote": "A champion is defined not by their wins but by how they can recover when they fall.",
+            "author": "Serena Williams",
+            "occupation": "American tennis player"
+        },
+        {
+            "quote": "If you can tune into your purpose and really align with it, setting goals so that your vision is an expression of that purpose, then life flows much more easily.",
+            "author": "Jack Canfield",
+            "occupation": "American author"
+        },
+        {
+            "quote": "The true success is the person who invented himself.",
+            "author": "Al Goldstein",
+            "occupation": "American critic"
+        },
+        {
+            "quote": "If you are working on something that you really care about, you don't have to be pushed. The vision pulls you.",
+            "author": "Steve Jobs",
+            "occupation": "American business magnate"
+        },
+        {
+            "quote": "Don't limit your challenges. Challenge your limits.",
+            "author": "Martonek Jr",
+            "occupation": "Author"
+        },
+        {
+            "quote": "You can find a better you inside of you. Why don't you search for that?",
+            "author": "Munia Khan",
+            "occupation": "Author"
+        },
+        {
+            "quote": "Start where you are. Use what you have. Do what you can.",
+            "author": "Arthur Ashe",
+            "occupation": "American tennis player"
+        },
+        {
+            "quote": "Well done is better than well said.",
+            "author": "Benjamin Franklin",
+            "occupation": "Founding Father of the United States"
+        },
+        {
+            "quote": "Time goes on. So whatever you're going to do, do it. Do it now. Don't wait.",
+            "author": "Robert De Niro",
+            "occupation": "American actor"
+        },
+        {
+            "quote": "Always keep your eyes open. Keep watching. Because whatever you see can inspire you.",
+            "author": "Grace Coddington",
+            "occupation": "Welsh former model"
+        },
+        {
+            "quote": "If you don't ask, you don't get.",
+            "author": "Stevie Wonder",
+            "occupation": "American singer-songwriter"
+        },
+        {
+            "quote": "No bird soars too high if he soars with his own wings.",
+            "author": "William Blake",
+            "occupation": "English poet"
+        },
+        {
+            "quote": "It does not matter how slowly you go as long as you do not stop.",
+            "author": "Confucius",
+            "occupation": "Chinese philosopher"
+        },
+        {
+            "quote": "If you can dream it, you can achieve it.",
+            "author": "Zig Ziglar",
+            "occupation": "American author"
+        },
+        {
+            "quote": "Everything you've ever wanted is on the other side of fear",
+            "author": "George Addair",
+            "occupation": "real-estate developer"
+        },
+        {
+            "quote": "If you don't like how things are, change it!",
+            "author": "Jim Rohn",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "The control center of your life is your attitude.",
+            "author": "Norman Cousins",
+            "occupation": "American political journalist"
+        },
+        {
+            "quote": "It takes courage to grow up and become who you really are.",
+            "author": "E.E Cummings",
+            "occupation": "American poet"
+        },
+        {
+            "quote": "Your true success in life begins only when you make the commitment to become excellent at what you do.",
+            "author": "Brian Tracy",
+            "occupation": "Canadian motivational speaker"
+        },
+        {
+            "quote": "Always do what you are afraid to do.",
+            "author": "Ralph Waldo Emerson",
+            "occupation": "American essayist"
+        },
+        {
+            "quote": "I would rather die of passion than of boredom.",
+            "author": "Vincent van Gogh",
+            "occupation": "Dutch painter"
+        },
+        {
+            "quote": "A will finds a way.",
+            "author": "Orison Marden",
+            "occupation": "American author"
+        },
+        {
+            "quote": "I'm taking all the negatives in my life, and turning them into a positive.",
+            "author": "Pitbull",
+            "occupation": "American rapper"
+        },
+        {
+            "quote": "All we can do is the best we can do.",
+            "author": "David Axelrod",
+            "occupation": "Former Senior Advisor to the President of the United States"
+        },
+        {
+            "quote": "If you can dream it, you can do it.",
+            "author": "Walt Disney",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "Problems are not stop signs, they are guidelines.",
+            "author": "Robert H. Schuller",
+            "occupation": "American Televangelist"
+        },
+        {
+            "quote": "Either I will find a way, or I will make one.",
+            "author": "Phillip Sidney",
+            "occupation": "English Poet"
+        },
+        {
+            "quote": "There's a way to do it better - find it.",
+            "author": "Thomas Edison",
+            "occupation": "American Inventor"
+        },
+        {
+            "quote": "Do the best you can. No one can do more than that.",
+            "author": "John Wooden",
+            "occupation": "American Basketball Coach"
+        },
+        {
+            "quote": "Motivation comes from working on things we care about.",
+            "author": "Sheryl Sandberg",
+            "occupation": "COO of Facebook"
+        },
+        {
+            "quote": "Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got to keep going",
+            "author": "Chantal Sutherland",
+            "occupation": "Canadian Model"
+        },
+        {
+            "quote": "Keep your face to the sunshine and you cannot see a shadow.",
+            "author": "Helen Keller",
+            "occupation": "American Author"
+        },
+        {
+            "quote": "Dream big and dare to fail.",
+            "author": "Norman Vaughan",
+            "occupation": "Comedian"
+        },
+        {
+            "quote": "Hope never abandons you, you abandon it.",
+            "author": "George Weinberg",
+            "occupation": null
+        },
+        {
+            "quote": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+            "author": "Albert Einstein",
+            "occupation": "Theoretical physicist"
+        },
+        {
+            "quote": "Don't watch the clock; do what it does. Keep going.",
+            "author": "Sam Levenson",
+            "occupation": "American Actor"
+        },
+        {
+            "quote": "If the plan doesn't work, change the plan, but never the goal.",
+            "author": null,
+            "occupation": null
+        },
+        {
+            "quote": "If something is important enough, even if the odds are stacked against you, you should still do it.",
+            "author": "Elon Musk",
+            "occupation": "CEO of Tesla"
+        },
+        {
+            "quote": "Give up on being perfect and start working on becoming yourself.",
+            "author": "Anna Quindlen",
+            "occupation": "American Author"
+        },
+        {
+            "quote": "Be a voice not an echo.",
+            "author": "Albert Einstein",
+            "occupation": "Theoretical physicist"
+        },
+        {
+            "quote": "Dreaming, after all, is a form of planning.",
+            "author": "Gloria Steinem",
+            "occupation": "American Journalist"
+        },
+        {
+            "quote": "Life is 10% what happens to you and 90% how you react to it.",
+            "author": "Charles R. Swindoll",
+            "occupation": null
+        },
+        {
+            "quote": "In the middle of every difficulty lies opportunity.",
+            "author": "Albert Einstein",
+            "occupation": "Theoretical physicist"
+        },
+        {
+            "quote": "I never lose. Either I win or learn.",
+            "author": "Nelson Mandela",
+            "occupation": "Former President of South Africa"
+        },
+        {
+            "quote": "It always seems impossible until it's done.",
+            "author": "Nelson Mandela",
+            "occupation": "Former President of South Africa"
+        },
+        {
+            "quote": "You gotta water your plants. Nobody can water them for you.",
+            "author": "DJ Khaled",
+            "occupation": "American DJ"
+        },
+        {
+            "quote": "Work hard, be kind and amazing things will happen.",
+            "author": "Conan O'Brien",
+            "occupation": "American television host"
+        },
+        {
+            "quote": "A winner is a dreamer who never gives up.",
+            "author": "Nelson Mandela",
+            "occupation": "Former President of South Africa"
+        },
+        {
+            "quote": "Make the most of yourself...for that is all there is of you",
+            "author": "Ralph Waldo Emerson",
+            "occupation": "American essayist"
+        },
+        {
+            "quote": "Believe you can and you're halfway there.",
+            "author": "Theodore Roosevelt",
+            "occupation": "26th U.S. President"
+        },
+        {
+            "quote": "Eighty percent of success is showing up.",
+            "author": "Woody Allen",
+            "occupation": "American film director"
+        },
+        {
+            "quote": "Some people look for a beautiful place. Others make a place beautiful.",
+            "author": "Hazrat Inayat Khan",
+            "occupation": "Professor"
+        },
+        {
+            "quote": "Either you run the day, or the day runs you.",
+            "author": "Jim Rohn",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "Sometimes later becomes never. Do it now.",
+            "author": null,
+            "occupation": null
+        },
+        {
+            "quote": "Never regret anything that made you smile.",
+            "author": "Mark Twain",
+            "occupation": "American writer"
+        },
+        {
+            "quote": "Go the extra mile. It's never crowded there.",
+            "author": "Wayne Dyer",
+            "occupation": "American author"
+        },
+        {
+            "quote": "Whatever you are, be a good one.",
+            "author": "Abraham Lincoln",
+            "occupation": "16th U.S. President"
+        },
+        {
+            "quote": "If you can dream it, you can do it.",
+            "author": "Walt Disney",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "A goal is a dream with a deadline.",
+            "author": "Napoleon Hill",
+            "occupation": "American author"
+        },
+        {
+            "quote": "There are no traffic jams along the extra mile.",
+            "author": "Roger Staubach",
+            "occupation": "American football player"
+        },
+        {
+            "quote": "Too many of us are not living our dreams because we are living our fears.",
+            "author": "Les Brown",
+            "occupation": "Former Ohio State Representative"
+        },
+        {
+            "quote": "Life is what happens to you while you're busy making other plans.",
+            "author": "John Lennon",
+            "occupation": "Singer-songwriter"
+        },
+        {
+            "quote": "Believe in yourself. You are braver than you think, more talented than you know, and capable of more than you imagine.",
+            "author": "Roy T. Bennett",
+            "occupation": "Author"
+        },
+        {
+            "quote": "In a gentle way, you can shake the world.",
+            "author": "Mahatma Gandhi",
+            "occupation": "Indian lawyer"
+        },
+        {
+            "quote": "There is only one thing that makes a dream impossible to achieve: the fear of failure.",
+            "author": "Paulo Coelho",
+            "occupation": "Brazilian lyricist"
+        },
+        {
+            "quote": "Learn to enjoy every minute of your life.",
+            "author": "Earl Nightingale",
+            "occupation": "American author"
+        },
+        {
+            "quote": "If you don't have a competitive advantage, don't compete.",
+            "author": "Jack Welch",
+            "occupation": "American executive"
+        },
+        {
+            "quote": "Work until your rivals become idols.",
+            "author": "Drake",
+            "occupation": "Canadian rapper"
+        },
+        {
+            "quote": "It is never too late to be what you might have been.",
+            "author": "George Eliot",
+            "occupation": "English novelist"
+        },
+        {
+            "quote": "Accomplishing the impossible is all about seeing the invisible.",
+            "author": "Steven Furtick",
+            "occupation": "American pastor"
+        },
+        {
+            "quote": "The two most important days in your life are the day you are born and the day you find out why.",
+            "author": "Mark Twain",
+            "occupation": "American writer"
+        },
+        {
+            "quote": "In order to succeed, we must first believe that we can.",
+            "author": "Nikos Kazantzakis",
+            "occupation": "Greek writer"
+        },
+        {
+            "quote": "Impossible is just an opinion.",
+            "author": "Paulo Coelho",
+            "occupation": "Brazilian lyricist"
+        },
+        {
+            "quote": "The man who does not read has no advantage over the man who cannot read.",
+            "author": "Mark Twain",
+            "occupation": "American writer"
+        },
+        {
+            "quote": "A pessimist sees the difficulty in every opportunity; an optimist sees the opportunity in every difficulty.",
+            "author": "Winston Churchill",
+            "occupation": "Former Prime Minister of the United Kingdom"
+        },
+        {
+            "quote": "It's not whether you get knocked down, it's whether you get up.",
+            "author": "Vince Lombardi",
+            "occupation": "American football coach"
+        },
+        {
+            "quote": "Make each day your masterpiece.",
+            "author": "John Wooden",
+            "occupation": "American basketball coach"
+        },
+        {
+            "quote": "You are the only one who can limit your greatness",
+            "author": null,
+            "occupation": null
+        },
+        {
+            "quote": "If you believe it will work out, you'll see opportunities. If you believe it won't, you will see obstacles.",
+            "author": "Wayne Dyer",
+            "occupation": "American author"
+        },
+        {
+            "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+            "author": "Winston Churchill",
+            "occupation": "Former Prime Minister of the United Kingdom"
+        },
+        {
+            "quote": "All our dreams can come true, if we have the courage to pursue them.",
+            "author": "Walt Disney",
+            "occupation": "American entrepreneur"
+        },
+        {
+            "quote": "The way to get started is to quit talking and begin doing.",
+            "author": "Walt Disney",
+            "occupation": "American entrepreneur"
+        }
+    ]
+}
