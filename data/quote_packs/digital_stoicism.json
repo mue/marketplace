@@ -1,0 +1,35 @@
+{
+  "name": "Digital Stoicism",
+  "description": "Short, powerful wisdom from Stoic philosophers like Marcus Aurelius, Seneca, and Epictetus. Perfect for promoting focus, resilience, and a calm start to any task.",
+  "type": "quotes",
+  "version": "1.0.0",
+  "author": "Alex Sparkes",
+  "icon_url": "https://i.guim.co.uk/img/media/c5a3cb22f4ae7b4a4c7462ef4d2d0c71cacb3c65/0_232_2789_1673/master/2789.jpg?width=1300&dpr=2&s=none&crop=none",
+  "screenshot_url": "",
+  "quotes": [
+    {
+      "quote": "The happiness of your life depends upon the quality of your thoughts.",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "quote": "You have power over your mind — not outside events. Realize this, and you will find strength.",
+      "author": "Marcus Aurelius"
+    },
+    {
+      "quote": "It's not what happens to you, but how you react to it that matters",
+      "author": "Epictetus"
+    },
+    {
+      "quote": "First say to yourself what you would be; and then do what you have to do.",
+      "author": "Epictetus"
+    },
+    {
+      "quote": "We suffer more often in imagination than in reality. ",
+      "author": "Seneca"
+    },
+    {
+      "quote": "It is not that we have a short time to live, but that we waste a lot of it.",
+      "author": "Seneca"
+    }
+  ]
+}
