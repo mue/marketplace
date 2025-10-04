@@ -117,6 +117,7 @@ for (const folder of Object.keys(data)) {
       in_collections: [],
       id: stableHash,
       canonical_path: canonicalPath,
+      type: folder,
     };
 
     if (!curators[file.author]) curators[file.author] = [];
@@ -133,13 +134,38 @@ for (const item of fse.readdirSync('./dist/collections')) {
     continue;
   }
 
+  const collectionName = item.replace('.json', '');
+  const canonicalPath = `collections/${collectionName}`;
+
+  // Generate stable hash ID for collection
+  const stableHash = generateStableHash(canonicalPath, 'marketplace');
+
+  // Validate uniqueness
+  if (idRegistry.paths.has(canonicalPath)) {
+    console.error('DUPLICATE PATH: %s already exists', canonicalPath);
+    process.exit(1);
+  }
+
+  if (idRegistry.hashes.has(stableHash)) {
+    const existing = idRegistry.hashes.get(stableHash);
+    console.error('HASH COLLISION: %s and %s generate same hash', canonicalPath, existing);
+    console.error('This should never happen - investigate immediately');
+    process.exit(1);
+  }
+
+  // Register IDs
+  idRegistry.paths.add(canonicalPath);
+  idRegistry.hashes.set(stableHash, canonicalPath);
+
   const collection = {
-    name: item.replace('.json', ''),
+    name: collectionName,
     display_name: file.name,
     img: file.img,
     description: file.description,
     news: file.news || false,
     items: file.items || null,
+    id: stableHash,
+    canonical_path: canonicalPath,
   };
 
   // news "collections" have no items
