@@ -31,6 +31,39 @@ function generateStableHash(canonicalPath, author) {
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 12);
 }
 
+// Required fields schema for validation
+const REQUIRED_FIELDS = {
+  photo_packs: ['name', 'description', 'author', 'icon_url', 'photos'],
+  quote_packs: ['name', 'description', 'author', 'quotes'],
+  preset_settings: ['name', 'description', 'author', 'settings']
+};
+
+/**
+ * Validate item has all required fields
+ * @param {Object} file - The item data
+ * @param {string} folder - The category folder
+ * @param {string} canonicalPath - The item's canonical path
+ */
+function validateItem(file, folder, canonicalPath) {
+  const requiredFields = REQUIRED_FIELDS[folder];
+  for (const field of requiredFields) {
+    if (!file[field]) {
+      console.error('VALIDATION ERROR: %s missing required field "%s"', canonicalPath, field);
+      process.exit(1);
+    }
+  }
+
+  // Validate item counts
+  if (folder === 'photo_packs' && (!file.photos || file.photos.length === 0)) {
+    console.error('VALIDATION ERROR: %s has no photos', canonicalPath);
+    process.exit(1);
+  }
+  if (folder === 'quote_packs' && (!file.quotes || file.quotes.length === 0)) {
+    console.error('VALIDATION ERROR: %s has no quotes', canonicalPath);
+    process.exit(1);
+  }
+}
+
 const curators = {};
 const data = {
   preset_settings: {},
@@ -55,6 +88,9 @@ for (const folder of Object.keys(data)) {
     const name = item.replace('.json', '');
     const canonicalPath = `${folder}/${name}`;
 
+    // Validate item schema
+    validateItem(file, folder, canonicalPath);
+
     // Generate stable hash ID
     const stableHash = generateStableHash(canonicalPath, file.author);
 
@@ -75,14 +111,17 @@ for (const folder of Object.keys(data)) {
     idRegistry.paths.add(canonicalPath);
     idRegistry.hashes.set(stableHash, canonicalPath);
 
+    // Get full git history for created_at and updated_at
     const history = await git.log({
       file: path,
-      maxCount: 1,
       strictDate: true,
     });
 
-    const lastMod = new Date(history.latest.date).toISOString();
-    file.updated_at = lastMod;
+    // Latest commit = updated_at
+    file.updated_at = new Date(history.latest.date).toISOString();
+
+    // First commit = created_at
+    file.created_at = new Date(history.all[history.all.length - 1].date).toISOString();
 
     try {
       const original = await (await fetch(file.icon_url))?.arrayBuffer();
@@ -118,6 +157,9 @@ for (const folder of Object.keys(data)) {
       id: stableHash,
       canonical_path: canonicalPath,
       type: folder,
+      item_count: file.photos?.length || file.quotes?.length || 0,
+      created_at: file.created_at,
+      updated_at: file.updated_at,
     };
 
     if (!curators[file.author]) curators[file.author] = [];
@@ -157,6 +199,14 @@ for (const item of fse.readdirSync('./dist/collections')) {
   idRegistry.paths.add(canonicalPath);
   idRegistry.hashes.set(stableHash, canonicalPath);
 
+  // Get collection timestamps
+  const collectionHistory = await git.log({
+    file: `./data/collections/${item}`,
+    strictDate: true,
+  });
+  const collectionUpdatedAt = new Date(collectionHistory.latest.date).toISOString();
+  const collectionCreatedAt = new Date(collectionHistory.all[collectionHistory.all.length - 1].date).toISOString();
+
   const collection = {
     name: collectionName,
     display_name: file.name,
@@ -166,6 +216,9 @@ for (const item of fse.readdirSync('./dist/collections')) {
     items: file.items || null,
     id: stableHash,
     canonical_path: canonicalPath,
+    item_count: file.items?.length || 0,
+    created_at: collectionCreatedAt,
+    updated_at: collectionUpdatedAt,
   };
 
   // news "collections" have no items
@@ -192,7 +245,13 @@ for (const [hash, path] of idRegistry.hashes) {
   idIndex[hash] = path;
 }
 
+// Read package.json for version
+const packageJson = await fse.readJSON('./package.json');
+
 await fse.writeJSON('./dist/manifest.json', {
+  _version: packageJson.version,
+  _generated_at: new Date().toISOString(),
+  _schema_version: "2.0",
   collections,
   curators,
   ...data,
