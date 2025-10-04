@@ -2,6 +2,7 @@ import fse from 'fs-extra';
 import simpleGit from 'simple-git';
 import sharp from 'sharp';
 import { getAverageColor } from 'fast-average-color-node';
+import crypto from 'crypto';
 
 await fse.ensureDir('dist');
 await fse.copy('data', 'dist');
@@ -12,6 +13,23 @@ if (process.env.CF_PAGES === '1') {
   baseDir = './build';
 }
 const git = simpleGit({ baseDir });
+
+// ID registry to track uniqueness
+const idRegistry = {
+  hashes: new Map(), // hash -> canonical_path
+  paths: new Set()   // all canonical paths
+};
+
+/**
+ * Generate a stable hash ID from canonical path and author
+ * @param {string} canonicalPath - The item's canonical path (e.g., "photo_packs/nature")
+ * @param {string} author - The item's author
+ * @returns {string} 12-character hash
+ */
+function generateStableHash(canonicalPath, author) {
+  const content = `${canonicalPath}:${author}`;
+  return crypto.createHash('sha256').update(content).digest('hex').slice(0, 12);
+}
 
 const curators = {};
 const data = {
@@ -33,6 +51,29 @@ for (const folder of Object.keys(data)) {
     if (file.draft === true) {
       continue;
     }
+
+    const name = item.replace('.json', '');
+    const canonicalPath = `${folder}/${name}`;
+
+    // Generate stable hash ID
+    const stableHash = generateStableHash(canonicalPath, file.author);
+
+    // Validate uniqueness
+    if (idRegistry.paths.has(canonicalPath)) {
+      console.error('DUPLICATE PATH: %s already exists', canonicalPath);
+      process.exit(1);
+    }
+
+    if (idRegistry.hashes.has(stableHash)) {
+      const existing = idRegistry.hashes.get(stableHash);
+      console.error('HASH COLLISION: %s and %s generate same hash', canonicalPath, existing);
+      console.error('This should never happen - investigate immediately');
+      process.exit(1);
+    }
+
+    // Register IDs
+    idRegistry.paths.add(canonicalPath);
+    idRegistry.hashes.set(stableHash, canonicalPath);
 
     const history = await git.log({
       file: path,
@@ -60,9 +101,12 @@ for (const folder of Object.keys(data)) {
       console.error(e);
     }
 
+    // Add ID fields to the full item data
+    file.id = stableHash;
+    file.canonical_path = canonicalPath;
+
     await fse.writeJSON(`./dist/${folder}/${item}`, file);
 
-    const name = item.replace('.json', '');
     data[folder][name] = {
       name,
       display_name: file.name,
@@ -71,6 +115,8 @@ for (const folder of Object.keys(data)) {
       author: file.author,
       language: file.language,
       in_collections: [],
+      id: stableHash,
+      canonical_path: canonicalPath,
     };
 
     if (!curators[file.author]) curators[file.author] = [];
@@ -114,8 +160,15 @@ for (const item of fse.readdirSync('./dist/collections')) {
 }
 
 
+// Generate ID index for reverse lookup
+const idIndex = {};
+for (const [hash, path] of idRegistry.hashes) {
+  idIndex[hash] = path;
+}
+
 await fse.writeJSON('./dist/manifest.json', {
   collections,
   curators,
   ...data,
+  _id_index: idIndex,
 });
