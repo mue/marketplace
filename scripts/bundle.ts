@@ -3,6 +3,18 @@ import simpleGit from 'simple-git';
 import sharp from 'sharp';
 import { getAverageColor } from 'fast-average-color-node';
 import crypto from 'crypto';
+import type {
+  FolderType,
+  ItemData,
+  CollectionFile,
+  Collection,
+  IdRegistry,
+  DataStructure,
+  Curators,
+  Collections,
+  IdIndex,
+  ManifestOutput
+} from './types.js';
 
 await fse.ensureDir('dist');
 await fse.copy('data', 'dist');
@@ -15,7 +27,7 @@ if (process.env.CF_PAGES === '1') {
 const git = simpleGit({ baseDir });
 
 // ID registry to track uniqueness
-const idRegistry = {
+const idRegistry: IdRegistry = {
   hashes: new Map(), // hash -> canonical_path
   paths: new Set()   // all canonical paths
 };
@@ -26,13 +38,13 @@ const idRegistry = {
  * @param {string} author - The item's author
  * @returns {string} 12-character hash
  */
-function generateStableHash(canonicalPath, author) {
+function generateStableHash(canonicalPath: string, author: string): string {
   const content = `${canonicalPath}:${author}`;
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 12);
 }
 
 // Required fields schema for validation
-const REQUIRED_FIELDS = {
+const REQUIRED_FIELDS: Record<FolderType, string[]> = {
   photo_packs: ['name', 'description', 'author', 'icon_url', 'photos'],
   quote_packs: ['name', 'description', 'author', 'quotes'],
   preset_settings: ['name', 'description', 'author', 'settings']
@@ -44,34 +56,34 @@ const REQUIRED_FIELDS = {
  * @param {string} folder - The category folder
  * @param {string} canonicalPath - The item's canonical path
  */
-function validateItem(file, folder, canonicalPath) {
+function validateItem(file: ItemData, folder: FolderType, canonicalPath: string): void {
   const requiredFields = REQUIRED_FIELDS[folder];
   for (const field of requiredFields) {
-    if (!file[field]) {
+    if (!(file as any)[field]) {
       console.error('VALIDATION ERROR: %s missing required field "%s"', canonicalPath, field);
       process.exit(1);
     }
   }
 
   // Validate item counts
-  if (folder === 'photo_packs' && (!file.photos || file.photos.length === 0)) {
+  if (folder === 'photo_packs' && (!(file as any).photos || (file as any).photos.length === 0)) {
     console.error('VALIDATION ERROR: %s has no photos', canonicalPath);
     process.exit(1);
   }
-  if (folder === 'quote_packs' && (!file.quotes || file.quotes.length === 0)) {
+  if (folder === 'quote_packs' && (!(file as any).quotes || (file as any).quotes.length === 0)) {
     console.error('VALIDATION ERROR: %s has no quotes', canonicalPath);
     process.exit(1);
   }
 }
 
-const curators = {};
-const data = {
+const curators: Curators = {};
+const data: DataStructure = {
   preset_settings: {},
   photo_packs: {},
   quote_packs: {}
 };
 
-for (const folder of Object.keys(data)) {
+for (const folder of Object.keys(data) as FolderType[]) {
   const categories = `./data/${folder}`;
   if (!fse.existsSync(categories)) {
     continue;
@@ -79,7 +91,7 @@ for (const folder of Object.keys(data)) {
   const items = fse.readdirSync(categories);
   for await (const item of items) {
     const path = `./data/${folder}/${item}`;
-    const file = await fse.readJSON(path);
+    const file = await fse.readJSON(path) as ItemData;
 
     if (file.draft === true) {
       continue;
@@ -118,13 +130,13 @@ for (const folder of Object.keys(data)) {
     });
 
     // Latest commit = updated_at
-    file.updated_at = new Date(history.latest.date).toISOString();
+    file.updated_at = new Date(history.latest!.date).toISOString();
 
     // First commit = created_at
     file.created_at = new Date(history.all[history.all.length - 1].date).toISOString();
 
     try {
-      const original = await (await fetch(file.icon_url))?.arrayBuffer();
+      const original = await (await fetch((file as any).icon_url))?.arrayBuffer();
       const saturated = await sharp(original)
         .modulate({
           saturation: 1.75
@@ -136,7 +148,7 @@ for (const folder of Object.keys(data)) {
       });
       file.colour = colour.hex;
     } catch (e) {
-      console.error('error reading %s', file.icon_url);
+      console.error('error reading %s', (file as any).icon_url);
       console.error(e);
     }
 
@@ -149,7 +161,7 @@ for (const folder of Object.keys(data)) {
     data[folder][name] = {
       name,
       display_name: file.name,
-      icon_url: file.icon_url,
+      icon_url: (file as any).icon_url,
       colour: file.colour,
       author: file.author,
       language: file.language,
@@ -157,7 +169,7 @@ for (const folder of Object.keys(data)) {
       id: stableHash,
       canonical_path: canonicalPath,
       type: folder,
-      item_count: file.photos?.length || file.quotes?.length || 0,
+      item_count: (file as any).photos?.length || (file as any).quotes?.length || 0,
       created_at: file.created_at,
       updated_at: file.updated_at,
     };
@@ -168,9 +180,9 @@ for (const folder of Object.keys(data)) {
 }
 
 
-const collections = {};
+const collections: Collections = {};
 for (const item of fse.readdirSync('./dist/collections')) {
-  const file = await fse.readJSON(`./dist/collections/${item}`, 'utf8');
+  const file = await fse.readJSON(`./dist/collections/${item}`, 'utf8') as CollectionFile;
 
   if (file.draft === true) {
     continue;
@@ -204,10 +216,10 @@ for (const item of fse.readdirSync('./dist/collections')) {
     file: `./data/collections/${item}`,
     strictDate: true,
   });
-  const collectionUpdatedAt = new Date(collectionHistory.latest.date).toISOString();
+  const collectionUpdatedAt = new Date(collectionHistory.latest!.date).toISOString();
   const collectionCreatedAt = new Date(collectionHistory.all[collectionHistory.all.length - 1].date).toISOString();
 
-  const collection = {
+  const collection: Collection = {
     name: collectionName,
     display_name: file.name,
     img: file.img,
@@ -224,11 +236,11 @@ for (const item of fse.readdirSync('./dist/collections')) {
   // news "collections" have no items
   collection.items?.forEach((item) => {
     const [type, name] = item.split('/');
-    if (!data[type][name]) {
+    if (!data[type as FolderType][name]) {
       console.error('Item "%s" in the "%s" collection does not exist', item, collection.name);
       process.exit(1);
     }
-    data[type][name].in_collections.push(collection.name);
+    data[type as FolderType][name].in_collections.push(collection.name);
   });
 
   if (file.news) {
@@ -240,7 +252,7 @@ for (const item of fse.readdirSync('./dist/collections')) {
 
 
 // Generate ID index for reverse lookup
-const idIndex = {};
+const idIndex: IdIndex = {};
 for (const [hash, path] of idRegistry.hashes) {
   idIndex[hash] = path;
 }
@@ -256,4 +268,4 @@ await fse.writeJSON('./dist/manifest.json', {
   curators,
   ...data,
   _id_index: idIndex,
-});
+} as ManifestOutput);
