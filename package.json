@@ -15,9 +15,10 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.14.0",
+    "@types/node": "^20.19.19",
     "fast-average-color-node": "^3.0.0",
     "fs-extra": "^11.2.0",
+    "p-limit": "^7.1.1",
     "sharp": "^0.33.4",
     "simple-git": "^3.24.0",
     "tsx": "^4.7.0",

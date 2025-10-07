@@ -3,6 +3,7 @@ import simpleGit from 'simple-git';
 import sharp from 'sharp';
 import { getAverageColor } from 'fast-average-color-node';
 import crypto from 'crypto';
+import pLimit from 'p-limit';
 import type {
   FolderType,
   ItemData,
@@ -13,8 +14,16 @@ import type {
   Curators,
   Collections,
   IdIndex,
-  ManifestOutput
+  ManifestOutput,
+  ExtendedItemSummary,
+  SearchIndex,
+  StatsOutput,
+  ManifestLite
 } from './types.js';
+
+// Performance tracking
+const perfStart = Date.now();
+console.log('🚀 Starting marketplace bundle process...');
 
 await fse.ensureDir('dist');
 await fse.copy('data', 'dist');
@@ -25,6 +34,9 @@ if (process.env.CF_PAGES === '1') {
   baseDir = './build';
 }
 const git = simpleGit({ baseDir });
+
+// Concurrency limiter for parallel operations
+const limit = pLimit(10);
 
 // ID registry to track uniqueness
 const idRegistry: IdRegistry = {
@@ -41,6 +53,52 @@ const idRegistry: IdRegistry = {
 function generateStableHash(canonicalPath: string, author: string): string {
   const content = `${canonicalPath}:${author}`;
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 12);
+}
+
+/**
+ * Generate URL-friendly slug from name
+ */
+function generateSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Extract tags from text (name + description)
+ */
+function extractTags(name: string, description: string): string[] {
+  const text = `${name} ${description}`.toLowerCase();
+  const commonWords = new Set(['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'from', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'should', 'could', 'may', 'might', 'must', 'can', 'this', 'that', 'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'them', 'their', 'what', 'which', 'who', 'when', 'where', 'why', 'how', 'all', 'each', 'every', 'both', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'just', 'don', 'now', 'source']);
+
+  const words = text
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter(w => w.length > 2 && !commonWords.has(w));
+
+  // Get unique words and take top frequent ones
+  const wordFreq = new Map<string, number>();
+  words.forEach(w => wordFreq.set(w, (wordFreq.get(w) || 0) + 1));
+
+  return Array.from(wordFreq.entries())
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([word]) => word);
+}
+
+/**
+ * Generate search text for full-text search
+ */
+function generateSearchText(item: ItemData, canonicalPath: string, author: string): string {
+  const parts = [
+    item.name,
+    item.description,
+    author,
+    canonicalPath.replace('/', ' '),
+    item.language || ''
+  ];
+  return parts.join(' ').toLowerCase();
 }
 
 // Required fields schema for validation
@@ -83,100 +141,174 @@ const data: DataStructure = {
   quote_packs: {}
 };
 
+// Batch git log to get all file histories at once for performance
+console.log('📝 Fetching git history for all files...');
+const allPaths: string[] = [];
+for (const folder of Object.keys(data) as FolderType[]) {
+  const categories = `./data/${folder}`;
+  if (!fse.existsSync(categories)) continue;
+  const items = fse.readdirSync(categories);
+  for (const item of items) {
+    allPaths.push(`./data/${folder}/${item}`);
+  }
+}
+
+// Get git history for all files in one call
+const gitHistoryMap = new Map<string, { created_at: string; updated_at: string }>();
+try {
+  const allHistory = await Promise.all(
+    allPaths.map((path: string) =>
+      git.log({ file: path, strictDate: true })
+        .then((history: any) => ({ path, history }))
+        .catch((err: any) => {
+          console.warn(`Warning: Could not get git history for ${path}`, err);
+          return { path, history: null };
+        })
+    )
+  );
+
+  for (const { path, history } of allHistory) {
+    if (history && history.latest) {
+      gitHistoryMap.set(path, {
+        updated_at: new Date(history.latest.date).toISOString(),
+        created_at: new Date(history.all[history.all.length - 1].date).toISOString()
+      });
+    }
+  }
+  console.log(`✅ Fetched git history for ${gitHistoryMap.size} files`);
+} catch (e) {
+  console.error('Error fetching git history:', e);
+}
+
+// Process items in parallel with concurrency limit
 for (const folder of Object.keys(data) as FolderType[]) {
   const categories = `./data/${folder}`;
   if (!fse.existsSync(categories)) {
     continue;
   }
+
   const items = fse.readdirSync(categories);
-  for await (const item of items) {
-    const path = `./data/${folder}/${item}`;
-    const file = await fse.readJSON(path) as ItemData;
+  console.log(`📦 Processing ${items.length} items in ${folder}...`);
 
-    if (file.draft === true) {
-      continue;
+  // Process items in parallel
+  const processedItems = await Promise.all(
+    items.map((item: string) =>
+      limit(async () => {
+        const path = `./data/${folder}/${item}`;
+        const file = await fse.readJSON(path) as ItemData;
+
+        if (file.draft === true) {
+          return null;
+        }
+
+        const name = item.replace('.json', '');
+        const canonicalPath = `${folder}/${name}`;
+
+        // Validate item schema
+        validateItem(file, folder, canonicalPath);
+
+        // Generate stable hash ID
+        const stableHash = generateStableHash(canonicalPath, file.author);
+
+        // Validate uniqueness
+        if (idRegistry.paths.has(canonicalPath)) {
+          console.error('DUPLICATE PATH: %s already exists', canonicalPath);
+          process.exit(1);
+        }
+
+        if (idRegistry.hashes.has(stableHash)) {
+          const existing = idRegistry.hashes.get(stableHash);
+          console.error('HASH COLLISION: %s and %s generate same hash', canonicalPath, existing);
+          console.error('This should never happen - investigate immediately');
+          process.exit(1);
+        }
+
+        // Register IDs
+        idRegistry.paths.add(canonicalPath);
+        idRegistry.hashes.set(stableHash, canonicalPath);
+
+        // Get timestamps from batch git history
+        const timestamps = gitHistoryMap.get(path);
+        if (timestamps) {
+          file.updated_at = timestamps.updated_at;
+          file.created_at = timestamps.created_at;
+        } else {
+          // Fallback to current time if git history not available
+          const now = new Date().toISOString();
+          file.updated_at = now;
+          file.created_at = now;
+        }
+
+        // Extract color from icon (if available)
+        let isDark = false;
+        let isLight = false;
+        if ((file as any).icon_url) {
+          try {
+            const original = await (await fetch((file as any).icon_url))?.arrayBuffer();
+            const saturated = await sharp(original)
+              .modulate({
+                saturation: 1.75
+              })
+              .toBuffer();
+            // value, rgb, rgba, hex, hexa, isDark, isLight
+            const colour = await getAverageColor(saturated, {
+              ignoredColor: [0, 0, 0]
+            });
+            file.colour = colour.hex;
+            isDark = colour.isDark;
+            isLight = colour.isLight;
+          } catch (e) {
+            console.error('error reading %s', (file as any).icon_url);
+          }
+        }
+
+        // Generate enhanced metadata
+        const tags = extractTags(file.name, file.description);
+        const search_text = generateSearchText(file, canonicalPath, file.author);
+        const slug = generateSlug(file.name);
+
+        // Add ID fields to the full item data
+        file.id = stableHash;
+        file.canonical_path = canonicalPath;
+
+        await fse.writeJSON(`./dist/${folder}/${item}`, file);
+
+        const itemSummary: ExtendedItemSummary = {
+          name,
+          display_name: file.name,
+          icon_url: (file as any).icon_url,
+          colour: file.colour,
+          author: file.author,
+          language: file.language,
+          in_collections: [],
+          id: stableHash,
+          canonical_path: canonicalPath,
+          type: folder,
+          item_count: (file as any).photos?.length || (file as any).quotes?.length || 0,
+          created_at: file.created_at,
+          updated_at: file.updated_at,
+          tags,
+          search_text,
+          slug,
+          isDark,
+          isLight,
+        };
+
+        return { name, author: file.author, canonicalPath, summary: itemSummary };
+      })
+    )
+  );
+
+  // Filter out null results (drafts) and add to data structure
+  for (const result of processedItems) {
+    if (result) {
+      data[folder][result.name] = result.summary;
+      if (!curators[result.author]) curators[result.author] = [];
+      curators[result.author].push(result.canonicalPath);
     }
-
-    const name = item.replace('.json', '');
-    const canonicalPath = `${folder}/${name}`;
-
-    // Validate item schema
-    validateItem(file, folder, canonicalPath);
-
-    // Generate stable hash ID
-    const stableHash = generateStableHash(canonicalPath, file.author);
-
-    // Validate uniqueness
-    if (idRegistry.paths.has(canonicalPath)) {
-      console.error('DUPLICATE PATH: %s already exists', canonicalPath);
-      process.exit(1);
-    }
-
-    if (idRegistry.hashes.has(stableHash)) {
-      const existing = idRegistry.hashes.get(stableHash);
-      console.error('HASH COLLISION: %s and %s generate same hash', canonicalPath, existing);
-      console.error('This should never happen - investigate immediately');
-      process.exit(1);
-    }
-
-    // Register IDs
-    idRegistry.paths.add(canonicalPath);
-    idRegistry.hashes.set(stableHash, canonicalPath);
-
-    // Get full git history for created_at and updated_at
-    const history = await git.log({
-      file: path,
-      strictDate: true,
-    });
-
-    // Latest commit = updated_at
-    file.updated_at = new Date(history.latest!.date).toISOString();
-
-    // First commit = created_at
-    file.created_at = new Date(history.all[history.all.length - 1].date).toISOString();
-
-    try {
-      const original = await (await fetch((file as any).icon_url))?.arrayBuffer();
-      const saturated = await sharp(original)
-        .modulate({
-          saturation: 1.75
-        }).
-        toBuffer();
-      // value, rgb, rgba, hex, hexa, isDark, isLight
-      const colour = await getAverageColor(saturated, {
-        ignoredColor: [0, 0, 0]
-      });
-      file.colour = colour.hex;
-    } catch (e) {
-      console.error('error reading %s', (file as any).icon_url);
-      console.error(e);
-    }
-
-    // Add ID fields to the full item data
-    file.id = stableHash;
-    file.canonical_path = canonicalPath;
-
-    await fse.writeJSON(`./dist/${folder}/${item}`, file);
-
-    data[folder][name] = {
-      name,
-      display_name: file.name,
-      icon_url: (file as any).icon_url,
-      colour: file.colour,
-      author: file.author,
-      language: file.language,
-      in_collections: [],
-      id: stableHash,
-      canonical_path: canonicalPath,
-      type: folder,
-      item_count: (file as any).photos?.length || (file as any).quotes?.length || 0,
-      created_at: file.created_at,
-      updated_at: file.updated_at,
-    };
-
-    if (!curators[file.author]) curators[file.author] = [];
-    curators[file.author].push(folder + '/' + name);
   }
+
+  console.log(`✅ Processed ${processedItems.filter((r: any) => r !== null).length} items in ${folder}`);
 }
 
 
@@ -259,13 +391,124 @@ for (const [hash, path] of idRegistry.hashes) {
 
 // Read package.json for version
 const packageJson = await fse.readJSON('./package.json');
+const generatedAt = new Date().toISOString();
 
+// Generate full manifest (existing functionality)
+console.log('📝 Generating full manifest...');
 await fse.writeJSON('./dist/manifest.json', {
   _version: packageJson.version,
-  _generated_at: new Date().toISOString(),
-  _schema_version: "2.0",
+  _generated_at: generatedAt,
+  _schema_version: "2.1",
   collections,
   curators,
   ...data,
   _id_index: idIndex,
 } as ManifestOutput);
+console.log('✅ Generated manifest.json');
+
+// Generate manifest-lite (minimal metadata for fast loading)
+console.log('📝 Generating lite manifest...');
+const allItems = [
+  ...Object.values(data.preset_settings),
+  ...Object.values(data.photo_packs),
+  ...Object.values(data.quote_packs)
+] as ExtendedItemSummary[];
+
+const manifestLite: ManifestLite = {
+  _version: packageJson.version,
+  _generated_at: generatedAt,
+  _schema_version: "2.1",
+  items: allItems.map(item => ({
+    id: item.id,
+    name: item.name,
+    display_name: item.display_name,
+    type: item.type,
+    author: item.author,
+    icon_url: item.icon_url,
+    colour: item.colour
+  })),
+  collections: Object.values(collections).map(col => ({
+    id: col.id,
+    name: col.name,
+    display_name: col.display_name,
+    img: col.img
+  }))
+};
+await fse.writeJSON('./dist/manifest-lite.json', manifestLite);
+console.log('✅ Generated manifest-lite.json');
+
+// Generate search index
+console.log('📝 Generating search index...');
+const tagsMap: Record<string, string[]> = {};
+const authorsMap: Record<string, string[]> = {};
+
+for (const item of allItems) {
+  // Build tags map
+  for (const tag of item.tags) {
+    if (!tagsMap[tag]) tagsMap[tag] = [];
+    tagsMap[tag].push(item.id);
+  }
+
+  // Build authors map
+  if (!authorsMap[item.author]) authorsMap[item.author] = [];
+  authorsMap[item.author].push(item.id);
+}
+
+const searchIndex: SearchIndex = {
+  items: allItems.map(item => ({
+    id: item.id,
+    canonical_path: item.canonical_path,
+    type: item.type,
+    search_text: item.search_text,
+    tags: item.tags,
+    display_name: item.display_name,
+    author: item.author
+  })),
+  tags: tagsMap,
+  authors: authorsMap
+};
+await fse.writeJSON('./dist/search-index.json', searchIndex);
+console.log('✅ Generated search-index.json');
+
+// Generate stats
+console.log('📝 Generating stats...');
+const sortedItems = [...allItems].sort((a, b) =>
+  new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+);
+
+const tagFrequency: Record<string, number> = {};
+for (const item of allItems) {
+  for (const tag of item.tags) {
+    tagFrequency[tag] = (tagFrequency[tag] || 0) + 1;
+  }
+}
+
+const popularTags = Object.entries(tagFrequency)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 50)
+  .map(([tag, count]) => ({ tag, count }));
+
+const stats: StatsOutput = {
+  total_items: allItems.length,
+  items_by_category: {
+    preset_settings: Object.keys(data.preset_settings).length,
+    photo_packs: Object.keys(data.photo_packs).length,
+    quote_packs: Object.keys(data.quote_packs).length
+  },
+  total_collections: Object.keys(collections).length,
+  total_curators: Object.keys(curators).length,
+  recent_items: sortedItems.slice(0, 20),
+  popular_tags: popularTags,
+  generated_at: generatedAt
+};
+await fse.writeJSON('./dist/stats.json', stats);
+console.log('✅ Generated stats.json');
+
+// Performance summary
+const perfEnd = Date.now();
+const duration = ((perfEnd - perfStart) / 1000).toFixed(2);
+console.log(`\n🎉 Marketplace bundle complete!`);
+console.log(`   Total time: ${duration}s`);
+console.log(`   Items processed: ${allItems.length}`);
+console.log(`   Collections: ${Object.keys(collections).length}`);
+console.log(`   Curators: ${Object.keys(curators).length}`);
