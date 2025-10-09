@@ -9,6 +9,7 @@ export interface PhotoPackItem {
   language?: string;
   draft?: boolean;
   colour?: string;
+  blurhash?: string;
   id?: string;
   canonical_path?: string;
   created_at?: string;
@@ -24,6 +25,7 @@ export interface QuotePackItem {
   draft?: boolean;
   icon_url?: string;
   colour?: string;
+  blurhash?: string;
   id?: string;
   canonical_path?: string;
   created_at?: string;
@@ -39,6 +41,7 @@ export interface PresetSettingsItem {
   draft?: boolean;
   icon_url?: string;
   colour?: string;
+  blurhash?: string;
   id?: string;
   canonical_path?: string;
   created_at?: string;
@@ -77,6 +80,7 @@ export interface ItemSummary {
   display_name: string;
   icon_url?: string;
   colour?: string;
+  blurhash?: string;
   author: string;
   language?: string;
   in_collections: string[];
@@ -168,6 +172,7 @@ export interface ManifestLite {
     author: string;
     icon_url?: string;
     colour?: string;
+    blurhash?: string;
   }>;
   collections: Array<{
     id: string;
