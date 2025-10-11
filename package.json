@@ -12,6 +12,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsx scripts/bundle.ts",
+    "build:full": "tsx scripts/bundle.ts --full",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
