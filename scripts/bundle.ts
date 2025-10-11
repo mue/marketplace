@@ -3,6 +3,7 @@ import simpleGit from 'simple-git';
 import sharp from 'sharp';
 import { getAverageColor } from 'fast-average-color-node';
 import { encode } from 'blurhash';
+import crypto from 'crypto';
 import pLimit from 'p-limit';
 import {
   generateStableHash,

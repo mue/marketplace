@@ -32,6 +32,8 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "blurhash": "^2.0.5"
+    "blurhash": "^2.0.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.2.0"
   }
 }
