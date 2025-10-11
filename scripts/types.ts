@@ -1,5 +1,17 @@
 export type FolderType = 'photo_packs' | 'quote_packs' | 'preset_settings';
 
+// Predefined category tags for better discoverability
+export type CategoryTag =
+  // General themes
+  | 'nature' | 'urban' | 'minimal' | 'colorful' | 'dark' | 'light'
+  // Photo-specific
+  | 'landscapes' | 'architecture' | 'animals' | 'space' | 'abstract'
+  | 'seasonal' | 'travel' | 'vehicles' | 'food' | 'sports'
+  // Quote-specific
+  | 'motivational' | 'philosophical' | 'humor' | 'facts' | 'wisdom'
+  // Setting-specific
+  | 'productivity' | 'aesthetic' | 'gaming' | 'professional';
+
 export interface PhotoPackItem {
   name: string;
   description: string;
@@ -7,6 +19,8 @@ export interface PhotoPackItem {
   icon_url: string;
   photos: string[];
   language?: string;
+  keywords?: string[]; // Manual curated keywords for better discovery
+  category_tags?: CategoryTag[]; // Predefined category tags
   draft?: boolean;
   colour?: string;
   id?: string;
@@ -21,6 +35,8 @@ export interface QuotePackItem {
   author: string;
   quotes: Array<{ quote: string; author?: string }>;
   language?: string;
+  keywords?: string[]; // Manual curated keywords for better discovery
+  category_tags?: CategoryTag[]; // Predefined category tags
   draft?: boolean;
   icon_url?: string;
   colour?: string;
@@ -36,6 +52,8 @@ export interface PresetSettingsItem {
   author: string;
   settings: Record<string, unknown>;
   language?: string;
+  keywords?: string[]; // Manual curated keywords for better discovery
+  category_tags?: CategoryTag[]; // Predefined category tags
   draft?: boolean;
   icon_url?: string;
   colour?: string;
@@ -125,9 +143,10 @@ export interface ManifestOutput {
 
 // Enhanced types for Phase 2 & 3
 export interface ExtendedItemSummary extends ItemSummary {
-  tags: string[];
   search_text: string;
   slug: string;
+  keywords?: string[];
+  category_tags?: CategoryTag[];
   isDark?: boolean;
   isLight?: boolean;
 }
@@ -138,12 +157,14 @@ export interface SearchIndex {
     canonical_path: string;
     type: FolderType;
     search_text: string;
-    tags: string[];
     display_name: string;
     author: string;
+    keywords?: string[];
+    category_tags?: CategoryTag[];
   }>;
-  tags: Record<string, string[]>; // tag -> item IDs
   authors: Record<string, string[]>; // author -> item IDs
+  keywords: Record<string, string[]>; // keyword -> item IDs
+  category_tags: Record<CategoryTag, string[]>; // category_tag -> item IDs
 }
 
 export interface StatsOutput {
@@ -152,7 +173,6 @@ export interface StatsOutput {
   total_collections: number;
   total_curators: number;
   recent_items: ExtendedItemSummary[];
-  popular_tags: Array<{ tag: string; count: number }>;
   generated_at: string;
 }
 
@@ -178,8 +198,9 @@ export interface ManifestLite {
 }
 
 export interface FilterOptions {
-  tags?: string[];
   author?: string;
+  keywords?: string[];
+  category_tags?: CategoryTag[];
   color_range?: string;
   date_from?: string;
   date_to?: string;

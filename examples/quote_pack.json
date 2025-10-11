@@ -1,12 +1,10 @@
 {
     "name": "Example Quotes",
-    "description": "This is an example.",
-    "type": "quotes",
-    "version": "1.0.0",
+    "description": "This is an example quote pack with inspirational quotes.",
     "author": "Mue",
-    "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
-    "screenshot_url": "https://github.com/mue/mue/raw/main/assets/screenshot.webp",
     "language": "en",
+    "keywords": ["inspiration", "wisdom", "motivation"],
+    "category_tags": ["motivational", "philosophical"],
     "quotes": [
         {
             "quote": "This is an example quote.",

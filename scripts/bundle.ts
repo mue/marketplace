@@ -25,8 +25,35 @@ import type {
 const perfStart = Date.now();
 console.log('🚀 Starting marketplace bundle process...');
 
+// CLI arguments for build modes
+const args = process.argv.slice(2);
+const FULL_REBUILD = args.includes('--full');
+const CACHE_DIR = '.build-cache';
+
 await fse.ensureDir('dist');
+await fse.ensureDir(CACHE_DIR);
 await fse.copy('data', 'dist');
+
+// Load caches
+interface CacheData {
+  gitHistory: Record<string, { created_at: string; updated_at: string; contentHash: string }>;
+  colorCache: Record<string, { colour: string; isDark: boolean; isLight: boolean }>;
+}
+
+let cache: CacheData = { gitHistory: {}, colorCache: {} };
+const cacheFile = `${CACHE_DIR}/build-cache.json`;
+
+if (!FULL_REBUILD && await fse.pathExists(cacheFile)) {
+  try {
+    cache = await fse.readJSON(cacheFile);
+    console.log(`📦 Loaded cache: ${Object.keys(cache.gitHistory).length} git entries, ${Object.keys(cache.colorCache).length} color entries`);
+  } catch (e) {
+    console.warn('⚠️  Failed to load cache, starting fresh');
+    cache = { gitHistory: {}, colorCache: {} };
+  }
+} else if (FULL_REBUILD) {
+  console.log('🔄 Full rebuild requested, skipping cache');
+}
 
 let baseDir = '.';
 if (process.env.CF_PAGES === '1') {
@@ -66,26 +93,13 @@ function generateSlug(name: string): string {
 }
 
 /**
- * Extract tags from text (name + description)
+ * Compute content hash for a file
  */
-function extractTags(name: string, description: string): string[] {
-  const text = `${name} ${description}`.toLowerCase();
-  const commonWords = new Set(['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'from', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'should', 'could', 'may', 'might', 'must', 'can', 'this', 'that', 'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'them', 'their', 'what', 'which', 'who', 'when', 'where', 'why', 'how', 'all', 'each', 'every', 'both', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'just', 'don', 'now', 'source']);
-
-  const words = text
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .split(/\s+/)
-    .filter(w => w.length > 2 && !commonWords.has(w));
-
-  // Get unique words and take top frequent ones
-  const wordFreq = new Map<string, number>();
-  words.forEach(w => wordFreq.set(w, (wordFreq.get(w) || 0) + 1));
-
-  return Array.from(wordFreq.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10)
-    .map(([word]) => word);
+async function computeFileHash(filePath: string): Promise<string> {
+  const content = await fse.readFile(filePath, 'utf8');
+  return crypto.createHash('sha256').update(content).digest('hex').slice(0, 16);
 }
+
 
 /**
  * Generate search text for full-text search
@@ -144,40 +158,84 @@ const data: DataStructure = {
 // Batch git log to get all file histories at once for performance
 console.log('📝 Fetching git history for all files...');
 const allPaths: string[] = [];
+const pathsNeedingGitFetch: string[] = [];
+
 for (const folder of Object.keys(data) as FolderType[]) {
   const categories = `./data/${folder}`;
   if (!fse.existsSync(categories)) continue;
   const items = fse.readdirSync(categories);
   for (const item of items) {
-    allPaths.push(`./data/${folder}/${item}`);
+    const path = `./data/${folder}/${item}`;
+    allPaths.push(path);
+
+    // Check if we need to fetch git history for this file
+    const fileHash = await computeFileHash(path);
+    const cachedEntry = cache.gitHistory[path];
+
+    if (!cachedEntry || cachedEntry.contentHash !== fileHash) {
+      pathsNeedingGitFetch.push(path);
+    }
   }
 }
 
-// Get git history for all files in one call
+// Get git history for changed/new files only
 const gitHistoryMap = new Map<string, { created_at: string; updated_at: string }>();
-try {
-  const allHistory = await Promise.all(
-    allPaths.map((path: string) =>
-      git.log({ file: path, strictDate: true })
-        .then((history: any) => ({ path, history }))
-        .catch((err: any) => {
-          console.warn(`Warning: Could not get git history for ${path}`, err);
-          return { path, history: null };
-        })
-    )
-  );
 
-  for (const { path, history } of allHistory) {
-    if (history && history.latest) {
+// First, load cached entries
+let cacheHits = 0;
+for (const path of allPaths) {
+  const cachedEntry = cache.gitHistory[path];
+  if (cachedEntry) {
+    const fileHash = await computeFileHash(path);
+    if (cachedEntry.contentHash === fileHash) {
       gitHistoryMap.set(path, {
-        updated_at: new Date(history.latest.date).toISOString(),
-        created_at: new Date(history.all[history.all.length - 1].date).toISOString()
+        created_at: cachedEntry.created_at,
+        updated_at: cachedEntry.updated_at
       });
+      cacheHits++;
     }
   }
-  console.log(`✅ Fetched git history for ${gitHistoryMap.size} files`);
-} catch (e) {
-  console.error('Error fetching git history:', e);
+}
+
+console.log(`💾 Cache hits: ${cacheHits}/${allPaths.length} files`);
+
+// Fetch git history only for changed/new files
+if (pathsNeedingGitFetch.length > 0) {
+  console.log(`🔍 Fetching git history for ${pathsNeedingGitFetch.length} changed files...`);
+  try {
+    const allHistory = await Promise.all(
+      pathsNeedingGitFetch.map((path: string) =>
+        git.log({ file: path, strictDate: true })
+          .then((history: any) => ({ path, history }))
+          .catch((err: any) => {
+            console.warn(`Warning: Could not get git history for ${path}`, err);
+            return { path, history: null };
+          })
+      )
+    );
+
+    for (const { path, history } of allHistory) {
+      if (history && history.latest) {
+        const timestamps = {
+          updated_at: new Date(history.latest.date).toISOString(),
+          created_at: new Date(history.all[history.all.length - 1].date).toISOString()
+        };
+        gitHistoryMap.set(path, timestamps);
+
+        // Update cache
+        const fileHash = await computeFileHash(path);
+        cache.gitHistory[path] = {
+          ...timestamps,
+          contentHash: fileHash
+        };
+      }
+    }
+    console.log(`✅ Fetched git history for ${pathsNeedingGitFetch.length} files`);
+  } catch (e) {
+    console.error('Error fetching git history:', e);
+  }
+} else {
+  console.log('✅ All git history loaded from cache');
 }
 
 // Process items in parallel with concurrency limit
@@ -243,27 +301,44 @@ for (const folder of Object.keys(data) as FolderType[]) {
         let isDark = false;
         let isLight = false;
         if ((file as any).icon_url) {
-          try {
-            const original = await (await fetch((file as any).icon_url))?.arrayBuffer();
-            const saturated = await sharp(original)
-              .modulate({
-                saturation: 1.75
-              })
-              .toBuffer();
-            // value, rgb, rgba, hex, hexa, isDark, isLight
-            const colour = await getAverageColor(saturated, {
-              ignoredColor: [0, 0, 0]
-            });
-            file.colour = colour.hex;
-            isDark = colour.isDark;
-            isLight = colour.isLight;
-          } catch (e) {
-            console.error('error reading %s', (file as any).icon_url);
+          const iconUrl = (file as any).icon_url;
+
+          // Check cache first
+          if (cache.colorCache[iconUrl]) {
+            const cached = cache.colorCache[iconUrl];
+            file.colour = cached.colour;
+            isDark = cached.isDark;
+            isLight = cached.isLight;
+          } else {
+            // Fetch and process color
+            try {
+              const original = await (await fetch(iconUrl))?.arrayBuffer();
+              const saturated = await sharp(original)
+                .modulate({
+                  saturation: 1.75
+                })
+                .toBuffer();
+              // value, rgb, rgba, hex, hexa, isDark, isLight
+              const colour = await getAverageColor(saturated, {
+                ignoredColor: [0, 0, 0]
+              });
+              file.colour = colour.hex;
+              isDark = colour.isDark;
+              isLight = colour.isLight;
+
+              // Cache the result
+              cache.colorCache[iconUrl] = {
+                colour: colour.hex,
+                isDark: colour.isDark,
+                isLight: colour.isLight
+              };
+            } catch (e) {
+              console.error('error reading %s', iconUrl);
+            }
           }
         }
 
         // Generate enhanced metadata
-        const tags = extractTags(file.name, file.description);
         const search_text = generateSearchText(file, canonicalPath, file.author);
         const slug = generateSlug(file.name);
 
@@ -280,6 +355,8 @@ for (const folder of Object.keys(data) as FolderType[]) {
           colour: file.colour,
           author: file.author,
           language: file.language,
+          keywords: file.keywords,
+          category_tags: file.category_tags,
           in_collections: [],
           id: stableHash,
           canonical_path: canonicalPath,
@@ -287,7 +364,6 @@ for (const folder of Object.keys(data) as FolderType[]) {
           item_count: (file as any).photos?.length || (file as any).quotes?.length || 0,
           created_at: file.created_at,
           updated_at: file.updated_at,
-          tags,
           search_text,
           slug,
           isDark,
@@ -398,7 +474,7 @@ console.log('📝 Generating full manifest...');
 await fse.writeJSON('./dist/manifest.json', {
   _version: packageJson.version,
   _generated_at: generatedAt,
-  _schema_version: "2.1",
+  _schema_version: "3.0",
   collections,
   curators,
   ...data,
@@ -417,7 +493,7 @@ const allItems = [
 const manifestLite: ManifestLite = {
   _version: packageJson.version,
   _generated_at: generatedAt,
-  _schema_version: "2.1",
+  _schema_version: "3.0",
   items: allItems.map(item => ({
     id: item.id,
     name: item.name,
@@ -439,19 +515,30 @@ console.log('✅ Generated manifest-lite.json');
 
 // Generate search index
 console.log('📝 Generating search index...');
-const tagsMap: Record<string, string[]> = {};
 const authorsMap: Record<string, string[]> = {};
+const keywordsMap: Record<string, string[]> = {};
+const categoryTagsMap: Record<string, string[]> = {};
 
 for (const item of allItems) {
-  // Build tags map
-  for (const tag of item.tags) {
-    if (!tagsMap[tag]) tagsMap[tag] = [];
-    tagsMap[tag].push(item.id);
-  }
-
   // Build authors map
   if (!authorsMap[item.author]) authorsMap[item.author] = [];
   authorsMap[item.author].push(item.id);
+
+  // Build keywords map
+  if (item.keywords) {
+    for (const keyword of item.keywords) {
+      if (!keywordsMap[keyword]) keywordsMap[keyword] = [];
+      keywordsMap[keyword].push(item.id);
+    }
+  }
+
+  // Build category_tags map
+  if (item.category_tags) {
+    for (const tag of item.category_tags) {
+      if (!categoryTagsMap[tag]) categoryTagsMap[tag] = [];
+      categoryTagsMap[tag].push(item.id);
+    }
+  }
 }
 
 const searchIndex: SearchIndex = {
@@ -460,12 +547,14 @@ const searchIndex: SearchIndex = {
     canonical_path: item.canonical_path,
     type: item.type,
     search_text: item.search_text,
-    tags: item.tags,
     display_name: item.display_name,
-    author: item.author
+    author: item.author,
+    keywords: item.keywords,
+    category_tags: item.category_tags
   })),
-  tags: tagsMap,
-  authors: authorsMap
+  authors: authorsMap,
+  keywords: keywordsMap,
+  category_tags: categoryTagsMap as any
 };
 await fse.writeJSON('./dist/search-index.json', searchIndex);
 console.log('✅ Generated search-index.json');
@@ -475,18 +564,6 @@ console.log('📝 Generating stats...');
 const sortedItems = [...allItems].sort((a, b) =>
   new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
 );
-
-const tagFrequency: Record<string, number> = {};
-for (const item of allItems) {
-  for (const tag of item.tags) {
-    tagFrequency[tag] = (tagFrequency[tag] || 0) + 1;
-  }
-}
-
-const popularTags = Object.entries(tagFrequency)
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 50)
-  .map(([tag, count]) => ({ tag, count }));
 
 const stats: StatsOutput = {
   total_items: allItems.length,
@@ -498,11 +575,15 @@ const stats: StatsOutput = {
   total_collections: Object.keys(collections).length,
   total_curators: Object.keys(curators).length,
   recent_items: sortedItems.slice(0, 20),
-  popular_tags: popularTags,
   generated_at: generatedAt
 };
 await fse.writeJSON('./dist/stats.json', stats);
 console.log('✅ Generated stats.json');
+
+// Save cache for next build
+console.log('💾 Saving cache...');
+await fse.writeJSON(cacheFile, cache, { spaces: 2 });
+console.log(`✅ Saved cache: ${Object.keys(cache.gitHistory).length} git entries, ${Object.keys(cache.colorCache).length} color entries`);
 
 // Performance summary
 const perfEnd = Date.now();

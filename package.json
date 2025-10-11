@@ -11,7 +11,8 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsx scripts/bundle.ts"
+    "build": "tsx scripts/bundle.ts",
+    "build:full": "tsx scripts/bundle.ts --full"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
