@@ -2,8 +2,15 @@ import fse from 'fs-extra';
 import simpleGit from 'simple-git';
 import sharp from 'sharp';
 import { getAverageColor } from 'fast-average-color-node';
-import crypto from 'crypto';
+import { encode } from 'blurhash';
 import pLimit from 'p-limit';
+import {
+  generateStableHash,
+  generateSlug,
+  extractTags,
+  generateSearchText,
+  validateItem
+} from './utils.js';
 import type {
   FolderType,
   ItemData,
@@ -263,7 +270,12 @@ for (const folder of Object.keys(data) as FolderType[]) {
         const canonicalPath = `${folder}/${name}`;
 
         // Validate item schema
-        validateItem(file, folder, canonicalPath);
+        try {
+          validateItem(file, folder, canonicalPath);
+        } catch (error) {
+          console.error(error instanceof Error ? error.message : String(error));
+          process.exit(1);
+        }
 
         // Generate stable hash ID
         const stableHash = generateStableHash(canonicalPath, file.author);
@@ -297,7 +309,7 @@ for (const folder of Object.keys(data) as FolderType[]) {
           file.created_at = now;
         }
 
-        // Extract color from icon (if available)
+        // Extract color and blurhash from icon (if available)
         let isDark = false;
         let isLight = false;
         if ((file as any).icon_url) {
@@ -353,6 +365,7 @@ for (const folder of Object.keys(data) as FolderType[]) {
           display_name: file.name,
           icon_url: (file as any).icon_url,
           colour: file.colour,
+          blurhash: file.blurhash,
           author: file.author,
           language: file.language,
           keywords: file.keywords,
@@ -501,7 +514,8 @@ const manifestLite: ManifestLite = {
     type: item.type,
     author: item.author,
     icon_url: item.icon_url,
-    colour: item.colour
+    colour: item.colour,
+    blurhash: item.blurhash
   })),
   collections: Object.values(collections).map(col => ({
     id: col.id,

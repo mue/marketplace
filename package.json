@@ -12,17 +12,25 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsx scripts/bundle.ts",
-    "build:full": "tsx scripts/bundle.ts --full"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.19.19",
+    "@vitest/ui": "^3.2.4",
     "fast-average-color-node": "^3.0.0",
     "fs-extra": "^11.2.0",
     "p-limit": "^7.1.1",
     "sharp": "^0.33.4",
     "simple-git": "^3.24.0",
     "tsx": "^4.7.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "blurhash": "^2.0.5"
   }
 }
