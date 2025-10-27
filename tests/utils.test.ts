@@ -2,17 +2,21 @@ import { describe, it, expect } from 'vitest';
 import {
   generateStableHash,
   generateSlug,
-  extractTags,
   generateSearchText,
   validateItem,
-  REQUIRED_FIELDS
+  formatValidationError,
 } from '../scripts/utils.js';
-import type { PhotoPackItem, QuotePackItem, PresetSettingsItem } from '../scripts/types.js';
+import { VALIDATION_CONFIG, ID_CONFIG } from '../scripts/config.js';
+import type {
+  PhotoPackItem,
+  QuotePackItem,
+  PresetSettingsItem,
+} from '../scripts/types.js';
 
 describe('generateStableHash', () => {
-  it('should generate a 12-character hash', () => {
+  it('should generate a hash of the configured length', () => {
     const hash = generateStableHash('photo_packs/nature', 'john_doe');
-    expect(hash).toHaveLength(12);
+    expect(hash).toHaveLength(ID_CONFIG.HASH_LENGTH);
   });
 
   it('should generate consistent hashes for the same input', () => {
@@ -35,7 +39,7 @@ describe('generateStableHash', () => {
 
   it('should handle special characters in path and author', () => {
     const hash = generateStableHash('photo_packs/São_Paulo', 'author@email.com');
-    expect(hash).toHaveLength(12);
+    expect(hash).toHaveLength(ID_CONFIG.HASH_LENGTH);
     expect(hash).toMatch(/^[a-f0-9]{12}$/);
   });
 });
@@ -79,72 +83,6 @@ describe('generateSlug', () => {
   it('should handle empty string', () => {
     const slug = generateSlug('');
     expect(slug).toBe('');
-  });
-});
-
-describe('extractTags', () => {
-  it('should extract meaningful words from name and description', () => {
-    const tags = extractTags(
-      'Nature Photography',
-      'Beautiful landscape photos from around the world'
-    );
-    expect(tags).toContain('nature');
-    expect(tags).toContain('photography');
-    expect(tags).toContain('beautiful');
-    expect(tags).toContain('landscape');
-    expect(tags).toContain('photos');
-    expect(tags).toContain('world');
-  });
-
-  it('should filter out common words', () => {
-    const tags = extractTags(
-      'The Best Photos',
-      'These are the most beautiful photos in the world'
-    );
-    expect(tags).not.toContain('the');
-    expect(tags).not.toContain('are');
-    expect(tags).not.toContain('in');
-  });
-
-  it('should filter out words shorter than 3 characters', () => {
-    const tags = extractTags('AI ML Photos', 'AI and ML in photography');
-    expect(tags).not.toContain('ai');
-    expect(tags).not.toContain('ml');
-  });
-
-  it('should return maximum 10 tags', () => {
-    const tags = extractTags(
-      'One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve',
-      'Testing maximum tag limit with many words here'
-    );
-    expect(tags.length).toBeLessThanOrEqual(10);
-  });
-
-  it('should prioritize frequently occurring words', () => {
-    const tags = extractTags(
-      'Nature nature nature',
-      'Beautiful nature photos. Nature is amazing. Love nature.'
-    );
-    expect(tags[0]).toBe('nature');
-  });
-
-  it('should convert to lowercase', () => {
-    const tags = extractTags('NATURE', 'BEAUTIFUL PHOTOS');
-    expect(tags).toContain('nature');
-    expect(tags).toContain('beautiful');
-    expect(tags).toContain('photos');
-  });
-
-  it('should handle special characters', () => {
-    const tags = extractTags('Nature!!!', 'Photos@#$% Beautiful');
-    expect(tags).toContain('nature');
-    expect(tags).toContain('photos');
-    expect(tags).toContain('beautiful');
-  });
-
-  it('should handle empty input', () => {
-    const tags = extractTags('', '');
-    expect(tags).toEqual([]);
   });
 });
 
@@ -228,89 +166,92 @@ describe('validateItem', () => {
         description: 'Beautiful landscapes',
         author: 'john_doe',
         icon_url: 'http://example.com/icon.png',
-        photos: ['photo1.jpg', 'photo2.jpg']
+        photos: ['photo1.jpg', 'photo2.jpg'],
       };
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).not.toThrow();
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(true);
     });
 
-    it('should throw error if name is missing', () => {
+    it('should fail validation if name is missing', () => {
       const item = {
         description: 'Beautiful landscapes',
         author: 'john_doe',
         icon_url: 'http://example.com/icon.png',
-        photos: ['photo1.jpg']
+        photos: ['photo1.jpg'],
       } as PhotoPackItem;
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).toThrow(
-        /missing required field "name"/
-      );
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('name');
+      expect(result.error?.message).toContain('Missing required field');
     });
 
-    it('should throw error if description is missing', () => {
+    it('should fail validation if description is missing', () => {
       const item = {
         name: 'Nature Photos',
         author: 'john_doe',
         icon_url: 'http://example.com/icon.png',
-        photos: ['photo1.jpg']
+        photos: ['photo1.jpg'],
       } as PhotoPackItem;
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).toThrow(
-        /missing required field "description"/
-      );
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('description');
     });
 
-    it('should throw error if author is missing', () => {
+    it('should fail validation if author is missing', () => {
       const item = {
         name: 'Nature Photos',
         description: 'Beautiful landscapes',
         icon_url: 'http://example.com/icon.png',
-        photos: ['photo1.jpg']
+        photos: ['photo1.jpg'],
       } as PhotoPackItem;
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).toThrow(
-        /missing required field "author"/
-      );
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('author');
     });
 
-    it('should throw error if icon_url is missing', () => {
+    it('should fail validation if icon_url is missing', () => {
       const item = {
         name: 'Nature Photos',
         description: 'Beautiful landscapes',
         author: 'john_doe',
-        photos: ['photo1.jpg']
+        photos: ['photo1.jpg'],
       } as PhotoPackItem;
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).toThrow(
-        /missing required field "icon_url"/
-      );
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('icon_url');
     });
 
-    it('should throw error if photos array is missing', () => {
+    it('should fail validation if photos array is missing', () => {
       const item = {
         name: 'Nature Photos',
         description: 'Beautiful landscapes',
         author: 'john_doe',
-        icon_url: 'http://example.com/icon.png'
+        icon_url: 'http://example.com/icon.png',
       } as PhotoPackItem;
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).toThrow(
-        /missing required field "photos"/
-      );
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('photos');
     });
 
-    it('should throw error if photos array is empty', () => {
+    it('should fail validation if photos array is empty', () => {
       const item: PhotoPackItem = {
         name: 'Nature Photos',
         description: 'Beautiful landscapes',
         author: 'john_doe',
         icon_url: 'http://example.com/icon.png',
-        photos: []
+        photos: [],
       };
-      
-      expect(() => validateItem(item, 'photo_packs', 'photo_packs/nature')).toThrow(
-        /has no photos/
-      );
+
+      const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('photos');
+      expect(result.error?.message).toContain('at least one photo');
     });
   });
 
@@ -322,36 +263,42 @@ describe('validateItem', () => {
         author: 'jane_smith',
         quotes: [
           { quote: 'Be yourself', author: 'Oscar Wilde' },
-          { quote: 'Keep going' }
-        ]
+          { quote: 'Keep going' },
+        ],
       };
-      
-      expect(() => validateItem(item, 'quote_packs', 'quote_packs/inspirational')).not.toThrow();
+
+      const result = validateItem(
+        item,
+        'quote_packs',
+        'quote_packs/inspirational'
+      );
+      expect(result.success).toBe(true);
     });
 
-    it('should throw error if quotes array is missing', () => {
+    it('should fail validation if quotes array is missing', () => {
       const item = {
         name: 'Quotes',
         description: 'Some quotes',
-        author: 'author'
+        author: 'author',
       } as QuotePackItem;
-      
-      expect(() => validateItem(item, 'quote_packs', 'quote_packs/test')).toThrow(
-        /missing required field "quotes"/
-      );
+
+      const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('quotes');
     });
 
-    it('should throw error if quotes array is empty', () => {
+    it('should fail validation if quotes array is empty', () => {
       const item: QuotePackItem = {
         name: 'Quotes',
         description: 'Some quotes',
         author: 'author',
-        quotes: []
+        quotes: [],
       };
-      
-      expect(() => validateItem(item, 'quote_packs', 'quote_packs/test')).toThrow(
-        /has no quotes/
-      );
+
+      const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('quotes');
+      expect(result.error?.message).toContain('at least one quote');
     });
   });
 
@@ -363,23 +310,32 @@ describe('validateItem', () => {
         author: 'designer',
         settings: {
           theme: 'dark',
-          fontSize: 14
-        }
+          fontSize: 14,
+        },
       };
-      
-      expect(() => validateItem(item, 'preset_settings', 'preset_settings/dark')).not.toThrow();
+
+      const result = validateItem(
+        item,
+        'preset_settings',
+        'preset_settings/dark'
+      );
+      expect(result.success).toBe(true);
     });
 
-    it('should throw error if settings object is missing', () => {
+    it('should fail validation if settings object is missing', () => {
       const item = {
         name: 'Settings',
         description: 'Some settings',
-        author: 'author'
+        author: 'author',
       } as PresetSettingsItem;
-      
-      expect(() => validateItem(item, 'preset_settings', 'preset_settings/test')).toThrow(
-        /missing required field "settings"/
+
+      const result = validateItem(
+        item,
+        'preset_settings',
+        'preset_settings/test'
       );
+      expect(result.success).toBe(false);
+      expect(result.error?.field).toBe('settings');
     });
 
     it('should pass validation with empty settings object', () => {
@@ -387,40 +343,72 @@ describe('validateItem', () => {
         name: 'Settings',
         description: 'Some settings',
         author: 'author',
-        settings: {}
+        settings: {},
       };
-      
-      expect(() => validateItem(item, 'preset_settings', 'preset_settings/test')).not.toThrow();
+
+      const result = validateItem(
+        item,
+        'preset_settings',
+        'preset_settings/test'
+      );
+      expect(result.success).toBe(true);
     });
   });
 });
 
-describe('REQUIRED_FIELDS', () => {
+describe('formatValidationError', () => {
+  it('should format error with field name', () => {
+    const formatted = formatValidationError({
+      field: 'name',
+      message: 'Missing required field "name"',
+      canonicalPath: 'photo_packs/nature',
+    });
+
+    expect(formatted).toContain('VALIDATION ERROR');
+    expect(formatted).toContain('photo_packs/nature');
+    expect(formatted).toContain('Missing required field');
+    expect(formatted).toContain('field: name');
+  });
+
+  it('should format error without field name', () => {
+    const formatted = formatValidationError({
+      message: 'Invalid item',
+      canonicalPath: 'photo_packs/nature',
+    });
+
+    expect(formatted).toContain('VALIDATION ERROR');
+    expect(formatted).toContain('photo_packs/nature');
+    expect(formatted).toContain('Invalid item');
+    expect(formatted).not.toContain('field:');
+  });
+});
+
+describe('VALIDATION_CONFIG', () => {
   it('should have correct required fields for photo_packs', () => {
-    expect(REQUIRED_FIELDS.photo_packs).toEqual([
+    expect(VALIDATION_CONFIG.REQUIRED_FIELDS.photo_packs).toEqual([
       'name',
       'description',
       'author',
       'icon_url',
-      'photos'
+      'photos',
     ]);
   });
 
   it('should have correct required fields for quote_packs', () => {
-    expect(REQUIRED_FIELDS.quote_packs).toEqual([
+    expect(VALIDATION_CONFIG.REQUIRED_FIELDS.quote_packs).toEqual([
       'name',
       'description',
       'author',
-      'quotes'
+      'quotes',
     ]);
   });
 
   it('should have correct required fields for preset_settings', () => {
-    expect(REQUIRED_FIELDS.preset_settings).toEqual([
+    expect(VALIDATION_CONFIG.REQUIRED_FIELDS.preset_settings).toEqual([
       'name',
       'description',
       'author',
-      'settings'
+      'settings',
     ]);
   });
 });
