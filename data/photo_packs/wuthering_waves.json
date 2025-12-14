@@ -1,0 +1,691 @@
+{
+    "name": "Wuthering Waves",
+    "description": "Wuthering Waves Photos",
+    "icon_url": "https://i.imgur.com/cCuPCv3.png",
+    "screenshot_url": "https://i.imgur.com/LFxLNuP.jpeg",
+    "type": "photos",
+    "verified": false,
+    "version": "1.0.0",
+    "author": "SuleymN20",
+    "photos": [
+        {
+            "photographer": "Caaaaarrot_2525",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/BVN41GC.jpeg"
+            }
+        },
+        {
+            "photographer": "Kackaorz",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/qVMhSQj.jpeg"
+            }
+        },
+        {
+            "photographer": "reoenl",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/pPpgEpU.jpeg"
+            }
+        },
+        {
+            "photographer": "swd3e22",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Fb4Ob1c.jpeg"
+            }
+        },
+        {
+            "photographer": "米粒Duona",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Y461CBZ.jpeg"
+            }
+        },
+        {
+            "photographer": "sleep3841",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Cavld1p.jpeg"
+            }
+        },
+        {
+            "photographer": "言白钛",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/32hwv2d.jpeg"
+            }
+        },
+        {
+            "photographer": "auauko123",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/XBPSjS7.jpeg"
+            }
+        },
+        {
+            "photographer": "maoshi",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Jtqcj0w.jpeg"
+            }
+        },
+        {
+            "photographer": "SecretFj520",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/8YzJvHu.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/sGeukkH.jpeg"
+            }
+        },
+        {
+            "photographer": "pixiv/Hood",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/K3EqoG6.jpeg"
+            }
+        },
+        {
+            "photographer": "inoriac_",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/pDard6Z.jpeg"
+            }
+        },
+        {
+            "photographer": "void/Re:era",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/a5duxl0.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/uwDGDX2.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Ag7koxu.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/bZiThb5.jpeg"
+            }
+        },
+        {
+            "photographer": "SecretFj520",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/spxoGdE.jpeg"
+            }
+        },
+        {
+            "photographer": "csyday829",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/NrWnWHY.jpeg"
+            }
+        },
+        {
+            "photographer": "下笔万物生",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/ZsXLuyF.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/nSRU88A.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/wlZBFkp.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/lQiKMrI.jpeg"
+            }
+        },
+        {
+            "photographer": "cotta__k",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/7WOj1sH.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/LFxLNuP.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/0S9cZKI.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/uE8qT6M.jpeg"
+            }
+        },
+        {
+            "photographer": "ribao_bbb",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/mylAxbH.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/YdR4E9y.jpeg"
+            }
+        },
+        {
+            "photographer": "Z3zz4",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/SHPX8jT.jpeg"
+            }
+        },
+        {
+            "photographer": "pepepp39__",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/ZcUgdrZ.jpeg"
+            }
+        },
+        {
+            "photographer": "xiliu",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/n784XiQ.jpeg"
+            }
+        },
+        {
+            "photographer": "颗大脆桃桃",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/JPZxYO1.jpeg"
+            }
+        },
+        {
+            "photographer": "44c_isaac",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/d99dcCu.jpeg"
+            }
+        },
+        {
+            "photographer": "77fchen",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/JpBLUfY.jpeg"
+            }
+        },
+        {
+            "photographer": "qing0ying0",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/BJyr2d3.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/n8AzOPM.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/1rexYWI.jpeg"
+            }
+        },
+        {
+            "photographer": "kirinottk",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/ouDhQUZ.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/QdrYJvb.jpeg"
+            }
+        },
+        {
+            "photographer": "Rafa_elaelaela",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/CFd8ogz.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Xr93wiS.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/q0Ku89R.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/nLR9gIC.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Kz8buf4.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/JTGJAFH.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/RPxpSXG.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/9BrojoZ.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Gb1THQs.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/ip7m9My.jpeg"
+            }
+        },
+        {
+            "photographer": "カンタレラ",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/FB0xWPs.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/IWdWMzg.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/mlrtWRA.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/j6VPbhL.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/LgoNA1j.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/yTmin08.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/a44U38g.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/TF97QhA.jpeg"
+            }
+        },
+        {
+            "photographer": "ki_pineapple",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/LvPdOzW.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/P5nKduD.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/wQ8aGU4.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/MJ1Yt4l.jpeg"
+            }
+        },
+        {
+            "photographer": "Lkeris_",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/5omBNgR.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/omSlvLw.jpeg"
+            }
+        },
+        {
+            "photographer": "knmoca",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/qHzbR0T.jpeg"
+            }
+        },
+        {
+            "photographer": "RiiKOO-M",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/gt5Bz6W.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/AMepyCm.jpeg"
+            }
+        },
+        {
+            "photographer": "void_ling",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/zPwoMGK.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/PnW85uD.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/irpcXox.jpeg"
+            }
+        },
+        {
+            "photographer": "桐野野野",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/HEK1rqd.jpeg"
+            }
+        },
+        {
+            "photographer": "KiriyumeBun",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/vupb6sG.jpeg"
+            }
+        },
+        {
+            "photographer": "shuangbatian",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/cwJR5va.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/IJMbnGT.jpeg"
+            }
+        },
+        {
+            "photographer": "vvsimyeol",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/ZpffDVp.jpeg"
+            }
+        },
+        {
+            "photographer": "6時間",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/k8Ddg46.jpeg"
+            }
+        },
+        {
+            "photographer": "Yaoyaobae",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/oTrRHRs.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/8P88hUC.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/7s8PowB.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/DJciNhR.jpeg"
+            }
+        },
+        {
+            "photographer": "noland0707",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/zL3XERo.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/edq4sTf.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/3YOE5gG.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/jwMfwo1.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/7qZmwh8.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/ew6u6jQ.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/9nHzbdz.jpeg"
+            }
+        },
+        {
+            "photographer": "ISB_47",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/JOqcxbJ.jpeg"
+            }
+        },
+        {
+            "photographer": "Moehikaru光光",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/LXCVjzA.jpeg"
+            }
+        },
+        {
+            "photographer": "茶壶泡泡QWQ",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/Vy4VhDN.jpeg"
+            }
+        },
+        {
+            "photographer": "POMi",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/2U2sV8a.jpeg"
+            }
+        },
+        {
+            "photographer": "_toriumu",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/AkSw7jE.jpeg"
+            }
+        },
+        {
+            "photographer": "POMi",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/5prHOYv.jpeg"
+            }
+        },
+        {
+            "photographer": "POMi",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/2s6Klc6.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/cqqLwP4.jpeg"
+            }
+        },
+        {
+            "photographer": "Wuthering_Waves",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/G5rmJIa.jpeg"
+            }
+        },
+        {
+            "photographer": "swd3e2",
+            "location": null,
+            "url": {
+                "default": "https://i.imgur.com/9AG6vqp.jpeg"
+            }
+        }
+    ]
+}
