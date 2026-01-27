@@ -19,6 +19,12 @@ export const BUILD_CONFIG = {
   
   /** Color saturation multiplier for icon color extraction */
   COLOR_SATURATION_MULTIPLIER: 1.75,
+  
+  /** Rate limit for photo blurhash processing (photos per second) */
+  PHOTO_PROCESSING_RATE_LIMIT: 20,
+  
+  /** Timeout for fetching individual photo URLs (milliseconds) */
+  PHOTO_FETCH_TIMEOUT_MS: 5000,
 } as const;
 
 /**

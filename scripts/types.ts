@@ -24,6 +24,8 @@ export interface PhotoPackItem {
   draft?: boolean;
   colour?: string;
   blurhash?: string;
+  photo_blurhashes?: Record<string, string>; // Blurhashes for individual photos keyed by URL
+  image_api?: boolean; // Indicates photos come from dynamic API (skip blurhashing)
   id?: string;
   canonical_path?: string;
   created_at?: string;

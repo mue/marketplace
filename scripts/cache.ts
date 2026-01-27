@@ -18,6 +18,8 @@ export interface CacheEntry {
   colour?: string;
   /** Blurhash of icon */
   blurhash?: string;
+  /** Blurhashes for individual photos keyed by photo URL */
+  photo_blurhashes?: Record<string, string>;
   /** Whether the icon is dark */
   isDark?: boolean;
   /** Whether the icon is light */

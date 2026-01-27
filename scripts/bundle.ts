@@ -12,6 +12,7 @@ import {
   generateSearchText,
   validateItem
 } from './utils.js';
+import { BUILD_CONFIG } from './config.js';
 import type {
   FolderType,
   ItemData,
@@ -26,7 +27,8 @@ import type {
   ExtendedItemSummary,
   SearchIndex,
   StatsOutput,
-  ManifestLite
+  ManifestLite,
+  PhotoPackItem
 } from './types.js';
 
 // Performance tracking
@@ -46,18 +48,23 @@ await fse.copy('data', 'dist');
 interface CacheData {
   gitHistory: Record<string, { created_at: string; updated_at: string; contentHash: string }>;
   colorCache: Record<string, { colour: string; isDark: boolean; isLight: boolean }>;
+  photoBlurhashCache: Record<string, { blurhash: string; cachedAt: number; fileHash: string }>;
 }
 
-let cache: CacheData = { gitHistory: {}, colorCache: {} };
+let cache: CacheData = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
 const cacheFile = `${CACHE_DIR}/build-cache.json`;
 
 if (!FULL_REBUILD && await fse.pathExists(cacheFile)) {
   try {
     cache = await fse.readJSON(cacheFile);
-    console.log(`📦 Loaded cache: ${Object.keys(cache.gitHistory).length} git entries, ${Object.keys(cache.colorCache).length} color entries`);
+    console.log(`📦 Loaded cache: ${Object.keys(cache.gitHistory).length} git entries, ${Object.keys(cache.colorCache).length} color entries, ${Object.keys(cache.photoBlurhashCache || {}).length} photo blurhash entries`);
+    // Ensure photoBlurhashCache exists for older cache files
+    if (!cache.photoBlurhashCache) {
+      cache.photoBlurhashCache = {};
+    }
   } catch (e) {
     console.warn('⚠️  Failed to load cache, starting fresh');
-    cache = { gitHistory: {}, colorCache: {} };
+    cache = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
   }
 } else if (FULL_REBUILD) {
   console.log('🔄 Full rebuild requested, skipping cache');
@@ -72,6 +79,8 @@ const git = simpleGit({ baseDir });
 
 // Concurrency limiter for parallel operations
 const limit = pLimit(10);
+// Rate limiter for photo processing
+const photoLimit = pLimit(BUILD_CONFIG.PHOTO_PROCESSING_RATE_LIMIT);
 
 // ID registry to track uniqueness
 const idRegistry: IdRegistry = {
@@ -106,6 +115,73 @@ function generateSlug(name: string): string {
 async function computeFileHash(filePath: string): Promise<string> {
   const content = await fse.readFile(filePath, 'utf8');
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 16);
+}
+
+/**
+ * Generate blurhash for a photo URL with caching and rate limiting
+ * @param photoUrl - URL of the photo to process
+ * @param fileHash - Content hash of the photo pack file (for cache invalidation)
+ * @returns Blurhash string or null if processing fails
+ */
+async function generatePhotoBlurhash(photoUrl: string, fileHash: string): Promise<string | null> {
+  // Check cache first (hybrid: URL + file hash)
+  const cacheKey = `${photoUrl}`;
+  const cached = cache.photoBlurhashCache[cacheKey];
+  
+  if (cached && cached.fileHash === fileHash) {
+    return cached.blurhash;
+  }
+
+  // Rate-limited photo processing
+  return photoLimit(async () => {
+    try {
+      // Fetch with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), BUILD_CONFIG.PHOTO_FETCH_TIMEOUT_MS);
+      
+      const response = await fetch(photoUrl, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        console.warn(`⚠️  Failed to fetch photo: ${photoUrl} (${response.status})`);
+        return null;
+      }
+
+      const imageBuffer = await response.arrayBuffer();
+      
+      // Resize image to small dimensions for blurhash
+      const resized = await sharp(imageBuffer)
+        .resize(BUILD_CONFIG.BLURHASH_RESIZE_WIDTH, BUILD_CONFIG.BLURHASH_RESIZE_HEIGHT, { fit: 'cover' })
+        .ensureAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+
+      // Generate blurhash
+      const blurhash = encode(
+        new Uint8ClampedArray(resized.data),
+        resized.info.width,
+        resized.info.height,
+        BUILD_CONFIG.BLURHASH_COMPONENTS_X,
+        BUILD_CONFIG.BLURHASH_COMPONENTS_Y
+      );
+
+      // Cache the result with file hash for invalidation
+      cache.photoBlurhashCache[cacheKey] = {
+        blurhash,
+        cachedAt: Date.now(),
+        fileHash
+      };
+
+      return blurhash;
+    } catch (e: any) {
+      if (e.name === 'AbortError') {
+        console.warn(`⏱️  Timeout fetching photo: ${photoUrl}`);
+      } else {
+        console.warn(`⚠️  Error processing photo ${photoUrl}:`, e.message);
+      }
+      return null;
+    }
+  });
 }
 
 
@@ -351,6 +427,54 @@ for (const folder of Object.keys(data) as FolderType[]) {
           }
         }
 
+        // Process photo blurhashes for photo packs (skip if image_api is true)
+        if (folder === 'photo_packs' && (file as PhotoPackItem).photos && !(file as PhotoPackItem).image_api) {
+          const photoPackFile = file as PhotoPackItem;
+          const fileHash = await computeFileHash(path);
+          const photoBlurhashes: Record<string, string> = {};
+          
+          // Process each photo URL
+          const photoUrls: string[] = [];
+          
+          // Extract URLs from photos array (handle both string[] and object[] formats)
+          for (const photo of photoPackFile.photos) {
+            if (typeof photo === 'string') {
+              photoUrls.push(photo);
+            } else if (typeof photo === 'object' && photo !== null) {
+              // Handle {url: {default: "..."}} format
+              const photoObj = photo as any;
+              if (photoObj.url?.default) {
+                photoUrls.push(photoObj.url.default);
+              }
+            }
+          }
+
+          // Process photos in parallel with rate limiting
+          const blurhashResults = await Promise.all(
+            photoUrls.map(async (photoUrl) => {
+              const blurhash = await generatePhotoBlurhash(photoUrl, fileHash);
+              return { photoUrl, blurhash };
+            })
+          );
+
+          // Store successful blurhashes
+          let successCount = 0;
+          for (const { photoUrl, blurhash } of blurhashResults) {
+            if (blurhash) {
+              photoBlurhashes[photoUrl] = blurhash;
+              successCount++;
+            }
+          }
+
+          // Only add photo_blurhashes field if we have at least one blurhash
+          if (successCount > 0) {
+            photoPackFile.photo_blurhashes = photoBlurhashes;
+            console.log(`  ✓ Generated ${successCount}/${photoUrls.length} photo blurhashes for ${name}`);
+          } else if (photoUrls.length > 0) {
+            console.warn(`  ⚠️  Failed to generate any photo blurhashes for ${name}`);
+          }
+        }
+
         // Generate enhanced metadata
         const search_text = generateSearchText(file, canonicalPath, file.author);
         const slug = generateSlug(file.name);
@@ -497,6 +621,8 @@ await fse.writeJSON('./dist/manifest.json', {
 console.log('✅ Generated manifest.json');
 
 // Generate manifest-lite (minimal metadata for fast loading)
+// NOTE: photo_blurhashes are excluded from manifest-lite to reduce payload size
+// Full photo blurhashes are available in individual pack files and the full manifest
 console.log('📝 Generating lite manifest...');
 const allItems = [
   ...Object.values(data.preset_settings),
@@ -516,7 +642,7 @@ const manifestLite: ManifestLite = {
     author: item.author,
     icon_url: item.icon_url,
     colour: item.colour,
-    blurhash: item.blurhash
+    blurhash: item.blurhash  // Icon blurhash only, not photo_blurhashes
   })),
   collections: Object.values(collections).map(col => ({
     id: col.id,
