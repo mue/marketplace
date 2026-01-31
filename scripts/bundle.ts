@@ -489,10 +489,9 @@ for (const folder of Object.keys(data) as FolderType[]) {
             }
           }
 
-          // Only add photo_blurhashes field if we have at least one blurhash
+          // Log results
           if (successCount > 0) {
-            photoPackFile.photo_blurhashes = photoBlurhashes;
-            console.log(`  ✓ Generated ${successCount}/${photoUrls.length} photo blurhashes for ${name}`);
+            console.log(`  ✓ Added blur_hash to ${successCount}/${photoUrls.length} photos for ${name}`);
           } else if (photoUrls.length > 0) {
             console.warn(`  ⚠️  Failed to generate any photo blurhashes for ${name}`);
           }
