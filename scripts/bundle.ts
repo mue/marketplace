@@ -466,6 +466,29 @@ for (const folder of Object.keys(data) as FolderType[]) {
             }
           }
 
+          // Add blur_hash directly to each photo object
+          for (let i = 0; i < photoPackFile.photos.length; i++) {
+            const photo = photoPackFile.photos[i];
+            let photoUrl: string | null = null;
+
+            // Extract URL based on photo format
+            if (typeof photo === 'string') {
+              photoUrl = photo;
+            } else if (typeof photo === 'object' && photo !== null) {
+              const photoObj = photo as any;
+              if (photoObj.url?.default) {
+                photoUrl = photoObj.url.default;
+              }
+            }
+
+            // Add blur_hash to photo object if we have one
+            if (photoUrl && photoBlurhashes[photoUrl]) {
+              if (typeof photo === 'object' && photo !== null) {
+                (photo as any).blur_hash = photoBlurhashes[photoUrl];
+              }
+            }
+          }
+
           // Only add photo_blurhashes field if we have at least one blurhash
           if (successCount > 0) {
             photoPackFile.photo_blurhashes = photoBlurhashes;
