@@ -1,0 +1,39 @@
+{
+  "id": "unsplash-photos",
+  "name": "Unsplash Photos",
+  "display_name": "Unsplash Photos",
+  "type": "photos",
+  "description": "Beautiful photos from Unsplash collections. Configure your own API key and choose custom collections. Requires free Unsplash API key from https://unsplash.com/developers",
+  "version": "1.0.0",
+  "author": "MUE Team",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "screenshot_url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+  
+  "api_enabled": true,
+  "api_provider": "unsplash",
+  "requires_api_key": true,
+  
+  "photos": [],
+  
+  "settings_schema": [
+    {
+      "key": "api_key",
+      "type": "text",
+      "label": "Unsplash Access Key",
+      "placeholder": "Enter your Unsplash API key",
+      "default": "",
+      "required": true,
+      "secure": true,
+      "help_text": "Get your free API key at https://unsplash.com/developers"
+    },
+    {
+      "key": "collections",
+      "type": "text",
+      "label": "Collection IDs",
+      "placeholder": "e.g. 123456, 654321",
+      "default": "",
+      "required": false,
+      "help_text": "Optional: Comma-separated collection IDs to fetch photos from"
+    }
+  ]
+}

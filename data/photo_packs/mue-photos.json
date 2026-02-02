@@ -1,0 +1,41 @@
+{
+  "id": "mue-photos",
+  "name": "MUE Daily Photos",
+  "display_name": "MUE Daily Photos",
+  "type": "photos",
+  "description": "Fresh, high-quality photos from MUE API. Dynamically fetched photos with customizable quality and categories. Internet connection required, with offline caching support.",
+  "version": "1.0.0",
+  "author": "MUE Team",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "screenshot_url": "https://raw.githubusercontent.com/mue/branding/main/screenshots/mue-screenshot.png",
+  
+  "api_enabled": true,
+  "api_provider": "mue",
+  "requires_api_key": false,
+  
+  "photos": [],
+  
+  "settings_schema": [
+    {
+      "key": "quality",
+      "type": "dropdown",
+      "label": "Image Quality",
+      "default": "high",
+      "required": true,
+      "options": [
+        { "value": "low", "label": "Low (Faster)" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "high", "label": "High (Best Quality)" }
+      ]
+    },
+    {
+      "key": "categories",
+      "type": "chipselect",
+      "label": "Categories",
+      "default": ["nature"],
+      "required": true,
+      "dynamic": true,
+      "options_source": "api:categories"
+    }
+  ]
+}
