@@ -223,12 +223,27 @@ function validateItem(file: ItemData, folder: FolderType, canonicalPath: string)
 
   // Validate item counts
   if (folder === 'photo_packs' && (!(file as any).photos || (file as any).photos.length === 0)) {
-    console.error('VALIDATION ERROR: %s has no photos', canonicalPath);
-    process.exit(1);
+    // Allow empty photos array for API-enabled packs (they fetch dynamically)
+    if (!(file as any).api_enabled) {
+      console.error('VALIDATION ERROR: %s has no photos', canonicalPath);
+      process.exit(1);
+    }
   }
   if (folder === 'quote_packs' && (!(file as any).quotes || (file as any).quotes.length === 0)) {
     console.error('VALIDATION ERROR: %s has no quotes', canonicalPath);
     process.exit(1);
+  }
+
+  // Additional validation for API-enabled photo packs
+  if (folder === 'photo_packs' && (file as any).api_enabled) {
+    if (!(file as any).api_provider) {
+      console.error('VALIDATION ERROR: %s is api_enabled but missing api_provider', canonicalPath);
+      process.exit(1);
+    }
+    if (!(file as any).settings_schema || !(file as any).settings_schema.length) {
+      console.error('VALIDATION ERROR: %s is api_enabled but missing settings_schema', canonicalPath);
+      process.exit(1);
+    }
   }
 }
 
