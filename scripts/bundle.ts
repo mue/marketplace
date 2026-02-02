@@ -543,6 +543,11 @@ for (const folder of Object.keys(data) as FolderType[]) {
           slug,
           isDark,
           isLight,
+          // API-enabled photo pack fields
+          api_enabled: (file as any).api_enabled,
+          api_provider: (file as any).api_provider,
+          requires_api_key: (file as any).requires_api_key,
+          settings_schema: (file as any).settings_schema,
         };
 
         return { name, author: file.author, canonicalPath, summary: itemSummary };
