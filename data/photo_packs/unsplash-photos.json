@@ -3,7 +3,7 @@
   "name": "Unsplash Photos",
   "display_name": "Unsplash Photos",
   "type": "photos",
-  "description": "Beautiful photos from Unsplash collections. Configure your own API key and choose custom collections. Requires free Unsplash API key from https://unsplash.com/developers",
+  "description": "Beautiful photos from Unsplash collections. Dynamically fetched photos with optional custom collections. Internet connection required, with offline caching support.",
   "version": "1.0.0",
   "author": "MUE Team",
   "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
@@ -11,21 +11,11 @@
 
   "api_enabled": true,
   "api_provider": "unsplash",
-  "requires_api_key": true,
+  "requires_api_key": false,
 
   "photos": [],
 
   "settings_schema": [
-    {
-      "key": "api_key",
-      "type": "text",
-      "label": "Unsplash Access Key",
-      "placeholder": "Enter your Unsplash API key",
-      "default": "",
-      "required": true,
-      "secure": true,
-      "help_text": "Get your free API key at https://unsplash.com/developers"
-    },
     {
       "key": "collections",
       "type": "text",
