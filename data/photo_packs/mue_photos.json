@@ -2,7 +2,7 @@
   "id": "mue_photos",
   "name": "Mue API Photos",
   "display_name": "Mue API Photos",
-  "type": "photos",
+  "type": "photo_packs",
   "description": "Fresh, high-quality photos from the Mue API. Dynamically fetched photos with customizable quality and categories. Internet connection required, with offline caching support.",
   "version": "1.0.0",
   "author": "The Mue Authors",
