@@ -1,0 +1,40 @@
+{
+  "name": "Mue API Photos",
+  "display_name": "Mue API Photos",
+  "type": "photos",
+  "description": "Fresh, high-quality photos from the Mue API. Dynamically fetched photos with customizable quality and categories. Internet connection required, with offline caching support.",
+  "version": "1.0.0",
+  "author": "The Mue Authors",
+  "icon_url": "https://avatars.githubusercontent.com/u/58658585?s=200&v=4",
+  "screenshot_url": "https://avatars.githubusercontent.com/u/58658585?s=200&v=4",
+
+  "api_enabled": true,
+  "api_provider": "mue",
+  "requires_api_key": false,
+
+  "photos": [],
+
+  "settings_schema": [
+    {
+      "key": "quality",
+      "type": "dropdown",
+      "label": "Image Quality",
+      "default": "high",
+      "required": true,
+      "options": [
+        { "value": "low", "label": "Low (Faster)" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "high", "label": "High (Best Quality)" }
+      ]
+    },
+    {
+      "key": "categories",
+      "type": "chipselect",
+      "label": "Categories",
+      "default": ["nature"],
+      "required": true,
+      "dynamic": true,
+      "options_source": "api:categories"
+    }
+  ]
+}
