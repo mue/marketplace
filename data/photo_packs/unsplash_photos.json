@@ -1,8 +1,7 @@
 {
-  "id": "unsplash_photos",
   "name": "Unsplash Photos",
   "display_name": "Unsplash Photos",
-  "type": "photo_packs",
+  "type": "photos",
   "description": "Beautiful photos from Unsplash collections. Dynamically fetched photos with optional custom collections. Internet connection required, with offline caching support.",
   "version": "1.0.0",
   "author": "MUE Team",
