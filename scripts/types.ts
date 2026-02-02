@@ -110,6 +110,8 @@ export interface ItemSummary {
   item_count: number;
   created_at: string;
   updated_at: string;
+  views?: number;
+  downloads?: number;
 }
 
 export interface IdRegistry {
