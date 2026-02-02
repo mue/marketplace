@@ -8,13 +8,13 @@
   "author": "MUE Team",
   "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
   "screenshot_url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
-  
+
   "api_enabled": true,
   "api_provider": "unsplash",
   "requires_api_key": true,
-  
+
   "photos": [],
-  
+
   "settings_schema": [
     {
       "key": "api_key",
