@@ -4,9 +4,9 @@
   "type": "photos",
   "description": "Beautiful photos from Unsplash collections. Dynamically fetched photos with optional custom collections. Internet connection required, with offline caching support.",
   "version": "1.0.0",
-  "author": "MUE Team",
-  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
-  "screenshot_url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+  "author": "The Mue Authors",
+  "icon_url": "https://avatars.githubusercontent.com/u/9951955?s=200&v=4",
+  "screenshot_url": "https://avatars.githubusercontent.com/u/9951955?s=200&v=4",
 
   "api_enabled": true,
   "api_provider": "unsplash",
