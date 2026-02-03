@@ -5,8 +5,8 @@
   "description": "Millions of creative commons photos from Flickr. Requires a free API key from Flickr. Filter by tags and license type to find the perfect photos.",
   "version": "1.0.0",
   "author": "The Mue Authors",
-  "icon_url": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0018/0038/brand.gif?itok=ux0rGGOW",
-  "screenshot_url": "https://live.staticflickr.com/7619/17053108872_dcd92325a1_h.jpg",
+  "icon_url": "https://www.flickrhelp.com/hc/article_attachments/4419907666708",
+  "screenshot_url":  "https://www.flickrhelp.com/hc/article_attachments/4419907666708",
 
   "api_enabled": true,
   "api_provider": "flickr",

@@ -5,8 +5,8 @@
   "description": "Beautiful royalty-free photos from Pixabay. Requires a free API key from pixabay.com. Over 2.7 million high-quality images to choose from.",
   "version": "1.0.0",
   "author": "The Mue Authors",
-  "icon_url": "https://pixabay.com/static/img/logo_square.png",
-  "screenshot_url": "https://cdn.pixabay.com/photo/2023/11/12/12/44/lake-8383139_1280.jpg",
+  "icon_url": "https://images.seeklogo.com/logo-png/33/1/pixabay-logo-png_seeklogo-334005.png",
+  "screenshot_url": "https://images.seeklogo.com/logo-png/33/1/pixabay-logo-png_seeklogo-334005.png",
 
   "api_enabled": true,
   "api_provider": "pixabay",

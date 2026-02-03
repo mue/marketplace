@@ -5,8 +5,8 @@
   "description": "High-quality stock photos from Pexels. Completely free to use with no API key required. Fresh photos fetched dynamically based on your search query.",
   "version": "1.0.0",
   "author": "The Mue Authors",
-  "icon_url": "https://www.pexels.com/assets/static/images/meta/pexels-icon.png",
-  "screenshot_url": "https://images.pexels.com/photos/3541959/pexels-photo-3541959.jpeg",
+  "icon_url": "https://cdn.creazilla.com/icons/3270419/pexels-icon-sm.png",
+  "screenshot_url": "https://cdn.creazilla.com/icons/3270419/pexels-icon-sm.png",
 
   "api_enabled": true,
   "api_provider": "pexels",

@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "author": "The Mue Authors",
   "icon_url": "https://cdn-icons-png.flaticon.com/512/174/174868.png",
-  "screenshot_url": "https://www.shutterstock.com/shutterstock/photos/2111505707/display_1500/stock-photo-silhouette-of-mountain-range-under-sunset-2111505707.jpg",
+  "screenshot_url": "https://cdn-icons-png.flaticon.com/512/174/174868.png",
 
   "api_enabled": true,
   "api_provider": "shutterstock",
