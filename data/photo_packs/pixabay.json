@@ -1,0 +1,73 @@
+{
+  "name": "Pixabay Photos",
+  "display_name": "Pixabay Photos",
+  "type": "photos",
+  "description": "Beautiful royalty-free photos from Pixabay. Requires a free API key from pixabay.com. Over 2.7 million high-quality images to choose from.",
+  "version": "1.0.0",
+  "author": "The Mue Authors",
+  "icon_url": "https://pixabay.com/static/img/logo_square.png",
+  "screenshot_url": "https://cdn.pixabay.com/photo/2023/11/12/12/44/lake-8383139_1280.jpg",
+
+  "api_enabled": true,
+  "api_provider": "pixabay",
+  "api_endpoint": "https://pixabay.com/api/",
+  "direct_api": true,
+  "requires_api_key": true,
+
+  "photos": [],
+
+  "settings_schema": [
+    {
+      "key": "api_key",
+      "type": "text",
+      "label": "Pixabay API Key",
+      "placeholder": "Paste your API key here",
+      "default": "",
+      "required": true,
+      "secure": true,
+      "help_text": "Get your free API key from https://pixabay.com/api/docs/ - Keep it private!"
+    },
+    {
+      "key": "query",
+      "type": "text",
+      "label": "Search Query",
+      "placeholder": "e.g. nature, sunset, mountains",
+      "default": "nature",
+      "required": true,
+      "help_text": "What to search for"
+    },
+    {
+      "key": "category",
+      "type": "dropdown",
+      "label": "Category",
+      "default": "",
+      "required": false,
+      "options": [
+        { "value": "", "label": "All Categories" },
+        { "value": "backgrounds", "label": "Backgrounds" },
+        { "value": "fashion", "label": "Fashion" },
+        { "value": "nature", "label": "Nature" },
+        { "value": "science", "label": "Science" },
+        { "value": "education", "label": "Education" },
+        { "value": "feelings", "label": "Feelings" },
+        { "value": "health", "label": "Health" },
+        { "value": "people", "label": "People" },
+        { "value": "religion", "label": "Religion" },
+        { "value": "places", "label": "Places" },
+        { "value": "animals", "label": "Animals" },
+        { "value": "industry", "label": "Industry" },
+        { "value": "computer", "label": "Computer" },
+        { "value": "food", "label": "Food" },
+        { "value": "sports", "label": "Sports" },
+        { "value": "transportation", "label": "Transportation" },
+        { "value": "travel", "label": "Travel" },
+        { "value": "buildings", "label": "Buildings" },
+        { "value": "business", "label": "Business" },
+        { "value": "music", "label": "Music" }
+      ]
+    }
+  ],
+
+  "keywords": ["pixabay", "stock photos", "free photos", "api", "royalty-free"],
+  "category_tags": ["nature", "landscapes", "animals", "food", "sports"]
+}

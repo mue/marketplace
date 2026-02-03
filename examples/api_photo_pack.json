@@ -1,0 +1,76 @@
+{
+  "name": "Example API Photo Pack",
+  "description": "An API-powered photo pack that fetches photos dynamically from an external service. This example demonstrates how to create a modular photo pack with user-configurable settings.",
+  "author": "The Mue Authors",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "keywords": ["api", "dynamic", "example"],
+  "category_tags": ["landscapes", "nature"],
+  "photos": [],
+  "api_enabled": true,
+  "api_provider": "example",
+  "api_endpoint": "https://api.muetab.com/v2/images/example",
+  "cache_refresh_interval": 7200,
+  "requires_api_key": true,
+  "settings_schema": [
+    {
+      "id": "api_key",
+      "name": "API Key",
+      "description": "Your API key for accessing the photo service. Get one at https://example.com/api",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "secure": true,
+      "placeholder": "Enter your API key"
+    },
+    {
+      "id": "query",
+      "name": "Search Query",
+      "description": "What to search for (e.g., 'mountains', 'ocean', 'sunset')",
+      "type": "text",
+      "default": "nature",
+      "required": true,
+      "placeholder": "nature"
+    },
+    {
+      "id": "orientation",
+      "name": "Photo Orientation",
+      "description": "Preferred image orientation",
+      "type": "dropdown",
+      "default": "landscape",
+      "required": false,
+      "options": [
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ]
+    },
+    {
+      "id": "safe_search",
+      "name": "Safe Search",
+      "description": "Filter out inappropriate content",
+      "type": "toggle",
+      "default": true,
+      "required": false
+    },
+    {
+      "id": "min_width",
+      "name": "Minimum Width",
+      "description": "Minimum image width in pixels",
+      "type": "number",
+      "default": 1920,
+      "required": false,
+      "min": 800,
+      "max": 7680,
+      "step": 10
+    }
+  ]
+}

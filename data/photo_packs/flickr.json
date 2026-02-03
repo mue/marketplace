@@ -1,0 +1,59 @@
+{
+  "name": "Flickr Photos",
+  "display_name": "Flickr Photos",
+  "type": "photos",
+  "description": "Millions of creative commons photos from Flickr. Requires a free API key from Flickr. Filter by tags and license type to find the perfect photos.",
+  "version": "1.0.0",
+  "author": "The Mue Authors",
+  "icon_url": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0018/0038/brand.gif?itok=ux0rGGOW",
+  "screenshot_url": "https://live.staticflickr.com/7619/17053108872_dcd92325a1_h.jpg",
+
+  "api_enabled": true,
+  "api_provider": "flickr",
+  "api_endpoint": "https://api.flickr.com/services/rest/",
+  "direct_api": true,
+  "requires_api_key": true,
+
+  "photos": [],
+
+  "settings_schema": [
+    {
+      "key": "api_key",
+      "type": "text",
+      "label": "Flickr API Key",
+      "placeholder": "Paste your API key here",
+      "default": "",
+      "required": true,
+      "secure": true,
+      "help_text": "Get your free API key from https://www.flickr.com/services/apps/create/noncommercial/"
+    },
+    {
+      "key": "tags",
+      "type": "text",
+      "label": "Tags",
+      "placeholder": "e.g. landscape, nature, architecture",
+      "default": "landscape",
+      "required": true,
+      "help_text": "Comma-separated tags to search for"
+    },
+    {
+      "key": "license",
+      "type": "dropdown",
+      "label": "License Type",
+      "default": "all",
+      "required": false,
+      "options": [
+        { "value": "all", "label": "All Creative Commons" },
+        { "value": "cc_by", "label": "CC Attribution" },
+        { "value": "cc_by_sa", "label": "CC Attribution-ShareAlike" },
+        { "value": "cc_by_nc", "label": "CC Attribution-NonCommercial" },
+        { "value": "cc_by_nd", "label": "CC Attribution-NoDerivs" },
+        { "value": "cc0", "label": "Public Domain (CC0)" }
+      ],
+      "help_text": "Filter by Creative Commons license"
+    }
+  ],
+
+  "keywords": ["flickr", "creative commons", "photos", "api"],
+  "category_tags": ["nature", "landscapes", "architecture", "travel"]
+}

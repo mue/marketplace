@@ -1,0 +1,69 @@
+{
+  "name": "iStock Photos",
+  "display_name": "iStock Photos",
+  "type": "photos",
+  "description": "Premium photos from iStock by Getty Images. Requires a paid API key and subscription. Access millions of exclusive, high-quality images from professional photographers.",
+  "version": "1.0.0",
+  "author": "The Mue Authors",
+  "icon_url": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/122015/istock-logo-2015.png?itok=DYMuMQTo",
+  "screenshot_url": "https://media.istockphoto.com/id/1145928937/photo/scenic-mountain-landscape.jpg",
+
+  "api_enabled": true,
+  "api_provider": "istock",
+  "api_endpoint": "https://api.muetab.com/v2/images/istock",
+  "requires_api_key": true,
+
+  "photos": [],
+
+  "settings_schema": [
+    {
+      "key": "api_key",
+      "type": "text",
+      "label": "iStock API Key",
+      "placeholder": "Paste your API key here",
+      "default": "",
+      "required": true,
+      "secure": true,
+      "help_text": "Get your API key from Getty Images API portal - Requires paid subscription. Keep it private!"
+    },
+    {
+      "key": "query",
+      "type": "text",
+      "label": "Keywords",
+      "placeholder": "e.g. landscape, nature, people",
+      "default": "landscape",
+      "required": true,
+      "help_text": "Comma-separated keywords to search for"
+    },
+    {
+      "key": "orientation",
+      "type": "dropdown",
+      "label": "Orientation",
+      "default": "horizontal",
+      "required": false,
+      "options": [
+        { "value": "horizontal", "label": "Horizontal/Landscape" },
+        { "value": "vertical", "label": "Vertical/Portrait" },
+        { "value": "square", "label": "Square" },
+        { "value": "panoramic_horizontal", "label": "Panoramic Horizontal" },
+        { "value": "panoramic_vertical", "label": "Panoramic Vertical" }
+      ]
+    },
+    {
+      "key": "number_of_people",
+      "type": "dropdown",
+      "label": "Number of People",
+      "default": "none",
+      "required": false,
+      "options": [
+        { "value": "none", "label": "No People" },
+        { "value": "one", "label": "One Person" },
+        { "value": "two", "label": "Two People" },
+        { "value": "group", "label": "Group of People" }
+      ]
+    }
+  ],
+
+  "keywords": ["istock", "getty images", "premium photos", "stock photos", "paid", "api"],
+  "category_tags": ["nature", "professional", "landscapes", "people"]
+}

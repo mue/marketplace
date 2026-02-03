@@ -1,0 +1,46 @@
+{
+  "name": "Pexels Photos",
+  "display_name": "Pexels Photos",
+  "type": "photos",
+  "description": "High-quality stock photos from Pexels. Completely free to use with no API key required. Fresh photos fetched dynamically based on your search query.",
+  "version": "1.0.0",
+  "author": "The Mue Authors",
+  "icon_url": "https://www.pexels.com/assets/static/images/meta/pexels-icon.png",
+  "screenshot_url": "https://images.pexels.com/photos/3541959/pexels-photo-3541959.jpeg",
+
+  "api_enabled": true,
+  "api_provider": "pexels",
+  "api_endpoint": "https://api.pexels.com/v1/search",
+  "direct_api": true,
+  "requires_api_key": false,
+
+  "photos": [],
+
+  "settings_schema": [
+    {
+      "key": "query",
+      "type": "text",
+      "label": "Search Query",
+      "placeholder": "e.g. nature, landscape, city",
+      "default": "nature",
+      "required": true,
+      "help_text": "What types of photos to fetch from Pexels"
+    },
+    {
+      "key": "orientation",
+      "type": "dropdown",
+      "label": "Orientation",
+      "default": "landscape",
+      "required": false,
+      "options": [
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "help_text": "Preferred photo orientation"
+    }
+  ],
+
+  "keywords": ["pexels", "stock photos", "free photos", "api"],
+  "category_tags": ["nature", "landscapes", "urban"]
+}

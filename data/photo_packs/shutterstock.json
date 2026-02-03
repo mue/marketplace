@@ -1,0 +1,65 @@
+{
+  "name": "Shutterstock Photos",
+  "display_name": "Shutterstock Photos",
+  "type": "photos",
+  "description": "Premium stock photos from Shutterstock. Requires a paid API key and subscription. Access to over 400 million high-quality images, vectors, and illustrations.",
+  "version": "1.0.0",
+  "author": "The Mue Authors",
+  "icon_url": "https://cdn-icons-png.flaticon.com/512/174/174868.png",
+  "screenshot_url": "https://www.shutterstock.com/shutterstock/photos/2111505707/display_1500/stock-photo-silhouette-of-mountain-range-under-sunset-2111505707.jpg",
+
+  "api_enabled": true,
+  "api_provider": "shutterstock",
+  "api_endpoint": "https://api.muetab.com/v2/images/shutterstock",
+  "requires_api_key": true,
+
+  "photos": [],
+
+  "settings_schema": [
+    {
+      "key": "api_key",
+      "type": "text",
+      "label": "Shutterstock API Key",
+      "placeholder": "Paste your API key here",
+      "default": "",
+      "required": true,
+      "secure": true,
+      "help_text": "Get your API key from https://www.shutterstock.com/account/developers/apps - Requires paid subscription"
+    },
+    {
+      "key": "query",
+      "type": "text",
+      "label": "Search Term",
+      "placeholder": "e.g. landscape, sunset, nature",
+      "default": "landscape",
+      "required": true,
+      "help_text": "What to search for"
+    },
+    {
+      "key": "image_type",
+      "type": "dropdown",
+      "label": "Image Type",
+      "default": "photo",
+      "required": false,
+      "options": [
+        { "value": "photo", "label": "Photos" },
+        { "value": "vector", "label": "Vector Graphics" },
+        { "value": "illustration", "label": "Illustrations" }
+      ]
+    },
+    {
+      "key": "orientation",
+      "type": "dropdown",
+      "label": "Orientation",
+      "default": "horizontal",
+      "required": false,
+      "options": [
+        { "value": "horizontal", "label": "Horizontal/Landscape" },
+        { "value": "vertical", "label": "Vertical/Portrait" }
+      ]
+    }
+  ],
+
+  "keywords": ["shutterstock", "premium photos", "stock photos", "paid", "api"],
+  "category_tags": ["nature", "professional", "landscapes", "architecture"]
+}

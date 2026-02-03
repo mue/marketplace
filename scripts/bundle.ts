@@ -240,6 +240,10 @@ function validateItem(file: ItemData, folder: FolderType, canonicalPath: string)
       console.error('VALIDATION ERROR: %s is api_enabled but missing api_provider', canonicalPath);
       process.exit(1);
     }
+    if (!(file as any).api_endpoint) {
+      console.error('VALIDATION ERROR: %s is api_enabled but missing api_endpoint', canonicalPath);
+      process.exit(1);
+    }
     if (!(file as any).settings_schema || !(file as any).settings_schema.length) {
       console.error('VALIDATION ERROR: %s is api_enabled but missing settings_schema', canonicalPath);
       process.exit(1);
@@ -546,6 +550,9 @@ for (const folder of Object.keys(data) as FolderType[]) {
           // API-enabled photo pack fields
           api_enabled: (file as any).api_enabled,
           api_provider: (file as any).api_provider,
+          api_endpoint: (file as any).api_endpoint,
+          direct_api: (file as any).direct_api,
+          cache_refresh_interval: (file as any).cache_refresh_interval,
           requires_api_key: (file as any).requires_api_key,
           settings_schema: (file as any).settings_schema,
         };

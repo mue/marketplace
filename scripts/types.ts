@@ -26,6 +26,29 @@ export interface PhotoPackItem {
   blurhash?: string;
   photo_blurhashes?: Record<string, string>; // Blurhashes for individual photos keyed by URL
   image_api?: boolean; // Indicates photos come from dynamic API (skip blurhashing)
+  // API pack fields
+  api_enabled?: boolean;
+  api_provider?: string;
+  api_endpoint?: string; // The API endpoint URL to fetch photos from
+  direct_api?: boolean; // If true, frontend calls provider directly (no backend proxy)
+  requires_api_key?: boolean;
+  cache_refresh_interval?: number; // Optional cache refresh interval in seconds (default: 3600)
+  settings_schema?: Array<{
+    key: string;
+    type: string; // 'dropdown' | 'chipselect' | 'text' | 'switch' | 'slider'
+    label: string;
+    placeholder?: string;
+    default?: unknown;
+    required?: boolean;
+    options?: Array<{ value: string; label: string }>;
+    secure?: boolean; // For API keys - stored base64 encoded
+    help_text?: string;
+    dynamic?: boolean; // Load options from API
+    options_source?: string; // e.g., 'api:categories'
+    min?: number; // For slider
+    max?: number; // For slider
+    step?: number; // For slider
+  }>;
   id?: string;
   canonical_path?: string;
   created_at?: string;

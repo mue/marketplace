@@ -10,6 +10,7 @@
 
   "api_enabled": true,
   "api_provider": "mue",
+  "api_endpoint": "https://api.muetab.com/v2/images/random",
   "requires_api_key": false,
 
   "photos": [],

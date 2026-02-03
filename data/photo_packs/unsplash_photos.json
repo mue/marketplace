@@ -10,6 +10,7 @@
 
   "api_enabled": true,
   "api_provider": "unsplash",
+  "api_endpoint": "https://api.muetab.com/v2/images/unsplash",
   "requires_api_key": false,
 
   "photos": [],
