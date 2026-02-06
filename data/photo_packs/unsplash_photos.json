@@ -13,6 +13,18 @@
   "api_endpoint": "https://api.muetab.com/v2/images/unsplash",
   "requires_api_key": false,
 
+  "attribution": {
+    "enabled": true,
+    "photographer_link": true,
+    "source_link": true,
+    "source_name": "Unsplash",
+    "source_url": "https://unsplash.com/",
+    "utm_enabled": true,
+    "utm_source": "mue",
+    "utm_medium": "referral",
+    "photo_page_link": true
+  },
+
   "photos": [],
 
   "settings_schema": [

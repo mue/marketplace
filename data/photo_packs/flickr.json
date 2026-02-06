@@ -14,6 +14,16 @@
   "direct_api": true,
   "requires_api_key": true,
 
+  "attribution": {
+    "enabled": true,
+    "photographer_link": true,
+    "source_link": true,
+    "source_name": "Flickr",
+    "source_url": "https://www.flickr.com/",
+    "utm_enabled": false,
+    "photo_page_link": true
+  },
+
   "photos": [],
 
   "settings_schema": [

@@ -12,6 +12,22 @@ export type CategoryTag =
   // Setting-specific
   | 'productivity' | 'aesthetic' | 'gaming' | 'professional';
 
+// Attribution configuration for photo packs
+export interface AttributionConfig {
+  enabled?: boolean;                    // Show attribution (default: true)
+  photographer_link?: boolean;          // Link photographer name (default: true)
+  photographer_url_template?: string;   // Override URL template
+  source_link?: boolean;                // Link source platform name (default: true)
+  source_name?: string;                 // Display name (e.g., "Unsplash", "Pexels")
+  source_url?: string;                  // Platform homepage URL
+  utm_enabled?: boolean;                // Add UTM parameters to links (default: false)
+  utm_source?: string;                  // utm_source parameter (default: "mue")
+  utm_medium?: string;                  // utm_medium parameter (default: "referral")
+  photo_page_link?: boolean;            // Show "Photo" link to original page (default: true)
+  format?: 'default' | 'custom';        // Attribution format style
+  custom_text?: string;                 // Custom attribution template
+}
+
 export interface PhotoPackItem {
   name: string;
   description: string;
@@ -26,6 +42,8 @@ export interface PhotoPackItem {
   blurhash?: string;
   photo_blurhashes?: Record<string, string>; // Blurhashes for individual photos keyed by URL
   image_api?: boolean; // Indicates photos come from dynamic API (skip blurhashing)
+  // Attribution configuration
+  attribution?: AttributionConfig;
   // API pack fields
   api_enabled?: boolean;
   api_provider?: string;
