@@ -1,24 +1,24 @@
 {
-    "name": "Example Photos",
-    "description": "This is an example photo pack with beautiful images.",
-    "author": "Mue",
-    "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
-    "keywords": ["example", "demo", "sample"],
-    "category_tags": ["nature", "landscapes"],
-    "photos": [
-        {
-            "photographer": "Example photographer",
-            "location": "Example location",
-            "url": {
-                "default": "https://github.com/mue/mue/raw/main/assets/screenshot.webp"
-            }
-        },
-        {
-            "photographer": "Example photographer 2",
-            "location": "Example location 2",
-            "url": {
-                "default": "https://github.com/mue/mue/raw/main/assets/screenshot2.webp"
-            }
-        }
-    ]
+  "name": "Example Photos",
+  "description": "This is an example photo pack with beautiful images.",
+  "author": "Mue",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "keywords": ["example", "demo", "sample"],
+  "category_tags": ["nature", "landscapes"],
+  "photos": [
+    {
+      "photographer": "Example photographer",
+      "location": "Example location",
+      "url": {
+        "default": "https://github.com/mue/mue/raw/main/assets/screenshot.webp"
+      }
+    },
+    {
+      "photographer": "Example photographer 2",
+      "location": "Example location 2",
+      "url": {
+        "default": "https://github.com/mue/mue/raw/main/assets/screenshot2.webp"
+      }
+    }
+  ]
 }

@@ -1,12 +1,12 @@
 {
-    "name": "Example Settings",
-    "description": "This is an example preset with custom settings configuration.",
-    "author": "Mue",
-    "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
-    "keywords": ["example", "demo", "basic"],
-    "category_tags": ["minimal", "productivity"],
-    "settings": {
-        "searchBar": false,
-        "weather": true
-    }
+  "name": "Example Settings",
+  "description": "This is an example preset with custom settings configuration.",
+  "author": "Mue",
+  "icon_url": "https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png",
+  "keywords": ["example", "demo", "basic"],
+  "category_tags": ["minimal", "productivity"],
+  "settings": {
+    "searchBar": false,
+    "weather": true
+  }
 }

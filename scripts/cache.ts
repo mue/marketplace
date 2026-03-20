@@ -36,7 +36,7 @@ export interface CacheStorage {
 
 /**
  * Cache manager for build optimization.
- * 
+ *
  * Stores processed item metadata (git history, colors, blurhash) to avoid
  * reprocessing unchanged items. Uses content hashing to detect changes
  * and automatic expiration for stale entries.
@@ -47,9 +47,9 @@ export class BuildCache {
 
   /**
    * Create a new build cache instance.
-   * 
+   *
    * @param version - Version string for cache invalidation
-   * 
+   *
    * @example
    * ```ts
    * const cache = new BuildCache("1.0.0");
@@ -66,10 +66,10 @@ export class BuildCache {
 
   /**
    * Load cache from disk if it exists.
-   * 
+   *
    * Automatically invalidates cache if version doesn't match or if
    * cache file is corrupted. Creates cache directory if needed.
-   * 
+   *
    * @returns Promise that resolves when cache is loaded
    */
   async load(): Promise<void> {
@@ -95,9 +95,9 @@ export class BuildCache {
 
   /**
    * Save cache to disk.
-   * 
+   *
    * Cleans up expired entries before saving to keep cache file size minimal.
-   * 
+   *
    * @returns Promise that resolves when cache is saved
    */
   async save(): Promise<void> {
@@ -115,15 +115,15 @@ export class BuildCache {
 
   /**
    * Get a cache entry for an item if it exists and is valid.
-   * 
+   *
    * Validates the entry by checking:
    * - Content hash matches (file hasn't changed)
    * - Entry is not expired
-   * 
+   *
    * @param canonicalPath - The item's canonical path
    * @param currentContentHash - Hash of current file content
    * @returns Cache entry if valid, undefined otherwise
-   * 
+   *
    * @example
    * ```ts
    * const contentHash = computeContentHash(fileContent);
@@ -156,10 +156,10 @@ export class BuildCache {
 
   /**
    * Store a cache entry for an item.
-   * 
+   *
    * @param canonicalPath - The item's canonical path
    * @param entry - Cache entry data to store
-   * 
+   *
    * @example
    * ```ts
    * cache.set("photo_packs/nature", {
@@ -180,7 +180,7 @@ export class BuildCache {
 
   /**
    * Check if a cache entry is still valid (not expired).
-   * 
+   *
    * @param entry - The cache entry to check
    * @returns true if entry is valid, false if expired
    */
@@ -191,9 +191,9 @@ export class BuildCache {
 
   /**
    * Remove all expired entries from the cache.
-   * 
+   *
    * Called automatically during save() to keep cache size manageable.
-   * 
+   *
    * @returns Number of entries removed
    */
   private cleanExpired(): number {
@@ -216,7 +216,7 @@ export class BuildCache {
 
   /**
    * Get cache statistics.
-   * 
+   *
    * @returns Object with cache metrics
    */
   getStats(): {
@@ -246,13 +246,13 @@ export class BuildCache {
 
 /**
  * Compute a hash of file content for change detection.
- * 
+ *
  * Uses SHA-256 to create a stable hash that changes when content changes.
  * This is more reliable than timestamps for detecting actual changes.
- * 
+ *
  * @param content - The file content to hash (as string or buffer)
  * @returns Hex-encoded hash string
- * 
+ *
  * @example
  * ```ts
  * const content = JSON.stringify(itemData);

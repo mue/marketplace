@@ -1,7 +1,7 @@
 {
-    "name": "New Marketplace Design",
-    "news": true,
-    "description": "Following 7.0's massive overhaul, marketplace has received a new visual design and a bunch of new features.",
-    "news_link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "background_colour": "#373b44"
+  "name": "New Marketplace Design",
+  "news": true,
+  "description": "Following 7.0's massive overhaul, marketplace has received a new visual design and a bunch of new features.",
+  "news_link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "background_colour": "#373b44"
 }

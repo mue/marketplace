@@ -3,29 +3,54 @@ export type FolderType = 'photo_packs' | 'quote_packs' | 'preset_settings';
 // Predefined category tags for better discoverability
 export type CategoryTag =
   // General themes
-  | 'nature' | 'urban' | 'minimal' | 'colorful' | 'dark' | 'light'
+  | 'nature'
+  | 'urban'
+  | 'minimal'
+  | 'colorful'
+  | 'dark'
+  | 'light'
   // Photo-specific
-  | 'landscapes' | 'architecture' | 'animals' | 'space' | 'abstract'
-  | 'seasonal' | 'travel' | 'vehicles' | 'food' | 'sports'
+  | 'landscapes'
+  | 'architecture'
+  | 'animals'
+  | 'space'
+  | 'abstract'
+  | 'seasonal'
+  | 'travel'
+  | 'vehicles'
+  | 'food'
+  | 'sports'
   // Quote-specific
-  | 'motivational' | 'philosophical' | 'humor' | 'facts' | 'wisdom'
+  | 'motivational'
+  | 'philosophical'
+  | 'humor'
+  | 'facts'
+  | 'wisdom'
   // Setting-specific
-  | 'productivity' | 'aesthetic' | 'gaming' | 'professional';
+  | 'productivity'
+  | 'aesthetic'
+  | 'gaming'
+  | 'professional';
 
 // Attribution configuration for photo packs
 export interface AttributionConfig {
-  enabled?: boolean;                    // Show attribution (default: true)
-  photographer_link?: boolean;          // Link photographer name (default: true)
-  photographer_url_template?: string;   // Override URL template
-  source_link?: boolean;                // Link source platform name (default: true)
-  source_name?: string;                 // Display name (e.g., "Unsplash", "Pexels")
-  source_url?: string;                  // Platform homepage URL
-  utm_enabled?: boolean;                // Add UTM parameters to links (default: false)
-  utm_source?: string;                  // utm_source parameter (default: "mue")
-  utm_medium?: string;                  // utm_medium parameter (default: "referral")
-  photo_page_link?: boolean;            // Show "Photo" link to original page (default: true)
-  format?: 'default' | 'custom';        // Attribution format style
-  custom_text?: string;                 // Custom attribution template
+  enabled?: boolean; // Show attribution (default: true)
+  photographer_link?: boolean; // Link photographer name (default: true)
+  photographer_url_template?: string; // Override URL template
+  source_link?: boolean; // Link source platform name (default: true)
+  source_name?: string; // Display name (e.g., "Unsplash", "Pexels")
+  source_url?: string; // Platform homepage URL
+  utm_enabled?: boolean; // Add UTM parameters to links (default: false)
+  utm_source?: string; // utm_source parameter (default: "mue")
+  utm_medium?: string; // utm_medium parameter (default: "referral")
+  photo_page_link?: boolean; // Show "Photo" link to original page (default: true)
+  format?: 'default' | 'custom'; // Attribution format style
+  custom_text?: string; // Custom attribution template
+}
+
+export interface PhotoEntry {
+  url: { default: string };
+  blur_hash?: string;
 }
 
 export interface PhotoPackItem {
@@ -33,7 +58,7 @@ export interface PhotoPackItem {
   description: string;
   author: string;
   icon_url: string;
-  photos: string[];
+  photos: Array<string | PhotoEntry>;
   language?: string;
   keywords?: string[]; // Manual curated keywords for better discovery
   category_tags?: CategoryTag[]; // Predefined category tags
@@ -190,6 +215,13 @@ export interface ManifestOutput {
   _id_index: IdIndex;
 }
 
+// Persistent plain-object cache used by the build script
+export interface BuildCacheData {
+  gitHistory: Record<string, { created_at: string; updated_at: string; contentHash: string }>;
+  colorCache: Record<string, { colour: string; isDark: boolean; isLight: boolean }>;
+  photoBlurhashCache: Record<string, { blurhash: string; cachedAt: number; fileHash: string }>;
+}
+
 // Enhanced types for Phase 2 & 3
 export interface ExtendedItemSummary extends ItemSummary {
   search_text: string;
@@ -198,6 +230,14 @@ export interface ExtendedItemSummary extends ItemSummary {
   category_tags?: CategoryTag[];
   isDark?: boolean;
   isLight?: boolean;
+  // API-enabled photo pack fields
+  api_enabled?: boolean;
+  api_provider?: string;
+  api_endpoint?: string;
+  direct_api?: boolean;
+  cache_refresh_interval?: number;
+  requires_api_key?: boolean;
+  settings_schema?: PhotoPackItem['settings_schema'];
 }
 
 export interface SearchIndex {

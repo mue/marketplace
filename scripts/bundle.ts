@@ -1,68 +1,58 @@
 import fse from 'fs-extra';
 import simpleGit from 'simple-git';
-import sharp from 'sharp';
-import { getAverageColor } from 'fast-average-color-node';
-import { encode } from 'blurhash';
-import crypto from 'crypto';
 import pLimit from 'p-limit';
-import {
-  generateStableHash,
-  generateSlug,
-  extractTags,
-  generateSearchText,
-  validateItem
-} from './utils.js';
-import { BUILD_CONFIG } from './config.js';
+import { BUILD_CONFIG, REPO_CONFIG } from './config.js';
 import type {
   FolderType,
-  ItemData,
-  CollectionFile,
-  Collection,
-  IdRegistry,
   DataStructure,
   Curators,
-  Collections,
+  IdRegistry,
   IdIndex,
-  ManifestOutput,
   ExtendedItemSummary,
-  SearchIndex,
-  StatsOutput,
-  ManifestLite,
-  PhotoPackItem
+  BuildCacheData,
 } from './types.js';
+import { fetchGitHistory } from './lib/git-history.js';
+import { processFolder } from './lib/item-processor.js';
+import { processCollections } from './lib/collection-processor.js';
+import {
+  buildManifest,
+  buildManifestLite,
+  buildSearchIndex,
+  buildStats,
+} from './lib/output-writers.js';
 
-// Performance tracking
+// ---------------------------------------------------------------------------
+// Bootstrap
+// ---------------------------------------------------------------------------
+
 const perfStart = Date.now();
 console.log('🚀 Starting marketplace bundle process...');
 
-// CLI arguments for build modes
 const args = process.argv.slice(2);
 const FULL_REBUILD = args.includes('--full');
 const CACHE_DIR = '.build-cache';
+const CACHE_FILE = `${CACHE_DIR}/build-cache.json`;
 
 await fse.ensureDir('dist');
 await fse.ensureDir(CACHE_DIR);
 await fse.copy('data', 'dist');
 
-// Load caches
-interface CacheData {
-  gitHistory: Record<string, { created_at: string; updated_at: string; contentHash: string }>;
-  colorCache: Record<string, { colour: string; isDark: boolean; isLight: boolean }>;
-  photoBlurhashCache: Record<string, { blurhash: string; cachedAt: number; fileHash: string }>;
-}
+// ---------------------------------------------------------------------------
+// Load plain-object build cache
+// ---------------------------------------------------------------------------
 
-let cache: CacheData = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
-const cacheFile = `${CACHE_DIR}/build-cache.json`;
+let cache: BuildCacheData = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
 
-if (!FULL_REBUILD && await fse.pathExists(cacheFile)) {
+if (!FULL_REBUILD && (await fse.pathExists(CACHE_FILE))) {
   try {
-    cache = await fse.readJSON(cacheFile);
-    console.log(`📦 Loaded cache: ${Object.keys(cache.gitHistory).length} git entries, ${Object.keys(cache.colorCache).length} color entries, ${Object.keys(cache.photoBlurhashCache || {}).length} photo blurhash entries`);
-    // Ensure photoBlurhashCache exists for older cache files
-    if (!cache.photoBlurhashCache) {
-      cache.photoBlurhashCache = {};
-    }
-  } catch (e) {
+    cache = await fse.readJSON(CACHE_FILE);
+    cache.photoBlurhashCache ??= {};
+    console.log(
+      `📦 Loaded cache: ${Object.keys(cache.gitHistory).length} git, ` +
+        `${Object.keys(cache.colorCache).length} color, ` +
+        `${Object.keys(cache.photoBlurhashCache).length} photo entries`,
+    );
+  } catch {
     console.warn('⚠️  Failed to load cache, starting fresh');
     cache = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
   }
@@ -70,716 +60,129 @@ if (!FULL_REBUILD && await fse.pathExists(cacheFile)) {
   console.log('🔄 Full rebuild requested, skipping cache');
 }
 
+// ---------------------------------------------------------------------------
+// Git setup
+// ---------------------------------------------------------------------------
+
 let baseDir = '.';
 if (process.env.CF_PAGES === '1') {
-  await simpleGit().clone('https://github.com/mue/marketplace', 'build', { '--filter': 'tree:0' });
-  baseDir = './build';
+  await simpleGit().clone(REPO_CONFIG.GITHUB_URL, REPO_CONFIG.CF_PAGES_CLONE_DIR, {
+    '--filter': 'tree:0',
+  });
+  baseDir = `./${REPO_CONFIG.CF_PAGES_CLONE_DIR}`;
 }
 const git = simpleGit({ baseDir });
 
-// Concurrency limiter for parallel operations
-const limit = pLimit(10);
-// Rate limiter for photo processing
+// ---------------------------------------------------------------------------
+// Concurrency limiters
+// ---------------------------------------------------------------------------
+
+const limit = pLimit(BUILD_CONFIG.CONCURRENCY_LIMIT);
 const photoLimit = pLimit(BUILD_CONFIG.PHOTO_PROCESSING_RATE_LIMIT);
 
-// ID registry to track uniqueness
-const idRegistry: IdRegistry = {
-  hashes: new Map(), // hash -> canonical_path
-  paths: new Set()   // all canonical paths
-};
+// ---------------------------------------------------------------------------
+// Shared state
+// ---------------------------------------------------------------------------
 
-/**
- * Generate a stable hash ID from canonical path and author
- * @param {string} canonicalPath - The item's canonical path (e.g., "photo_packs/nature")
- * @param {string} author - The item's author
- * @returns {string} 12-character hash
- */
-function generateStableHash(canonicalPath: string, author: string): string {
-  const content = `${canonicalPath}:${author}`;
-  return crypto.createHash('sha256').update(content).digest('hex').slice(0, 12);
-}
+const FOLDERS: FolderType[] = ['preset_settings', 'photo_packs', 'quote_packs'];
 
-/**
- * Generate URL-friendly slug from name
- */
-function generateSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-/**
- * Compute content hash for a file
- */
-async function computeFileHash(filePath: string): Promise<string> {
-  const content = await fse.readFile(filePath, 'utf8');
-  return crypto.createHash('sha256').update(content).digest('hex').slice(0, 16);
-}
-
-/**
- * Generate blurhash for a photo URL with caching and rate limiting
- * @param photoUrl - URL of the photo to process
- * @param fileHash - Content hash of the photo pack file (for cache invalidation)
- * @returns Blurhash string or null if processing fails
- */
-async function generatePhotoBlurhash(photoUrl: string, fileHash: string): Promise<string | null> {
-  // Check cache first (hybrid: URL + file hash)
-  const cacheKey = `${photoUrl}`;
-  const cached = cache.photoBlurhashCache[cacheKey];
-  
-  if (cached && cached.fileHash === fileHash) {
-    return cached.blurhash;
-  }
-
-  // Rate-limited photo processing
-  return photoLimit(async () => {
-    try {
-      // Fetch with timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), BUILD_CONFIG.PHOTO_FETCH_TIMEOUT_MS);
-      
-      const response = await fetch(photoUrl, { signal: controller.signal });
-      clearTimeout(timeoutId);
-      
-      if (!response.ok) {
-        console.warn(`⚠️  Failed to fetch photo: ${photoUrl} (${response.status})`);
-        return null;
-      }
-
-      const imageBuffer = await response.arrayBuffer();
-      
-      // Resize image to small dimensions for blurhash
-      const resized = await sharp(imageBuffer)
-        .resize(BUILD_CONFIG.BLURHASH_RESIZE_WIDTH, BUILD_CONFIG.BLURHASH_RESIZE_HEIGHT, { fit: 'cover' })
-        .ensureAlpha()
-        .raw()
-        .toBuffer({ resolveWithObject: true });
-
-      // Generate blurhash
-      const blurhash = encode(
-        new Uint8ClampedArray(resized.data),
-        resized.info.width,
-        resized.info.height,
-        BUILD_CONFIG.BLURHASH_COMPONENTS_X,
-        BUILD_CONFIG.BLURHASH_COMPONENTS_Y
-      );
-
-      // Cache the result with file hash for invalidation
-      cache.photoBlurhashCache[cacheKey] = {
-        blurhash,
-        cachedAt: Date.now(),
-        fileHash
-      };
-
-      return blurhash;
-    } catch (e: any) {
-      if (e.name === 'AbortError') {
-        console.warn(`⏱️  Timeout fetching photo: ${photoUrl}`);
-      } else {
-        console.warn(`⚠️  Error processing photo ${photoUrl}:`, e.message);
-      }
-      return null;
-    }
-  });
-}
-
-
-/**
- * Generate search text for full-text search
- */
-function generateSearchText(item: ItemData, canonicalPath: string, author: string): string {
-  const parts = [
-    item.name,
-    item.description,
-    author,
-    canonicalPath.replace('/', ' '),
-    item.language || ''
-  ];
-  return parts.join(' ').toLowerCase();
-}
-
-// Required fields schema for validation
-const REQUIRED_FIELDS: Record<FolderType, string[]> = {
-  photo_packs: ['name', 'description', 'author', 'icon_url', 'photos'],
-  quote_packs: ['name', 'description', 'author', 'quotes'],
-  preset_settings: ['name', 'description', 'author', 'settings']
-};
-
-/**
- * Validate item has all required fields
- * @param {Object} file - The item data
- * @param {string} folder - The category folder
- * @param {string} canonicalPath - The item's canonical path
- */
-function validateItem(file: ItemData, folder: FolderType, canonicalPath: string): void {
-  const requiredFields = REQUIRED_FIELDS[folder];
-  for (const field of requiredFields) {
-    if (!(file as any)[field]) {
-      console.error('VALIDATION ERROR: %s missing required field "%s"', canonicalPath, field);
-      process.exit(1);
-    }
-  }
-
-  // Validate item counts
-  if (folder === 'photo_packs' && (!(file as any).photos || (file as any).photos.length === 0)) {
-    // Allow empty photos array for API-enabled packs (they fetch dynamically)
-    if (!(file as any).api_enabled) {
-      console.error('VALIDATION ERROR: %s has no photos', canonicalPath);
-      process.exit(1);
-    }
-  }
-  if (folder === 'quote_packs' && (!(file as any).quotes || (file as any).quotes.length === 0)) {
-    console.error('VALIDATION ERROR: %s has no quotes', canonicalPath);
-    process.exit(1);
-  }
-
-  // Additional validation for API-enabled photo packs
-  if (folder === 'photo_packs' && (file as any).api_enabled) {
-    if (!(file as any).api_provider) {
-      console.error('VALIDATION ERROR: %s is api_enabled but missing api_provider', canonicalPath);
-      process.exit(1);
-    }
-    if (!(file as any).api_endpoint) {
-      console.error('VALIDATION ERROR: %s is api_enabled but missing api_endpoint', canonicalPath);
-      process.exit(1);
-    }
-    if (!(file as any).settings_schema || !(file as any).settings_schema.length) {
-      console.error('VALIDATION ERROR: %s is api_enabled but missing settings_schema', canonicalPath);
-      process.exit(1);
-    }
-  }
-}
-
+const idRegistry: IdRegistry = { hashes: new Map(), paths: new Set() };
+const data: DataStructure = { preset_settings: {}, photo_packs: {}, quote_packs: {} };
 const curators: Curators = {};
-const data: DataStructure = {
-  preset_settings: {},
-  photo_packs: {},
-  quote_packs: {}
-};
 
-// Batch git log to get all file histories at once for performance
-console.log('📝 Fetching git history for all files...');
-const allPaths: string[] = [];
-const pathsNeedingGitFetch: string[] = [];
+// ---------------------------------------------------------------------------
+// Step 1 — Batch-fetch git history for all data files
+// ---------------------------------------------------------------------------
 
-for (const folder of Object.keys(data) as FolderType[]) {
-  const categories = `./data/${folder}`;
-  if (!fse.existsSync(categories)) continue;
-  const items = fse.readdirSync(categories);
-  for (const item of items) {
-    const path = `./data/${folder}/${item}`;
-    allPaths.push(path);
-
-    // Check if we need to fetch git history for this file
-    const fileHash = await computeFileHash(path);
-    const cachedEntry = cache.gitHistory[path];
-
-    if (!cachedEntry || cachedEntry.contentHash !== fileHash) {
-      pathsNeedingGitFetch.push(path);
-    }
+const allDataPaths: string[] = [];
+for (const folder of FOLDERS) {
+  if (!fse.existsSync(`./data/${folder}`)) continue;
+  for (const item of fse.readdirSync(`./data/${folder}`)) {
+    allDataPaths.push(`./data/${folder}/${item}`);
   }
 }
 
-// Get git history for changed/new files only
-const gitHistoryMap = new Map<string, { created_at: string; updated_at: string }>();
+console.log('📝 Fetching git history...');
+const gitHistoryMap = await fetchGitHistory(allDataPaths, cache, git);
 
-// First, load cached entries
-let cacheHits = 0;
-for (const path of allPaths) {
-  const cachedEntry = cache.gitHistory[path];
-  if (cachedEntry) {
-    const fileHash = await computeFileHash(path);
-    if (cachedEntry.contentHash === fileHash) {
-      gitHistoryMap.set(path, {
-        created_at: cachedEntry.created_at,
-        updated_at: cachedEntry.updated_at
-      });
-      cacheHits++;
-    }
+// ---------------------------------------------------------------------------
+// Step 2 — Process items per folder
+// ---------------------------------------------------------------------------
+
+const ctx = { gitHistoryMap, idRegistry, cache, photoLimit };
+
+for (const folder of FOLDERS) {
+  const results = await processFolder(folder, ctx, limit);
+  for (const result of results) {
+    if (!result) continue;
+    data[folder][result.name] = result.summary;
+    (curators[result.author] ??= []).push(result.canonicalPath);
   }
 }
 
-console.log(`💾 Cache hits: ${cacheHits}/${allPaths.length} files`);
+// ---------------------------------------------------------------------------
+// Step 3 — Process collections
+// ---------------------------------------------------------------------------
 
-// Fetch git history only for changed/new files
-if (pathsNeedingGitFetch.length > 0) {
-  console.log(`🔍 Fetching git history for ${pathsNeedingGitFetch.length} changed files...`);
-  try {
-    const allHistory = await Promise.all(
-      pathsNeedingGitFetch.map((path: string) =>
-        git.log({ file: path, strictDate: true })
-          .then((history: any) => ({ path, history }))
-          .catch((err: any) => {
-            console.warn(`Warning: Could not get git history for ${path}`, err);
-            return { path, history: null };
-          })
-      )
-    );
+const collections = await processCollections(data, git, idRegistry);
 
-    for (const { path, history } of allHistory) {
-      if (history && history.latest) {
-        const timestamps = {
-          updated_at: new Date(history.latest.date).toISOString(),
-          created_at: new Date(history.all[history.all.length - 1].date).toISOString()
-        };
-        gitHistoryMap.set(path, timestamps);
+// ---------------------------------------------------------------------------
+// Step 4 — Build ID index
+// ---------------------------------------------------------------------------
 
-        // Update cache
-        const fileHash = await computeFileHash(path);
-        cache.gitHistory[path] = {
-          ...timestamps,
-          contentHash: fileHash
-        };
-      }
-    }
-    console.log(`✅ Fetched git history for ${pathsNeedingGitFetch.length} files`);
-  } catch (e) {
-    console.error('Error fetching git history:', e);
-  }
-} else {
-  console.log('✅ All git history loaded from cache');
-}
+const idIndex: IdIndex = Object.fromEntries(idRegistry.hashes);
 
-// Process items in parallel with concurrency limit
-for (const folder of Object.keys(data) as FolderType[]) {
-  const categories = `./data/${folder}`;
-  if (!fse.existsSync(categories)) {
-    continue;
-  }
+// ---------------------------------------------------------------------------
+// Step 5 — Write all output files
+// ---------------------------------------------------------------------------
 
-  const items = fse.readdirSync(categories);
-  console.log(`📦 Processing ${items.length} items in ${folder}...`);
-
-  // Process items in parallel
-  const processedItems = await Promise.all(
-    items.map((item: string) =>
-      limit(async () => {
-        const path = `./data/${folder}/${item}`;
-        const file = await fse.readJSON(path) as ItemData;
-
-        if (file.draft === true) {
-          return null;
-        }
-
-        const name = item.replace('.json', '');
-        const canonicalPath = `${folder}/${name}`;
-
-        // Validate item schema
-        try {
-          validateItem(file, folder, canonicalPath);
-        } catch (error) {
-          console.error(error instanceof Error ? error.message : String(error));
-          process.exit(1);
-        }
-
-        // Generate stable hash ID
-        const stableHash = generateStableHash(canonicalPath, file.author);
-
-        // Validate uniqueness
-        if (idRegistry.paths.has(canonicalPath)) {
-          console.error('DUPLICATE PATH: %s already exists', canonicalPath);
-          process.exit(1);
-        }
-
-        if (idRegistry.hashes.has(stableHash)) {
-          const existing = idRegistry.hashes.get(stableHash);
-          console.error('HASH COLLISION: %s and %s generate same hash', canonicalPath, existing);
-          console.error('This should never happen - investigate immediately');
-          process.exit(1);
-        }
-
-        // Register IDs
-        idRegistry.paths.add(canonicalPath);
-        idRegistry.hashes.set(stableHash, canonicalPath);
-
-        // Get timestamps from batch git history
-        const timestamps = gitHistoryMap.get(path);
-        if (timestamps) {
-          file.updated_at = timestamps.updated_at;
-          file.created_at = timestamps.created_at;
-        } else {
-          // Fallback to current time if git history not available
-          const now = new Date().toISOString();
-          file.updated_at = now;
-          file.created_at = now;
-        }
-
-        // Extract color and blurhash from icon (if available)
-        let isDark = false;
-        let isLight = false;
-        if ((file as any).icon_url) {
-          const iconUrl = (file as any).icon_url;
-
-          // Check cache first
-          if (cache.colorCache[iconUrl]) {
-            const cached = cache.colorCache[iconUrl];
-            file.colour = cached.colour;
-            isDark = cached.isDark;
-            isLight = cached.isLight;
-          } else {
-            // Fetch and process color
-            try {
-              const original = await (await fetch(iconUrl))?.arrayBuffer();
-              const saturated = await sharp(original)
-                .modulate({
-                  saturation: 1.75
-                })
-                .toBuffer();
-              // value, rgb, rgba, hex, hexa, isDark, isLight
-              const colour = await getAverageColor(saturated, {
-                ignoredColor: [0, 0, 0]
-              });
-              file.colour = colour.hex;
-              isDark = colour.isDark;
-              isLight = colour.isLight;
-
-              // Cache the result
-              cache.colorCache[iconUrl] = {
-                colour: colour.hex,
-                isDark: colour.isDark,
-                isLight: colour.isLight
-              };
-            } catch (e) {
-              console.error('error reading %s', iconUrl);
-            }
-          }
-        }
-
-        // Process photo blurhashes for photo packs (skip if image_api is true)
-        if (folder === 'photo_packs' && (file as PhotoPackItem).photos && !(file as PhotoPackItem).image_api) {
-          const photoPackFile = file as PhotoPackItem;
-          const fileHash = await computeFileHash(path);
-          const photoBlurhashes: Record<string, string> = {};
-          
-          // Process each photo URL
-          const photoUrls: string[] = [];
-          
-          // Extract URLs from photos array (handle both string[] and object[] formats)
-          for (const photo of photoPackFile.photos) {
-            if (typeof photo === 'string') {
-              photoUrls.push(photo);
-            } else if (typeof photo === 'object' && photo !== null) {
-              // Handle {url: {default: "..."}} format
-              const photoObj = photo as any;
-              if (photoObj.url?.default) {
-                photoUrls.push(photoObj.url.default);
-              }
-            }
-          }
-
-          // Process photos in parallel with rate limiting
-          const blurhashResults = await Promise.all(
-            photoUrls.map(async (photoUrl) => {
-              const blurhash = await generatePhotoBlurhash(photoUrl, fileHash);
-              return { photoUrl, blurhash };
-            })
-          );
-
-          // Store successful blurhashes
-          let successCount = 0;
-          for (const { photoUrl, blurhash } of blurhashResults) {
-            if (blurhash) {
-              photoBlurhashes[photoUrl] = blurhash;
-              successCount++;
-            }
-          }
-
-          // Add blur_hash directly to each photo object
-          for (let i = 0; i < photoPackFile.photos.length; i++) {
-            const photo = photoPackFile.photos[i];
-            let photoUrl: string | null = null;
-
-            // Extract URL based on photo format
-            if (typeof photo === 'string') {
-              photoUrl = photo;
-            } else if (typeof photo === 'object' && photo !== null) {
-              const photoObj = photo as any;
-              if (photoObj.url?.default) {
-                photoUrl = photoObj.url.default;
-              }
-            }
-
-            // Add blur_hash to photo object if we have one
-            if (photoUrl && photoBlurhashes[photoUrl]) {
-              if (typeof photo === 'object' && photo !== null) {
-                (photo as any).blur_hash = photoBlurhashes[photoUrl];
-              }
-            }
-          }
-
-          // Log results
-          if (successCount > 0) {
-            console.log(`  ✓ Added blur_hash to ${successCount}/${photoUrls.length} photos for ${name}`);
-          } else if (photoUrls.length > 0) {
-            console.warn(`  ⚠️  Failed to generate any photo blurhashes for ${name}`);
-          }
-        }
-
-        // Generate enhanced metadata
-        const search_text = generateSearchText(file, canonicalPath, file.author);
-        const slug = generateSlug(file.name);
-
-        // Add ID fields to the full item data
-        file.id = stableHash;
-        file.canonical_path = canonicalPath;
-
-        await fse.writeJSON(`./dist/${folder}/${item}`, file);
-
-        const itemSummary: ExtendedItemSummary = {
-          name,
-          display_name: file.name,
-          icon_url: (file as any).icon_url,
-          colour: file.colour,
-          blurhash: file.blurhash,
-          author: file.author,
-          language: file.language,
-          keywords: file.keywords,
-          category_tags: file.category_tags,
-          in_collections: [],
-          id: stableHash,
-          canonical_path: canonicalPath,
-          type: folder,
-          item_count: (file as any).photos?.length || (file as any).quotes?.length || 0,
-          created_at: file.created_at,
-          updated_at: file.updated_at,
-          search_text,
-          slug,
-          isDark,
-          isLight,
-          // API-enabled photo pack fields
-          api_enabled: (file as any).api_enabled,
-          api_provider: (file as any).api_provider,
-          api_endpoint: (file as any).api_endpoint,
-          direct_api: (file as any).direct_api,
-          cache_refresh_interval: (file as any).cache_refresh_interval,
-          requires_api_key: (file as any).requires_api_key,
-          settings_schema: (file as any).settings_schema,
-        };
-
-        return { name, author: file.author, canonicalPath, summary: itemSummary };
-      })
-    )
-  );
-
-  // Filter out null results (drafts) and add to data structure
-  for (const result of processedItems) {
-    if (result) {
-      data[folder][result.name] = result.summary;
-      if (!curators[result.author]) curators[result.author] = [];
-      curators[result.author].push(result.canonicalPath);
-    }
-  }
-
-  console.log(`✅ Processed ${processedItems.filter((r: any) => r !== null).length} items in ${folder}`);
-}
-
-
-const collections: Collections = {};
-for (const item of fse.readdirSync('./dist/collections')) {
-  const file = await fse.readJSON(`./dist/collections/${item}`, 'utf8') as CollectionFile;
-
-  if (file.draft === true) {
-    continue;
-  }
-
-  const collectionName = item.replace('.json', '');
-  const canonicalPath = `collections/${collectionName}`;
-
-  // Generate stable hash ID for collection
-  const stableHash = generateStableHash(canonicalPath, 'marketplace');
-
-  // Validate uniqueness
-  if (idRegistry.paths.has(canonicalPath)) {
-    console.error('DUPLICATE PATH: %s already exists', canonicalPath);
-    process.exit(1);
-  }
-
-  if (idRegistry.hashes.has(stableHash)) {
-    const existing = idRegistry.hashes.get(stableHash);
-    console.error('HASH COLLISION: %s and %s generate same hash', canonicalPath, existing);
-    console.error('This should never happen - investigate immediately');
-    process.exit(1);
-  }
-
-  // Register IDs
-  idRegistry.paths.add(canonicalPath);
-  idRegistry.hashes.set(stableHash, canonicalPath);
-
-  // Get collection timestamps
-  const collectionHistory = await git.log({
-    file: `./data/collections/${item}`,
-    strictDate: true,
-  });
-  const collectionUpdatedAt = new Date(collectionHistory.latest!.date).toISOString();
-  const collectionCreatedAt = new Date(collectionHistory.all[collectionHistory.all.length - 1].date).toISOString();
-
-  const collection: Collection = {
-    name: collectionName,
-    display_name: file.name,
-    img: file.img,
-    description: file.description,
-    news: file.news || false,
-    items: file.items || null,
-    id: stableHash,
-    canonical_path: canonicalPath,
-    item_count: file.items?.length || 0,
-    created_at: collectionCreatedAt,
-    updated_at: collectionUpdatedAt,
-  };
-
-  // news "collections" have no items
-  collection.items?.forEach((item) => {
-    const [type, name] = item.split('/');
-    if (!data[type as FolderType][name]) {
-      console.error('Item "%s" in the "%s" collection does not exist', item, collection.name);
-      process.exit(1);
-    }
-    data[type as FolderType][name].in_collections.push(collection.name);
-  });
-
-  if (file.news) {
-    collection.news_link = file.news_link;
-  }
-
-  collections[collection.name] = collection;
-}
-
-
-// Generate ID index for reverse lookup
-const idIndex: IdIndex = {};
-for (const [hash, path] of idRegistry.hashes) {
-  idIndex[hash] = path;
-}
-
-// Read package.json for version
 const packageJson = await fse.readJSON('./package.json');
 const generatedAt = new Date().toISOString();
+const { version } = packageJson;
 
-// Generate full manifest (existing functionality)
-console.log('📝 Generating full manifest...');
-await fse.writeJSON('./dist/manifest.json', {
-  _version: packageJson.version,
-  _generated_at: generatedAt,
-  _schema_version: "3.0",
-  collections,
-  curators,
-  ...data,
-  _id_index: idIndex,
-} as ManifestOutput);
-console.log('✅ Generated manifest.json');
-
-// Generate manifest-lite (minimal metadata for fast loading)
-// NOTE: photo_blurhashes are excluded from manifest-lite to reduce payload size
-// Full photo blurhashes are available in individual pack files and the full manifest
-console.log('📝 Generating lite manifest...');
+// DataStructure stores ItemSummary, but processFolder populates it with
+// ExtendedItemSummary (which extends ItemSummary) — cast is safe here.
 const allItems = [
   ...Object.values(data.preset_settings),
   ...Object.values(data.photo_packs),
-  ...Object.values(data.quote_packs)
+  ...Object.values(data.quote_packs),
 ] as ExtendedItemSummary[];
 
-const manifestLite: ManifestLite = {
-  _version: packageJson.version,
-  _generated_at: generatedAt,
-  _schema_version: "3.0",
-  items: allItems.map(item => ({
-    id: item.id,
-    name: item.name,
-    display_name: item.display_name,
-    type: item.type,
-    author: item.author,
-    icon_url: item.icon_url,
-    colour: item.colour,
-    blurhash: item.blurhash  // Icon blurhash only, not photo_blurhashes
-  })),
-  collections: Object.values(collections).map(col => ({
-    id: col.id,
-    name: col.name,
-    display_name: col.display_name,
-    img: col.img
-  }))
-};
-await fse.writeJSON('./dist/manifest-lite.json', manifestLite);
-console.log('✅ Generated manifest-lite.json');
+console.log('📝 Writing outputs...');
+await Promise.all([
+  fse.writeJSON(
+    './dist/manifest.json',
+    buildManifest(data, collections, curators, idIndex, version, generatedAt),
+  ),
+  fse.writeJSON(
+    './dist/manifest-lite.json',
+    buildManifestLite(allItems, collections, version, generatedAt),
+  ),
+  fse.writeJSON('./dist/search-index.json', buildSearchIndex(allItems)),
+  fse.writeJSON(
+    './dist/stats.json',
+    buildStats(allItems, data, collections, curators, generatedAt),
+  ),
+]);
+console.log('✅ manifest.json, manifest-lite.json, search-index.json, stats.json');
 
-// Generate search index
-console.log('📝 Generating search index...');
-const authorsMap: Record<string, string[]> = {};
-const keywordsMap: Record<string, string[]> = {};
-const categoryTagsMap: Record<string, string[]> = {};
+// ---------------------------------------------------------------------------
+// Step 6 — Persist cache
+// ---------------------------------------------------------------------------
 
-for (const item of allItems) {
-  // Build authors map
-  if (!authorsMap[item.author]) authorsMap[item.author] = [];
-  authorsMap[item.author].push(item.id);
-
-  // Build keywords map
-  if (item.keywords) {
-    for (const keyword of item.keywords) {
-      if (!keywordsMap[keyword]) keywordsMap[keyword] = [];
-      keywordsMap[keyword].push(item.id);
-    }
-  }
-
-  // Build category_tags map
-  if (item.category_tags) {
-    for (const tag of item.category_tags) {
-      if (!categoryTagsMap[tag]) categoryTagsMap[tag] = [];
-      categoryTagsMap[tag].push(item.id);
-    }
-  }
-}
-
-const searchIndex: SearchIndex = {
-  items: allItems.map(item => ({
-    id: item.id,
-    canonical_path: item.canonical_path,
-    type: item.type,
-    search_text: item.search_text,
-    display_name: item.display_name,
-    author: item.author,
-    keywords: item.keywords,
-    category_tags: item.category_tags
-  })),
-  authors: authorsMap,
-  keywords: keywordsMap,
-  category_tags: categoryTagsMap as any
-};
-await fse.writeJSON('./dist/search-index.json', searchIndex);
-console.log('✅ Generated search-index.json');
-
-// Generate stats
-console.log('📝 Generating stats...');
-const sortedItems = [...allItems].sort((a, b) =>
-  new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+await fse.writeJSON(CACHE_FILE, cache, { spaces: 2 });
+console.log(
+  `💾 Saved cache: ${Object.keys(cache.gitHistory).length} git, ` +
+    `${Object.keys(cache.colorCache).length} color entries`,
 );
 
-const stats: StatsOutput = {
-  total_items: allItems.length,
-  items_by_category: {
-    preset_settings: Object.keys(data.preset_settings).length,
-    photo_packs: Object.keys(data.photo_packs).length,
-    quote_packs: Object.keys(data.quote_packs).length
-  },
-  total_collections: Object.keys(collections).length,
-  total_curators: Object.keys(curators).length,
-  recent_items: sortedItems.slice(0, 20),
-  generated_at: generatedAt
-};
-await fse.writeJSON('./dist/stats.json', stats);
-console.log('✅ Generated stats.json');
+// ---------------------------------------------------------------------------
+// Summary
+// ---------------------------------------------------------------------------
 
-// Save cache for next build
-console.log('💾 Saving cache...');
-await fse.writeJSON(cacheFile, cache, { spaces: 2 });
-console.log(`✅ Saved cache: ${Object.keys(cache.gitHistory).length} git entries, ${Object.keys(cache.colorCache).length} color entries`);
-
-// Performance summary
-const perfEnd = Date.now();
-const duration = ((perfEnd - perfStart) / 1000).toFixed(2);
+const duration = ((Date.now() - perfStart) / 1000).toFixed(2);
 console.log(`\n🎉 Marketplace bundle complete!`);
-console.log(`   Total time: ${duration}s`);
-console.log(`   Items processed: ${allItems.length}`);
+console.log(`   Total time:  ${duration}s`);
+console.log(`   Items:       ${allItems.length}`);
 console.log(`   Collections: ${Object.keys(collections).length}`);
-console.log(`   Curators: ${Object.keys(curators).length}`);
+console.log(`   Curators:    ${Object.keys(curators).length}`);

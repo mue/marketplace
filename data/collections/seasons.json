@@ -1,6 +1,6 @@
 {
-    "name": "Seasons",
-    "img": "https://i.imgur.com/bAMbRag.jpg",
-    "description": "A Collection of photo packs for each season.",
-    "items": ["photo_packs/summer", "photo_packs/winter"]
+  "name": "Seasons",
+  "img": "https://i.imgur.com/bAMbRag.jpg",
+  "description": "A Collection of photo packs for each season.",
+  "items": ["photo_packs/summer", "photo_packs/winter"]
 }

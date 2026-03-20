@@ -1,194 +1,194 @@
 {
-    "name": "Formula 1",
-    "description": "F1 photos.",
-    "icon_url": "https://i.imgur.com/gCMuzfv.png",
-    "screenshot_url": "https://i.imgur.com/1CU7X3Z.png",
-    "type": "photos",
-    "verified": false,
-    "version": "1.0.0",
-    "author": "Ünal",
-    "photos": [
-        {
-            "photographer": "Unknown",
-            "location": "Silverstone,UK",
-            "url": {
-                "default": "https://i.imgur.com/eBYEaD8.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Monza,Italy",
-            "url": {
-                "default": "https://i.imgur.com/zgUJZbb.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Bahrain",
-            "url": {
-                "default": "https://i.imgur.com/Q98OMtY.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": null,
-            "url": {
-                "default": "https://i.imgur.com/iDyoob1.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Monaco",
-            "url": {
-                "default": "https://i.imgur.com/M0rGlbB.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Bakü,Azerbaijan",
-            "url": {
-                "default": "https://i.imgur.com/tN8EMFu.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "La Castellet,France",
-            "url": {
-                "default": "https://i.imgur.com/3KE6jp8.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": null,
-            "url": {
-                "default": "https://i.imgur.com/gYdK12b.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Unknown",
-            "url": {
-                "default": "https://i.imgur.com/oBgVTpM.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Silverstone,UK",
-            "url": {
-                "default": "https://i.imgur.com/ghJeKCp.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Suzuka,Japan",
-            "url": {
-                "default": "https://i.imgur.com/Uv7Cio2.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": null,
-            "url": {
-                "default": "https://i.imgur.com/4yZWfpI.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": null,
-            "url": {
-                "default": "https://i.imgur.com/8FdLxUW.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "İstanbul,Turkey",
-            "url": {
-                "default": "https://i.imgur.com/rxUnnNo.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Singapore",
-            "url": {
-                "default": "https://i.imgur.com/I7ojChZ.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Bakü,Azerbaijan",
-            "url": {
-                "default": "https://i.imgur.com/KVmpNQG.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "La Castellet,France",
-            "url": {
-                "default": "https://i.imgur.com/p6ATcrM.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Hungaroring,Hungary",
-            "url": {
-                "default": "https://i.imgur.com/MSlijKB.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Sochi,Russia",
-            "url": {
-                "default": "https://i.imgur.com/RwVY9x6.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "São Paulo,Brazil",
-            "url": {
-                "default": "https://i.imgur.com/DRY8Fil.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Barcelona,Spain",
-            "url": {
-                "default": "https://i.imgur.com/JbtK41X.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Imola,Italy",
-            "url": {
-                "default": "https://i.imgur.com/mAIboao.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Bakü,Azerbaijan",
-            "url": {
-                "default": "https://i.imgur.com/IeZmYKR.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Qatar",
-            "url": {
-                "default": "https://i.imgur.com/slYJ11l.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": null,
-            "url": {
-                "default": "https://i.imgur.com/XJxRHdX.jpeg"
-            }
-        },
-        {
-            "photographer": "Unknown",
-            "location": "Monza,Italy",
-            "url": {
-                "default": "https://i.imgur.com/NNmmyue.jpeg"
-            }
-        }
-    ]
+  "name": "Formula 1",
+  "description": "F1 photos.",
+  "icon_url": "https://i.imgur.com/gCMuzfv.png",
+  "screenshot_url": "https://i.imgur.com/1CU7X3Z.png",
+  "type": "photos",
+  "verified": false,
+  "version": "1.0.0",
+  "author": "Ünal",
+  "photos": [
+    {
+      "photographer": "Unknown",
+      "location": "Silverstone,UK",
+      "url": {
+        "default": "https://i.imgur.com/eBYEaD8.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Monza,Italy",
+      "url": {
+        "default": "https://i.imgur.com/zgUJZbb.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Bahrain",
+      "url": {
+        "default": "https://i.imgur.com/Q98OMtY.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": null,
+      "url": {
+        "default": "https://i.imgur.com/iDyoob1.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Monaco",
+      "url": {
+        "default": "https://i.imgur.com/M0rGlbB.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Bakü,Azerbaijan",
+      "url": {
+        "default": "https://i.imgur.com/tN8EMFu.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "La Castellet,France",
+      "url": {
+        "default": "https://i.imgur.com/3KE6jp8.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": null,
+      "url": {
+        "default": "https://i.imgur.com/gYdK12b.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Unknown",
+      "url": {
+        "default": "https://i.imgur.com/oBgVTpM.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Silverstone,UK",
+      "url": {
+        "default": "https://i.imgur.com/ghJeKCp.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Suzuka,Japan",
+      "url": {
+        "default": "https://i.imgur.com/Uv7Cio2.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": null,
+      "url": {
+        "default": "https://i.imgur.com/4yZWfpI.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": null,
+      "url": {
+        "default": "https://i.imgur.com/8FdLxUW.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "İstanbul,Turkey",
+      "url": {
+        "default": "https://i.imgur.com/rxUnnNo.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Singapore",
+      "url": {
+        "default": "https://i.imgur.com/I7ojChZ.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Bakü,Azerbaijan",
+      "url": {
+        "default": "https://i.imgur.com/KVmpNQG.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "La Castellet,France",
+      "url": {
+        "default": "https://i.imgur.com/p6ATcrM.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Hungaroring,Hungary",
+      "url": {
+        "default": "https://i.imgur.com/MSlijKB.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Sochi,Russia",
+      "url": {
+        "default": "https://i.imgur.com/RwVY9x6.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "São Paulo,Brazil",
+      "url": {
+        "default": "https://i.imgur.com/DRY8Fil.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Barcelona,Spain",
+      "url": {
+        "default": "https://i.imgur.com/JbtK41X.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Imola,Italy",
+      "url": {
+        "default": "https://i.imgur.com/mAIboao.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Bakü,Azerbaijan",
+      "url": {
+        "default": "https://i.imgur.com/IeZmYKR.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Qatar",
+      "url": {
+        "default": "https://i.imgur.com/slYJ11l.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": null,
+      "url": {
+        "default": "https://i.imgur.com/XJxRHdX.jpeg"
+      }
+    },
+    {
+      "photographer": "Unknown",
+      "location": "Monza,Italy",
+      "url": {
+        "default": "https://i.imgur.com/NNmmyue.jpeg"
+      }
+    }
+  ]
 }

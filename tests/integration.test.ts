@@ -1,9 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import {
-  generateStableHash,
-  generateSlug,
-  generateSearchText,
-} from '../scripts/utils.js';
+import { generateStableHash, generateSlug, generateSearchText } from '../scripts/utils.js';
 import type { PhotoPackItem, QuotePackItem } from '../scripts/types.js';
 
 describe('Integration Tests', () => {
@@ -28,11 +24,7 @@ describe('Integration Tests', () => {
       // Generate all metadata
       const hash = generateStableHash(canonicalPath, photopack.author);
       const slug = generateSlug(photopack.name);
-      const searchText = generateSearchText(
-        photopack,
-        canonicalPath,
-        photopack.author
-      );
+      const searchText = generateSearchText(photopack, canonicalPath, photopack.author);
 
       // Assertions
       expect(hash).toHaveLength(12);
@@ -76,11 +68,7 @@ describe('Integration Tests', () => {
       // Generate all metadata
       const hash = generateStableHash(canonicalPath, quotepack.author);
       const slug = generateSlug(quotepack.name);
-      const searchText = generateSearchText(
-        quotepack,
-        canonicalPath,
-        quotepack.author
-      );
+      const searchText = generateSearchText(quotepack, canonicalPath, quotepack.author);
 
       // Assertions
       expect(hash).toHaveLength(12);
@@ -100,12 +88,10 @@ describe('Integration Tests', () => {
         'photo_packs/nature_photography',
         'photo_packs/natural_landscapes',
         'quote_packs/nature',
-        'preset_settings/nature_theme'
+        'preset_settings/nature_theme',
       ];
 
-      const hashes = paths.map(path => 
-        generateStableHash(path, 'same_author')
-      );
+      const hashes = paths.map((path) => generateStableHash(path, 'same_author'));
 
       // All hashes should be unique
       const uniqueHashes = new Set(hashes);
@@ -118,12 +104,10 @@ describe('Integration Tests', () => {
         'author2',
         'author3',
         'author_with_underscores',
-        'author-with-dashes'
+        'author-with-dashes',
       ];
 
-      const hashes = authors.map(author => 
-        generateStableHash('photo_packs/nature', author)
-      );
+      const hashes = authors.map((author) => generateStableHash('photo_packs/nature', author));
 
       // All hashes should be unique
       const uniqueHashes = new Set(hashes);
@@ -155,13 +139,13 @@ describe('Integration Tests', () => {
         author: 'anime_artist_2024',
         icon_url: 'https://example.com/icon.png',
         photos: ['photo1.jpg'],
-        language: 'ja'
+        language: 'ja',
       };
 
       const searchText = generateSearchText(
         item,
         'photo_packs/anime_characters',
-        'anime_artist_2024'
+        'anime_artist_2024',
       );
 
       // All key information should be searchable

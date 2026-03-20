@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import type { ItemData, FolderType } from './types.js';
+import type { ItemData, FolderType, PhotoPackItem, QuotePackItem } from './types.js';
 import { ID_CONFIG, VALIDATION_CONFIG } from './config.js';
 
 /**
@@ -22,15 +22,15 @@ export interface ValidationError {
 
 /**
  * Generate a stable hash ID from canonical path and author.
- * 
+ *
  * Uses SHA-256 hashing to create a deterministic, unique identifier
  * for marketplace items. The hash is based on the item's canonical path
  * and author, ensuring consistency across builds.
- * 
+ *
  * @param canonicalPath - The item's canonical path (e.g., "photo_packs/nature")
  * @param author - The item's author username
  * @returns A truncated hex hash of the specified length (default: 12 characters)
- * 
+ *
  * @example
  * ```ts
  * const id = generateStableHash("photo_packs/nature", "johndoe");
@@ -48,19 +48,19 @@ export function generateStableHash(canonicalPath: string, author: string): strin
 
 /**
  * Generate a URL-friendly slug from a display name.
- * 
+ *
  * Converts a human-readable name into a lowercase, hyphenated slug
  * suitable for URLs and file paths. Non-alphanumeric characters are
  * converted to hyphens, and leading/trailing hyphens are removed.
- * 
+ *
  * @param name - The display name to convert
  * @returns A URL-safe slug string
- * 
+ *
  * @example
  * ```ts
  * generateSlug("Beautiful Nature Photos!");
  * // Returns: "beautiful-nature-photos"
- * 
+ *
  * generateSlug("___Test---Name___");
  * // Returns: "test-name"
  * ```
@@ -74,16 +74,16 @@ export function generateSlug(name: string): string {
 
 /**
  * Generate searchable text from item metadata.
- * 
+ *
  * Combines multiple item fields into a single normalized string
  * for full-text search indexing. All text is lowercased for
  * case-insensitive matching.
- * 
+ *
  * @param item - The item data object
  * @param canonicalPath - The item's canonical path
  * @param author - The item's author
  * @returns Normalized search text string
- * 
+ *
  * @example
  * ```ts
  * const searchText = generateSearchText(
@@ -94,11 +94,7 @@ export function generateSlug(name: string): string {
  * // Returns: "nature beautiful photos johndoe photo_packs nature"
  * ```
  */
-export function generateSearchText(
-  item: ItemData,
-  canonicalPath: string,
-  author: string
-): string {
+export function generateSearchText(item: ItemData, canonicalPath: string, author: string): string {
   const parts = [
     item.name,
     item.description,
@@ -111,20 +107,20 @@ export function generateSearchText(
 
 /**
  * Validate that an item has all required fields for its type.
- * 
+ *
  * Performs comprehensive validation including:
  * - Presence of all required fields for the item type
  * - Non-empty arrays for photos/quotes where applicable
  * - Type-specific validation rules
- * 
+ *
  * Returns a Result object instead of throwing to allow for better
  * error handling and recovery.
- * 
+ *
  * @param file - The item data to validate
  * @param folder - The item type/category
  * @param canonicalPath - The item's canonical path (for error messages)
  * @returns Result object with validation status and any errors
- * 
+ *
  * @example
  * ```ts
  * const result = validateItem(itemData, "photo_packs", "photo_packs/nature");
@@ -136,13 +132,13 @@ export function generateSearchText(
 export function validateItem(
   file: ItemData,
   folder: FolderType,
-  canonicalPath: string
+  canonicalPath: string,
 ): Result<void, ValidationError> {
   const requiredFields = VALIDATION_CONFIG.REQUIRED_FIELDS[folder];
 
   // Check for missing required fields
   for (const field of requiredFields) {
-    if (!(file as any)[field]) {
+    if (!(file as unknown as Record<string, unknown>)[field]) {
       return {
         success: false,
         error: {
@@ -156,21 +152,71 @@ export function validateItem(
 
   // Type-specific validation
   if (folder === 'photo_packs') {
-    const photos = (file as any).photos;
-    if (!Array.isArray(photos) || photos.length === 0) {
+    const photoFile = file as PhotoPackItem;
+    const photos = photoFile.photos;
+    const apiEnabled = photoFile.api_enabled;
+
+    if (!Array.isArray(photos)) {
       return {
         success: false,
         error: {
           field: 'photos',
-          message: 'Photo pack must contain at least one photo',
+          message: 'Missing required field "photos"',
           canonicalPath,
         },
       };
     }
+
+    if (photos.length === 0 && !apiEnabled) {
+      return {
+        success: false,
+        error: {
+          field: 'photos',
+          message: 'Photo pack must contain at least one photo (or set api_enabled: true)',
+          canonicalPath,
+        },
+      };
+    }
+
+    if (apiEnabled) {
+      if (!photoFile.api_provider) {
+        return {
+          success: false,
+          error: {
+            field: 'api_provider',
+            message: 'api_enabled pack missing required field "api_provider"',
+            canonicalPath,
+          },
+        };
+      }
+
+      if (!photoFile.api_endpoint) {
+        return {
+          success: false,
+          error: {
+            field: 'api_endpoint',
+            message: 'api_enabled pack missing required field "api_endpoint"',
+            canonicalPath,
+          },
+        };
+      }
+
+      const schema = photoFile.settings_schema;
+      if (!Array.isArray(schema) || schema.length === 0) {
+        return {
+          success: false,
+          error: {
+            field: 'settings_schema',
+            message: 'api_enabled pack missing required field "settings_schema"',
+            canonicalPath,
+          },
+        };
+      }
+    }
   }
 
   if (folder === 'quote_packs') {
-    const quotes = (file as any).quotes;
+    const quotes = (file as QuotePackItem).quotes;
     if (!Array.isArray(quotes) || quotes.length === 0) {
       return {
         success: false,
@@ -188,10 +234,10 @@ export function validateItem(
 
 /**
  * Format a validation error as a human-readable string.
- * 
+ *
  * @param error - The validation error object
  * @returns Formatted error message
- * 
+ *
  * @example
  * ```ts
  * const errorMsg = formatValidationError({

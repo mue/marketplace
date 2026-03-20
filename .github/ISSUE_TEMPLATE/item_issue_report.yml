@@ -1,14 +1,14 @@
 name: Report an item
 description: Report an issue with a marketplace item.
-title: "[Item Report] Insert marketplace item name here"
-labels: ["item", "report"]
+title: '[Item Report] Insert marketplace item name here'
+labels: ['item', 'report']
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this item report!
   - type: textarea
-    id: description 
+    id: description
     attributes:
       label: Description
       description: Describe the issue you are having with the marketplace item.

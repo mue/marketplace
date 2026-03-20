@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "author": "The Mue Authors",
   "icon_url": "https://www.flickrhelp.com/hc/article_attachments/4419907666708",
-  "screenshot_url":  "https://www.flickrhelp.com/hc/article_attachments/4419907666708",
+  "screenshot_url": "https://www.flickrhelp.com/hc/article_attachments/4419907666708",
 
   "api_enabled": true,
   "api_provider": "flickr",

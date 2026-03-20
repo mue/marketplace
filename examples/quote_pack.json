@@ -1,18 +1,18 @@
 {
-    "name": "Example Quotes",
-    "description": "This is an example quote pack with inspirational quotes.",
-    "author": "Mue",
-    "language": "en",
-    "keywords": ["inspiration", "wisdom", "motivation"],
-    "category_tags": ["motivational", "philosophical"],
-    "quotes": [
-        {
-            "quote": "This is an example quote.",
-            "author": "Example 1"
-        },
-        {
-            "quote": "This is another example quote.",
-            "author": "Example 2"
-        }
-    ]
+  "name": "Example Quotes",
+  "description": "This is an example quote pack with inspirational quotes.",
+  "author": "Mue",
+  "language": "en",
+  "keywords": ["inspiration", "wisdom", "motivation"],
+  "category_tags": ["motivational", "philosophical"],
+  "quotes": [
+    {
+      "quote": "This is an example quote.",
+      "author": "Example 1"
+    },
+    {
+      "quote": "This is another example quote.",
+      "author": "Example 2"
+    }
+  ]
 }

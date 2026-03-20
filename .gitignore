@@ -1,5 +1,6 @@
 # Directories
 dist/
 .vscode/
+.claude/
 node_modules/
 .build-cache/
