@@ -1,0 +1,35 @@
+{
+  "name": "Naruto Wisdom",
+  "description": "Inspiring quotes from the world of Naruto — from ninjas who never gave up.",
+  "type": "quotes",
+  "version": "1.0.0",
+  "author": "Naruto Fan",
+  "icon_url": "https://i.pinimg.com/1200x/68/2b/26/682b2601d781541e288dd89bae5aec96.jpg",
+  "screenshot_url": "",
+  "quotes": [
+    {
+      "quote": "I'm not gonna run away, I never go back on my word!",
+      "author": "Naruto Uzumaki"
+    },
+    {
+      "quote": "Hard work is worthless for those that don't believe in themselves.",
+      "author": "Naruto Uzumaki"
+    },
+    {
+      "quote": "A person grows up when he's able to overcome hardship.",
+      "author": "Jiraiya"
+    },
+    {
+      "quote": "Those who break the rules are scum, but those who abandon their friends are worse than scum.",
+      "author": "Obito Uchiha"
+    },
+    {
+      "quote": "The pain of being alone is completely out of this world.",
+      "author": "Naruto Uzumaki"
+    },
+    {
+      "quote": "When people get hurt, they learn to hate. When people hurt others, they become hated.",
+      "author": "Nagato"
+    }
+  ]
+}
