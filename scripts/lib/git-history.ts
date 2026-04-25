@@ -11,24 +11,11 @@ export interface GitTimestamps {
   updated_at: string;
 }
 
-/**
- * Compute a short SHA-256 hash of a file's UTF-8 content (16 hex chars).
- * Used to detect whether a file has changed between builds.
- */
 export async function computeFileHash(filePath: string): Promise<string> {
   const content = await fse.readFile(filePath, 'utf8');
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 16);
 }
 
-/**
- * Load git timestamps for a set of file paths, using the cache to skip
- * files whose content hash has not changed since the last build.
- *
- * Mutates `cache.gitHistory` in place to persist newly fetched entries.
- *
- * @returns A Map of filePath -> { created_at, updated_at }. Paths with no
- *          retrievable git history are omitted (caller falls back to now).
- */
 export async function fetchGitHistory(
   allPaths: string[],
   cache: BuildCacheData,
@@ -36,7 +23,6 @@ export async function fetchGitHistory(
 ): Promise<Map<string, GitTimestamps>> {
   const result = new Map<string, GitTimestamps>();
 
-  // Compute all file hashes in parallel up front
   const fileHashes = new Map<string, string>();
   await Promise.all(
     allPaths.map(async (path) => {
@@ -44,7 +30,6 @@ export async function fetchGitHistory(
     }),
   );
 
-  // Separate cached hits from paths needing a fresh git log
   const pathsNeedingFetch: string[] = [];
   let cacheHits = 0;
 
@@ -60,14 +45,14 @@ export async function fetchGitHistory(
     }
   }
 
-  console.log(`💾 Cache hits: ${cacheHits}/${allPaths.length} files`);
+  console.log(`Cache hits: ${cacheHits}/${allPaths.length} files`);
 
   if (pathsNeedingFetch.length === 0) {
-    console.log('✅ All git history loaded from cache');
+    console.log('All git history loaded from cache');
     return result;
   }
 
-  console.log(`🔍 Fetching git history for ${pathsNeedingFetch.length} changed files...`);
+  console.log(`Fetching git history for ${pathsNeedingFetch.length} changed files...`);
 
   try {
     const allHistory = await Promise.all(
@@ -94,7 +79,7 @@ export async function fetchGitHistory(
       }
     }
 
-    console.log(`✅ Fetched git history for ${pathsNeedingFetch.length} files`);
+    console.log(`Fetched git history for ${pathsNeedingFetch.length} files`);
   } catch (e) {
     console.error('Error fetching git history:', e);
   }

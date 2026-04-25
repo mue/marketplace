@@ -1,6 +1,7 @@
 import fse from 'fs-extra';
 import simpleGit from 'simple-git';
 import pLimit from 'p-limit';
+
 import { BUILD_CONFIG, REPO_CONFIG } from './config.js';
 import type {
   FolderType,
@@ -11,6 +12,7 @@ import type {
   ExtendedItemSummary,
   BuildCacheData,
 } from './types.js';
+
 import { fetchGitHistory } from './lib/git-history.js';
 import { processFolder } from './lib/item-processor.js';
 import { processCollections } from './lib/collection-processor.js';
@@ -21,12 +23,9 @@ import {
   buildStats,
 } from './lib/output-writers.js';
 
-// ---------------------------------------------------------------------------
-// Bootstrap
-// ---------------------------------------------------------------------------
-
+// START
 const perfStart = Date.now();
-console.log('🚀 Starting marketplace bundle process...');
+console.log('Starting marketplace bundle process...');
 
 const args = process.argv.slice(2);
 const FULL_REBUILD = args.includes('--full');
@@ -37,10 +36,7 @@ await fse.ensureDir('dist');
 await fse.ensureDir(CACHE_DIR);
 await fse.copy('data', 'dist');
 
-// ---------------------------------------------------------------------------
-// Load plain-object build cache
-// ---------------------------------------------------------------------------
-
+// LOAD CACHE
 let cache: BuildCacheData = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
 
 if (!FULL_REBUILD && (await fse.pathExists(CACHE_FILE))) {
@@ -48,22 +44,19 @@ if (!FULL_REBUILD && (await fse.pathExists(CACHE_FILE))) {
     cache = await fse.readJSON(CACHE_FILE);
     cache.photoBlurhashCache ??= {};
     console.log(
-      `📦 Loaded cache: ${Object.keys(cache.gitHistory).length} git, ` +
+      `Loaded cache: ${Object.keys(cache.gitHistory).length} git, ` +
         `${Object.keys(cache.colorCache).length} color, ` +
         `${Object.keys(cache.photoBlurhashCache).length} photo entries`,
     );
   } catch {
-    console.warn('⚠️  Failed to load cache, starting fresh');
+    console.warn('Failed to load cache, starting fresh');
     cache = { gitHistory: {}, colorCache: {}, photoBlurhashCache: {} };
   }
 } else if (FULL_REBUILD) {
-  console.log('🔄 Full rebuild requested, skipping cache');
+  console.log('Full rebuild requested, skipping cache');
 }
 
-// ---------------------------------------------------------------------------
-// Git setup
-// ---------------------------------------------------------------------------
-
+// INIT GIT
 let baseDir = '.';
 if (process.env.CF_PAGES === '1') {
   await simpleGit().clone(REPO_CONFIG.GITHUB_URL, REPO_CONFIG.CF_PAGES_CLONE_DIR, {
@@ -71,84 +64,63 @@ if (process.env.CF_PAGES === '1') {
   });
   baseDir = `./${REPO_CONFIG.CF_PAGES_CLONE_DIR}`;
 }
+
 const git = simpleGit({ baseDir });
 
-// ---------------------------------------------------------------------------
-// Concurrency limiters
-// ---------------------------------------------------------------------------
-
+// SET LIMITS
 const limit = pLimit(BUILD_CONFIG.CONCURRENCY_LIMIT);
 const photoLimit = pLimit(BUILD_CONFIG.PHOTO_PROCESSING_RATE_LIMIT);
 
-// ---------------------------------------------------------------------------
-// Shared state
-// ---------------------------------------------------------------------------
-
+// STATE
 const FOLDERS: FolderType[] = ['preset_settings', 'photo_packs', 'quote_packs'];
 
 const idRegistry: IdRegistry = { hashes: new Map(), paths: new Set() };
 const data: DataStructure = { preset_settings: {}, photo_packs: {}, quote_packs: {} };
 const curators: Curators = {};
 
-// ---------------------------------------------------------------------------
-// Step 1 — Batch-fetch git history for all data files
-// ---------------------------------------------------------------------------
-
+// fetch history for updated_at, and to detect changes
 const allDataPaths: string[] = [];
 for (const folder of FOLDERS) {
   if (!fse.existsSync(`./data/${folder}`)) continue;
+
   for (const item of fse.readdirSync(`./data/${folder}`)) {
     allDataPaths.push(`./data/${folder}/${item}`);
   }
 }
 
-console.log('📝 Fetching git history...');
+console.log('Fetching git history...');
 const gitHistoryMap = await fetchGitHistory(allDataPaths, cache, git);
 
-// ---------------------------------------------------------------------------
-// Step 2 — Process items per folder
-// ---------------------------------------------------------------------------
-
+// process items per folder
 const ctx = { gitHistoryMap, idRegistry, cache, photoLimit };
 
 for (const folder of FOLDERS) {
   const results = await processFolder(folder, ctx, limit);
+
   for (const result of results) {
     if (!result) continue;
+
     data[folder][result.name] = result.summary;
     (curators[result.author] ??= []).push(result.canonicalPath);
   }
 }
 
-// ---------------------------------------------------------------------------
-// Step 3 — Process collections
-// ---------------------------------------------------------------------------
-
+// process collections and indexes
 const collections = await processCollections(data, git, idRegistry);
-
-// ---------------------------------------------------------------------------
-// Step 4 — Build ID index
-// ---------------------------------------------------------------------------
-
 const idIndex: IdIndex = Object.fromEntries(idRegistry.hashes);
 
-// ---------------------------------------------------------------------------
-// Step 5 — Write all output files
-// ---------------------------------------------------------------------------
-
+// write outputs
 const packageJson = await fse.readJSON('./package.json');
 const generatedAt = new Date().toISOString();
 const { version } = packageJson;
 
-// DataStructure stores ItemSummary, but processFolder populates it with
-// ExtendedItemSummary (which extends ItemSummary) — cast is safe here.
 const allItems = [
   ...Object.values(data.preset_settings),
   ...Object.values(data.photo_packs),
   ...Object.values(data.quote_packs),
 ] as ExtendedItemSummary[];
 
-console.log('📝 Writing outputs...');
+console.log('Writing outputs...');
 await Promise.all([
   fse.writeJSON(
     './dist/manifest.json',
@@ -164,25 +136,19 @@ await Promise.all([
     buildStats(allItems, data, collections, curators, generatedAt),
   ),
 ]);
-console.log('✅ manifest.json, manifest-lite.json, search-index.json, stats.json');
+console.log('Written manifest.json, manifest-lite.json, search-index.json, stats.json');
 
-// ---------------------------------------------------------------------------
-// Step 6 — Persist cache
-// ---------------------------------------------------------------------------
-
+// SET CACHE
 await fse.writeJSON(CACHE_FILE, cache, { spaces: 2 });
 console.log(
-  `💾 Saved cache: ${Object.keys(cache.gitHistory).length} git, ` +
+  `Saved cache: ${Object.keys(cache.gitHistory).length} git, ` +
     `${Object.keys(cache.colorCache).length} color entries`,
 );
 
-// ---------------------------------------------------------------------------
-// Summary
-// ---------------------------------------------------------------------------
-
+// SUMMARY
 const duration = ((Date.now() - perfStart) / 1000).toFixed(2);
-console.log(`\n🎉 Marketplace bundle complete!`);
-console.log(`   Total time:  ${duration}s`);
-console.log(`   Items:       ${allItems.length}`);
-console.log(`   Collections: ${Object.keys(collections).length}`);
-console.log(`   Curators:    ${Object.keys(curators).length}`);
+console.log(`\n Marketplace bundle complete!`);
+console.log(`Total time:  ${duration}s`);
+console.log(`Items:       ${allItems.length}`);
+console.log(`Collections: ${Object.keys(collections).length}`);
+console.log(`Curators:    ${Object.keys(curators).length}`);

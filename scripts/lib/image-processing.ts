@@ -13,12 +13,6 @@ export interface ColourResult {
   isLight: boolean;
 }
 
-/**
- * Fetch an icon URL, boost its saturation with sharp, then extract the
- * average colour. Reads from and writes to `cache.colorCache`.
- *
- * Returns null if the fetch or colour extraction fails.
- */
 export async function extractIconColour(
   iconUrl: string,
   cache: BuildCacheData,
@@ -32,6 +26,7 @@ export async function extractIconColour(
     const saturated = await sharp(buffer)
       .modulate({ saturation: BUILD_CONFIG.COLOR_SATURATION_MULTIPLIER })
       .toBuffer();
+
     const colour = await getAverageColor(saturated, { ignoredColor: [0, 0, 0] });
 
     const result: ColourResult = {
@@ -39,21 +34,16 @@ export async function extractIconColour(
       isDark: colour.isDark,
       isLight: colour.isLight,
     };
+
     cache.colorCache[iconUrl] = result;
+
     return result;
   } catch {
-    console.error('error reading %s', iconUrl);
+    console.error('Error reading %s', iconUrl);
     return null;
   }
 }
 
-/**
- * Fetch a single photo URL, resize with sharp, and encode a blurhash.
- * The `photoLimit` rate-limiter controls how many photos are processed
- * concurrently. Reads from and writes to `cache.photoBlurhashCache`.
- *
- * Returns null if the fetch, resize, or encode fails.
- */
 export async function generatePhotoBlurhash(
   photoUrl: string,
   fileHash: string,
@@ -69,15 +59,15 @@ export async function generatePhotoBlurhash(
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), BUILD_CONFIG.PHOTO_FETCH_TIMEOUT_MS);
-      const response = await fetch(photoUrl, { signal: controller.signal });
+      const res = await fetch(photoUrl, { signal: controller.signal });
       clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        console.warn(`⚠️  Failed to fetch photo: ${photoUrl} (${response.status})`);
+      if (!res.ok) {
+        console.warn(`Failed to fetch photo: ${photoUrl} (${res.status})`);
         return null;
       }
 
-      const imageBuffer = await response.arrayBuffer();
+      const imageBuffer = await res.arrayBuffer();
       const resized = await sharp(imageBuffer)
         .resize(BUILD_CONFIG.BLURHASH_RESIZE_WIDTH, BUILD_CONFIG.BLURHASH_RESIZE_HEIGHT, {
           fit: 'cover',
@@ -99,10 +89,10 @@ export async function generatePhotoBlurhash(
       return blurhash;
     } catch (e) {
       if (e instanceof Error && e.name === 'AbortError') {
-        console.warn(`⏱️  Timeout fetching photo: ${photoUrl}`);
+        console.warn(`Timeout fetching photo: ${photoUrl}`);
       } else {
         console.warn(
-          `⚠️  Error processing photo ${photoUrl}:`,
+          `Error processing photo ${photoUrl}:`,
           e instanceof Error ? e.message : String(e),
         );
       }
@@ -112,19 +102,14 @@ export async function generatePhotoBlurhash(
   });
 }
 
-/**
- * Compute blurhashes for all photos in a photo pack, attach `blur_hash`
- * to each object-format photo entry in-place, and return the count of
- * successfully generated hashes.
- */
 export async function attachPhotoBlurhashes(
   photoPackFile: PhotoPackItem,
   fileHash: string,
   cache: BuildCacheData,
   photoLimit: Limiter,
 ): Promise<number> {
-  // Collect URLs — photos can be plain strings or objects with a url.default key
   const photoUrls: string[] = [];
+
   for (const photo of photoPackFile.photos) {
     if (typeof photo === 'string') {
       photoUrls.push(photo);
@@ -137,7 +122,6 @@ export async function attachPhotoBlurhashes(
     }
   }
 
-  // Generate blurhashes in parallel (rate-limited inside generatePhotoBlurhash)
   const results = await Promise.all(
     photoUrls.map(async (photoUrl) => ({
       photoUrl,
@@ -152,7 +136,6 @@ export async function attachPhotoBlurhashes(
     }
   }
 
-  // Attach blur_hash to object-format photo entries in-place
   for (const photo of photoPackFile.photos) {
     if (typeof photo === 'object' && photo !== null) {
       const url = (photo as PhotoEntry).url?.default;

@@ -1,12 +1,10 @@
 import { describe, it, expect } from 'vitest';
+
 import { validateItem } from '../../scripts/utils.js';
 import type { PhotoPackItem, QuotePackItem, PresetSettingsItem } from '../../scripts/types.js';
 
-// ---------------------------------------------------------------------------
-// photo_packs
-// ---------------------------------------------------------------------------
-
-describe('validateItem — photo_packs', () => {
+// photo packs
+describe('validateItem: photo_packs', () => {
   it('should pass for a valid photo pack', () => {
     const item: PhotoPackItem = {
       name: 'Nature Photos',
@@ -15,6 +13,7 @@ describe('validateItem — photo_packs', () => {
       icon_url: 'http://example.com/icon.png',
       photos: ['photo1.jpg', 'photo2.jpg'],
     };
+
     expect(validateItem(item, 'photo_packs', 'photo_packs/nature').success).toBe(true);
   });
 
@@ -25,7 +24,9 @@ describe('validateItem — photo_packs', () => {
       icon_url: 'http://example.com/icon.png',
       photos: ['photo1.jpg'],
     } as PhotoPackItem;
+
     const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('name');
     expect(result.error?.message).toContain('Missing required field');
@@ -38,7 +39,9 @@ describe('validateItem — photo_packs', () => {
       icon_url: 'http://example.com/icon.png',
       photos: ['photo1.jpg'],
     } as PhotoPackItem;
+
     const result = validateItem(item, 'photo_packs', 'photo_packs/nature');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('description');
   });
@@ -95,11 +98,8 @@ describe('validateItem — photo_packs', () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// photo_packs — api_enabled
-// ---------------------------------------------------------------------------
-
-describe('validateItem — api_enabled photo_packs', () => {
+// API photo packs
+describe('validateItem: photo_packs (api_enabled)', () => {
   const baseApiPack: PhotoPackItem = {
     name: 'API Photos',
     description: 'Dynamic photos from an API',
@@ -118,12 +118,14 @@ describe('validateItem — api_enabled photo_packs', () => {
 
   it('should pass for api_enabled pack that also has static photos', () => {
     const item = { ...baseApiPack, photos: ['https://example.com/photo.jpg'] };
+
     expect(validateItem(item, 'photo_packs', 'photo_packs/api').success).toBe(true);
   });
 
   it('should fail if api_provider is missing', () => {
     const { api_provider, ...item } = baseApiPack;
     const result = validateItem(item as PhotoPackItem, 'photo_packs', 'photo_packs/api');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('api_provider');
   });
@@ -131,6 +133,7 @@ describe('validateItem — api_enabled photo_packs', () => {
   it('should fail if api_endpoint is missing', () => {
     const { api_endpoint, ...item } = baseApiPack;
     const result = validateItem(item as PhotoPackItem, 'photo_packs', 'photo_packs/api');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('api_endpoint');
   });
@@ -138,6 +141,7 @@ describe('validateItem — api_enabled photo_packs', () => {
   it('should fail if settings_schema is missing', () => {
     const { settings_schema, ...item } = baseApiPack;
     const result = validateItem(item as PhotoPackItem, 'photo_packs', 'photo_packs/api');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('settings_schema');
   });
@@ -145,6 +149,7 @@ describe('validateItem — api_enabled photo_packs', () => {
   it('should fail if settings_schema is an empty array', () => {
     const item = { ...baseApiPack, settings_schema: [] };
     const result = validateItem(item, 'photo_packs', 'photo_packs/api');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('settings_schema');
   });
@@ -157,15 +162,13 @@ describe('validateItem — api_enabled photo_packs', () => {
       quotes: [{ quote: 'Hello' }],
       api_enabled: true,
     } as unknown as QuotePackItem;
+
     expect(validateItem(item, 'quote_packs', 'quote_packs/test').success).toBe(true);
   });
 });
 
-// ---------------------------------------------------------------------------
-// quote_packs
-// ---------------------------------------------------------------------------
-
-describe('validateItem — quote_packs', () => {
+// quotes
+describe('validateItem: quote_packs', () => {
   it('should pass for a valid quote pack', () => {
     const item: QuotePackItem = {
       name: 'Inspirational Quotes',
@@ -173,6 +176,7 @@ describe('validateItem — quote_packs', () => {
       author: 'jane_smith',
       quotes: [{ quote: 'Be yourself', author: 'Oscar Wilde' }, { quote: 'Keep going' }],
     };
+
     expect(validateItem(item, 'quote_packs', 'quote_packs/inspirational').success).toBe(true);
   });
 
@@ -182,7 +186,9 @@ describe('validateItem — quote_packs', () => {
       author: 'author',
       quotes: [{ quote: 'Hello' }],
     } as QuotePackItem;
+
     const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('name');
   });
@@ -193,7 +199,9 @@ describe('validateItem — quote_packs', () => {
       author: 'author',
       quotes: [{ quote: 'Hello' }],
     } as QuotePackItem;
+
     const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('description');
   });
@@ -204,7 +212,9 @@ describe('validateItem — quote_packs', () => {
       description: 'Some quotes',
       quotes: [{ quote: 'Hello' }],
     } as QuotePackItem;
+
     const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('author');
   });
@@ -212,6 +222,7 @@ describe('validateItem — quote_packs', () => {
   it('should fail if quotes array is missing', () => {
     const item = { name: 'Quotes', description: 'Some quotes', author: 'author' } as QuotePackItem;
     const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('quotes');
   });
@@ -223,18 +234,17 @@ describe('validateItem — quote_packs', () => {
       author: 'author',
       quotes: [],
     };
+
     const result = validateItem(item, 'quote_packs', 'quote_packs/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('quotes');
     expect(result.error?.message).toContain('at least one quote');
   });
 });
 
-// ---------------------------------------------------------------------------
-// preset_settings
-// ---------------------------------------------------------------------------
-
-describe('validateItem — preset_settings', () => {
+// preset settings
+describe('validateItem: preset_settings', () => {
   it('should pass for valid preset settings', () => {
     const item: PresetSettingsItem = {
       name: 'Dark Theme',
@@ -242,6 +252,7 @@ describe('validateItem — preset_settings', () => {
       author: 'designer',
       settings: { theme: 'dark', fontSize: 14 },
     };
+
     expect(validateItem(item, 'preset_settings', 'preset_settings/dark').success).toBe(true);
   });
 
@@ -252,6 +263,7 @@ describe('validateItem — preset_settings', () => {
       author: 'author',
       settings: {},
     };
+
     expect(validateItem(item, 'preset_settings', 'preset_settings/test').success).toBe(true);
   });
 
@@ -261,7 +273,9 @@ describe('validateItem — preset_settings', () => {
       author: 'author',
       settings: { theme: 'dark' },
     } as unknown as PresetSettingsItem;
+
     const result = validateItem(item, 'preset_settings', 'preset_settings/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('name');
   });
@@ -272,7 +286,9 @@ describe('validateItem — preset_settings', () => {
       author: 'author',
       settings: { theme: 'dark' },
     } as unknown as PresetSettingsItem;
+
     const result = validateItem(item, 'preset_settings', 'preset_settings/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('description');
   });
@@ -283,7 +299,9 @@ describe('validateItem — preset_settings', () => {
       description: 'Some settings',
       settings: { theme: 'dark' },
     } as unknown as PresetSettingsItem;
+
     const result = validateItem(item, 'preset_settings', 'preset_settings/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('author');
   });
@@ -294,7 +312,9 @@ describe('validateItem — preset_settings', () => {
       description: 'Some settings',
       author: 'author',
     } as PresetSettingsItem;
+
     const result = validateItem(item, 'preset_settings', 'preset_settings/test');
+
     expect(result.success).toBe(false);
     expect(result.error?.field).toBe('settings');
   });

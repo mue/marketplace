@@ -1,7 +1,7 @@
 import fse from 'fs-extra';
+
 import { validateItem, generateStableHash, generateSlug, generateSearchText } from '../utils.js';
 
-import { computeFileHash } from './git-history.js';
 import { extractIconColour, attachPhotoBlurhashes } from './image-processing.js';
 import type {
   FolderType,
@@ -12,6 +12,8 @@ import type {
   QuotePackItem,
   BuildCacheData,
 } from '../types.js';
+
+import { computeFileHash } from './git-history.js';
 import type { GitTimestamps } from './git-history.js';
 
 type Limiter = <T>(fn: () => Promise<T>) => Promise<T>;
@@ -30,14 +32,6 @@ export interface ItemProcessorContext {
   photoLimit: Limiter;
 }
 
-/**
- * Process a single item file through the full build lifecycle:
- * read → skip drafts → validate → hash → register → timestamps →
- * icon colour → photo blurhashes → write dist file → return summary.
- *
- * Returns null for draft items.
- * Calls process.exit(1) on validation errors or ID collisions.
- */
 export async function processItem(
   folder: FolderType,
   item: string,
@@ -51,14 +45,12 @@ export async function processItem(
   const name = item.replace('.json', '');
   const canonicalPath = `${folder}/${name}`;
 
-  // Validate schema
   const validation = validateItem(file, folder, canonicalPath);
   if (!validation.success) {
     console.error(validation.error?.message ?? 'Validation failed');
     process.exit(1);
   }
 
-  // Stable hash + uniqueness check
   const stableHash = generateStableHash(canonicalPath, file.author);
 
   if (ctx.idRegistry.paths.has(canonicalPath)) {
@@ -78,13 +70,11 @@ export async function processItem(
   ctx.idRegistry.paths.add(canonicalPath);
   ctx.idRegistry.hashes.set(stableHash, canonicalPath);
 
-  // Timestamps (git history or now as fallback)
   const timestamps = ctx.gitHistoryMap.get(path);
   const now = new Date().toISOString();
   file.created_at = timestamps?.created_at ?? now;
   file.updated_at = timestamps?.updated_at ?? now;
 
-  // Icon colour
   let isDark = false;
   let isLight = false;
   if (file.icon_url) {
@@ -97,7 +87,6 @@ export async function processItem(
     }
   }
 
-  // Photo blurhashes (photo_packs only — skip API and image_api packs)
   if (
     folder === 'photo_packs' &&
     (file as PhotoPackItem).photos &&
@@ -114,13 +103,12 @@ export async function processItem(
 
     const total = (file as PhotoPackItem).photos.length;
     if (successCount > 0) {
-      console.log(`  ✓ Added blur_hash to ${successCount}/${total} photos for ${name}`);
+      console.log(`Added blur_hash to ${successCount}/${total} photos for ${name}`);
     } else if (total > 0) {
-      console.warn(`  ⚠️  Failed to generate any photo blurhashes for ${name}`);
+      console.warn(`Failed to generate any photo blurhashes for ${name}`);
     }
   }
 
-  // Enrich file with generated IDs
   file.id = stableHash;
   file.canonical_path = canonicalPath;
 
@@ -162,10 +150,6 @@ export async function processItem(
   return { name, author: file.author, canonicalPath, summary };
 }
 
-/**
- * Process all items in a folder in parallel (using `limit`) and return
- * the results (null entries are draft items).
- */
 export async function processFolder(
   folder: FolderType,
   ctx: ItemProcessorContext,
@@ -177,13 +161,13 @@ export async function processFolder(
   }
 
   const items = fse.readdirSync(categories);
-  console.log(`📦 Processing ${items.length} items in ${folder}...`);
+  console.log(`Processing ${items.length} items in ${folder}...`);
 
   const results = await Promise.all(
     items.map((item) => limit(() => processItem(folder, item, ctx))),
   );
 
   const processed = results.filter((r) => r !== null).length;
-  console.log(`✅ Processed ${processed} items in ${folder}`);
+  console.log(`Processed ${processed} items in ${folder}`);
   return results;
 }

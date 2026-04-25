@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { formatValidationError } from '../../scripts/utils.js';
 
 describe('formatValidationError', () => {

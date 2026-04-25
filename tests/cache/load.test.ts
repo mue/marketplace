@@ -1,4 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import fse from 'fs-extra';
+
 import { BuildCache } from '../../scripts/cache.js';
 
 vi.mock('fs-extra', () => ({
@@ -10,7 +12,6 @@ vi.mock('fs-extra', () => ({
   },
 }));
 
-import fse from 'fs-extra';
 const mockedFse = vi.mocked(fse);
 
 describe('BuildCache.load', () => {

@@ -11,14 +11,6 @@ import type {
   Collections,
 } from '../types.js';
 
-/**
- * Read all collection JSON files from dist/collections/, resolve git
- * timestamps, register IDs, link items into data[folder][name].in_collections,
- * and return the complete collections map.
- *
- * Calls process.exit(1) on duplicate paths, hash collisions, or references
- * to items that don't exist in the data structure.
- */
 export async function processCollections(
   data: DataStructure,
   git: SimpleGit,
@@ -36,13 +28,13 @@ export async function processCollections(
     const stableHash = generateStableHash(canonicalPath, 'marketplace');
 
     if (idRegistry.paths.has(canonicalPath)) {
-      console.error('DUPLICATE PATH: %s already exists', canonicalPath);
+      console.error('Duplicate path: %s already exists', canonicalPath);
       process.exit(1);
     }
 
     if (idRegistry.hashes.has(stableHash)) {
       console.error(
-        'HASH COLLISION: %s and %s generate same hash',
+        'Error: %s and %s generate same hash',
         canonicalPath,
         idRegistry.hashes.get(stableHash),
       );
@@ -82,7 +74,7 @@ export async function processCollections(
 
       if (!data[type as FolderType]?.[name]) {
         console.error(
-          'Item "%s" in the "%s" collection does not exist',
+          'Error: Item "%s" in the "%s" collection does not exist',
           collectionItem,
           collection.name,
         );

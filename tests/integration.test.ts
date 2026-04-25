@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { generateStableHash, generateSlug, generateSearchText } from '../scripts/utils.js';
 import type { PhotoPackItem, QuotePackItem } from '../scripts/types.js';
 
@@ -21,12 +22,11 @@ describe('Integration Tests', () => {
 
       const canonicalPath = 'photo_packs/european_cities';
 
-      // Generate all metadata
+      // generate all metadata
       const hash = generateStableHash(canonicalPath, photopack.author);
       const slug = generateSlug(photopack.name);
       const searchText = generateSearchText(photopack, canonicalPath, photopack.author);
 
-      // Assertions
       expect(hash).toHaveLength(12);
       expect(hash).toMatch(/^[a-f0-9]{12}$/);
 
@@ -65,12 +65,11 @@ describe('Integration Tests', () => {
 
       const canonicalPath = 'quote_packs/motivational';
 
-      // Generate all metadata
+      // generate all metadata
       const hash = generateStableHash(canonicalPath, quotepack.author);
       const slug = generateSlug(quotepack.name);
       const searchText = generateSearchText(quotepack, canonicalPath, quotepack.author);
 
-      // Assertions
       expect(hash).toHaveLength(12);
 
       expect(slug).toBe('motivational-quotes');
@@ -93,7 +92,7 @@ describe('Integration Tests', () => {
 
       const hashes = paths.map((path) => generateStableHash(path, 'same_author'));
 
-      // All hashes should be unique
+      // all hashes should be unique
       const uniqueHashes = new Set(hashes);
       expect(uniqueHashes.size).toBe(paths.length);
     });
@@ -109,7 +108,7 @@ describe('Integration Tests', () => {
 
       const hashes = authors.map((author) => generateStableHash('photo_packs/nature', author));
 
-      // All hashes should be unique
+      // all hashes should be unique
       const uniqueHashes = new Set(hashes);
       expect(uniqueHashes.size).toBe(authors.length);
     });
@@ -121,7 +120,7 @@ describe('Integration Tests', () => {
         { input: 'São Paulo Night Photography', expected: 's-o-paulo-night-photography' },
         { input: '2024 Top 100 Photos', expected: '2024-top-100-photos' },
         { input: 'Photos: Cities & Nature!', expected: 'photos-cities-nature' },
-        { input: 'N.S.F.W. Content Warning', expected: 'n-s-f-w-content-warning' },
+        { input: 'T.E.S.T. Fancy Name', expected: 't-e-s-t-fancy-name' },
         { input: '   Spaces   Everywhere   ', expected: 'spaces-everywhere' },
       ];
 
@@ -148,7 +147,7 @@ describe('Integration Tests', () => {
         'anime_artist_2024',
       );
 
-      // All key information should be searchable
+      // should be searchable
       expect(searchText).toContain('anime');
       expect(searchText).toContain('characters');
       expect(searchText).toContain('popular');
@@ -192,7 +191,7 @@ describe('Integration Tests', () => {
 
       const canonicalPath = 'photo_packs/test_pack';
 
-      // Run the full metadata generation process multiple times
+      // run a few times to check for consistency
       const runs = Array(10)
         .fill(null)
         .map(() => ({
@@ -201,7 +200,7 @@ describe('Integration Tests', () => {
           searchText: generateSearchText(item, canonicalPath, item.author),
         }));
 
-      // All runs should produce identical results
+      // identical?
       runs.forEach((run, index) => {
         if (index > 0) {
           expect(run.hash).toBe(runs[0].hash);

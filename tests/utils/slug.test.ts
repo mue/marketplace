@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { generateSlug } from '../../scripts/utils.js';
 
 describe('generateSlug', () => {

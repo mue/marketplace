@@ -1,6 +1,5 @@
 export type FolderType = 'photo_packs' | 'quote_packs' | 'preset_settings';
 
-// Predefined category tags for better discoverability
 export type CategoryTag =
   // General themes
   | 'nature'
@@ -9,6 +8,7 @@ export type CategoryTag =
   | 'colorful'
   | 'dark'
   | 'light'
+
   // Photo-specific
   | 'landscapes'
   | 'architecture'
@@ -20,12 +20,14 @@ export type CategoryTag =
   | 'vehicles'
   | 'food'
   | 'sports'
+
   // Quote-specific
   | 'motivational'
   | 'philosophical'
   | 'humor'
   | 'facts'
   | 'wisdom'
+
   // Setting-specific
   | 'productivity'
   | 'aesthetic'
@@ -215,14 +217,12 @@ export interface ManifestOutput {
   _id_index: IdIndex;
 }
 
-// Persistent plain-object cache used by the build script
 export interface BuildCacheData {
   gitHistory: Record<string, { created_at: string; updated_at: string; contentHash: string }>;
   colorCache: Record<string, { colour: string; isDark: boolean; isLight: boolean }>;
   photoBlurhashCache: Record<string, { blurhash: string; cachedAt: number; fileHash: string }>;
 }
 
-// Enhanced types for Phase 2 & 3
 export interface ExtendedItemSummary extends ItemSummary {
   search_text: string;
   slug: string;
@@ -230,7 +230,6 @@ export interface ExtendedItemSummary extends ItemSummary {
   category_tags?: CategoryTag[];
   isDark?: boolean;
   isLight?: boolean;
-  // API-enabled photo pack fields
   api_enabled?: boolean;
   api_provider?: string;
   api_endpoint?: string;

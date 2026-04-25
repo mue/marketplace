@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
 import { BuildCache } from '../../scripts/cache.js';
 import { CACHE_CONFIG } from '../../scripts/config.js';
 
@@ -62,7 +63,7 @@ describe('BuildCache.get / set', () => {
       created_at: '2025-01-01T00:00:00Z',
       updated_at: '2025-01-01T00:00:00Z',
       contentHash: 'abc123',
-      cachedAt: 0, // intentionally old — should be overwritten
+      cachedAt: 0, // outdated intentionally
     });
     const after = Date.now();
 
@@ -112,6 +113,7 @@ describe('BuildCache.get / set', () => {
       contentHash: 'hash_a',
       cachedAt: Date.now(),
     });
+
     cache.set('photo_packs/cities', {
       created_at: '2025-01-01T00:00:00Z',
       updated_at: '2025-01-01T00:00:00Z',

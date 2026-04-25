@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
 import { BuildCache } from '../../scripts/cache.js';
 
 describe('BuildCache.getStats', () => {
@@ -22,6 +23,7 @@ describe('BuildCache.getStats', () => {
       contentHash: 'h1',
       cachedAt: Date.now(),
     });
+
     cache.set('photo_packs/b', {
       created_at: '2025-01-01T00:00:00Z',
       updated_at: '2025-01-01T00:00:00Z',

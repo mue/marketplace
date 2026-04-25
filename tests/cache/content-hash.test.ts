@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { computeContentHash } from '../../scripts/cache.js';
 
 describe('computeContentHash', () => {
