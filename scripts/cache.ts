@@ -20,7 +20,6 @@ export interface CacheStorage {
   entries: Record<string, CacheEntry>;
 }
 
-
 export class BuildCache {
   private cachePath: string;
   private cache: CacheStorage;
@@ -64,7 +63,6 @@ export class BuildCache {
       console.error('Failed to save cache:', error);
     }
   }
-
 
   get(canonicalPath: string, currentContentHash: string): CacheEntry | undefined {
     const entry = this.cache.entries[canonicalPath];

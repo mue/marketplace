@@ -1,0 +1,65 @@
+{
+  "name": "Relaxing Mantras",
+  "description": "A collection of short, calming mantras to help you relax and find inner peace. Perfect for a quick mindfulness break during the day.",
+  "type": "quotes",
+  "version": "1.0.0",
+  "author": "David Ralph",
+  "quotes": [
+    {
+      "quote": "I am calm and centered.",
+      "author": ""
+    },
+    {
+      "quote": "Peace is within me.",
+      "author": ""
+    },
+    {
+      "quote": "I release worry and embrace calm.",
+      "author": ""
+    },
+    {
+      "quote": "With every breath, I feel stronger.",
+      "author": ""
+    },
+    {
+      "quote": "I choose peace over anxiety.",
+      "author": ""
+    },
+    {
+      "quote": "I have control over how I feel.",
+      "author": ""
+    },
+    {
+      "quote": "Calm washes over me.",
+      "author": ""
+    },
+    {
+      "quote": "This too shall pass.",
+      "author": ""
+    },
+    {
+      "quote": "Let it be.",
+      "author": ""
+    },
+    {
+      "quote": "With each breath, I choose peace.",
+      "author": ""
+    },
+    {
+      "quote": "Mind over matter.",
+      "author": ""
+    },
+    {
+      "quote": "With each heartbeat, peace resonates within me.",
+      "author": ""
+    },
+    {
+      "quote": "Calm and peace surround me.",
+      "author": ""
+    },
+    {
+      "quote": "I am serene and tranquil.",
+      "author": ""
+    }
+  ]
+}

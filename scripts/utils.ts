@@ -3,7 +3,6 @@ import crypto from 'crypto';
 import type { ItemData, FolderType, PhotoPackItem, QuotePackItem } from './types.js';
 import { ID_CONFIG, VALIDATION_CONFIG } from './config.js';
 
-
 export interface Result<T, E = Error> {
   success: boolean;
   data?: T;
@@ -43,7 +42,6 @@ export function generateSearchText(item: ItemData, canonicalPath: string, author
 
   return parts.join(' ').toLowerCase();
 }
-
 
 export function validateItem(
   file: ItemData,

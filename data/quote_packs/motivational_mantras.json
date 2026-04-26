@@ -1,0 +1,89 @@
+{
+  "name": "Motivational Mantras",
+  "description": "A collection of short, powerful mantras to boost your motivation and focus. Perfect for a quick mental reset during the day.",
+  "type": "quotes",
+  "version": "1.0.0",
+  "author": "David Ralph",
+  "quotes": [
+    {
+      "quote": "Mistakes are an opportunity to grow.",
+      "author": ""
+    },
+    {
+      "quote": "Sometimes you win, sometimes you learn.",
+      "author": ""
+    },
+    {
+      "quote": "Mistakes are expected, inspected, and corrected.",
+      "author": ""
+    },
+    {
+      "quote": "If what I’m doing isn’t working, then what I’m doing has to change.",
+      "author": ""
+    },
+    {
+      "quote": "Today, I will try something new.",
+      "author": ""
+    },
+    {
+      "quote": "Practice makes progress.",
+      "author": ""
+    },
+    {
+      "quote": "Mistakes are how I learn.",
+      "author": ""
+    },
+    {
+      "quote": "Whatever happens, I’ll handle it.",
+      "author": ""
+    },
+    {
+      "quote": "This is tough but so am I.",
+      "author": ""
+    },
+    {
+      "quote": "Everyone makes mistakes, that's why pencils have erasers.",
+      "author": ""
+    },
+    {
+      "quote": "Where there’s a will, there’s a way.",
+      "author": ""
+    },
+    {
+      "quote": "I am capable.",
+      "author": ""
+    },
+    {
+      "quote": "Do your best and learn from your mistakes.",
+      "author": ""
+    },
+    {
+      "quote": "The expert in anything was once a beginner.",
+      "author": ""
+    },
+    {
+      "quote": "Let’s make better mistakes tomorrow.",
+      "author": ""
+    },
+    {
+      "quote": "Limits exist only in my mind",
+      "author": ""
+    },
+    {
+      "quote": "If you need more time, you just need more time.",
+      "author": ""
+    },
+    {
+      "quote": "I will achieve great things through small steps",
+      "author": ""
+    },
+    {
+      "quote": "Every mistake is an opportunity for growth",
+      "author": ""
+    },
+    {
+      "quote": "I’m willing to put in the work to make my dreams a reality",
+      "author": ""
+    }
+  ]
+}
